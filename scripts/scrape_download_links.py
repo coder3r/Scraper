@@ -70,6 +70,41 @@ BAD_DOMAINS_FINAL = [
     "telegram.",
 ]
 
+# --- AD & POPUP BLOCKING CONFIGURATION ---
+# Common ad-network / redirect-chain domains known to hijack clicks or spawn
+# popup tabs during the mediator verification flow (Step 2-7: "CLICK TO
+# CONTINUE" -> 10s timer -> "GET LINKS"). These are blocked at the network
+# level via Chrome DevTools Protocol so they never get a chance to load a
+# script, redirect the page, or open a new window in the first place.
+AD_NETWORK_DOMAINS = [
+    "popads.net",
+    "popcash.net",
+    "propellerads.com",
+    "propeller.com",
+    "adsterra.com",
+    "adsterratech.com",
+    "exoclick.com",
+    "exosrv.com",
+    "juicyads.com",
+    "mgid.com",
+    "taboola.com",
+    "outbrain.com",
+    "doubleclick.net",
+    "googlesyndication.com",
+    "google-analytics.com",
+    "adnxs.com",
+    "revcontent.com",
+    "adcash.com",
+    "clickadu.com",
+    "hilltopads.net",
+    "adskeeper.com",
+    "smartyads.com",
+    "yllix.com",
+    "onclickmax.com",
+    "coinzillatag.com",
+    "greenmount",
+]
+
 
 def normalize_title(text: str) -> str:
     if not text:
@@ -134,6 +169,45 @@ def send_telegram_alert(
         print(f"📡 Sent Telegram Alert for '{movie_title}' to Bot Suri.")
     except Exception as e:
         print(f"⚠️ Could not send Telegram alert for '{movie_title}': {e}")
+
+
+def close_extra_ad_tabs(
+    driver, keep_handle: str, allow_url_keywords: Optional[List[str]] = None
+):
+    """
+    Closes any browser tab/window that pops up unexpectedly during the
+    mediator verification flow (an ad script calling window.open() when the
+    'CLICK TO CONTINUE' or 'GET LINKS' button is clicked), keeping only the
+    tab identified by `keep_handle` open.
+
+    If a newly opened tab's URL contains one of `allow_url_keywords` (e.g.
+    'hblinks', 'hubcloud') AND does not match a known ad domain, it is left
+    open instead of being closed — since it may be the legitimate next step
+    in the chain (the site sometimes opens the real destination in a new
+    tab rather than navigating the current one).
+    """
+    allow_url_keywords = allow_url_keywords or []
+    try:
+        for handle in list(driver.window_handles):
+            if handle == keep_handle:
+                continue
+            try:
+                driver.switch_to.window(handle)
+                curr_url = (driver.current_url or "").lower()
+                is_known_ad = any(ad in curr_url for ad in AD_NETWORK_DOMAINS)
+                is_legit = any(kw in curr_url for kw in allow_url_keywords)
+                if is_legit and not is_known_ad:
+                    continue  # keep — likely the real next step, not an ad
+                driver.close()
+                print(f"🧹 Closed ad/popup tab: {curr_url[:80] or 'about:blank'}")
+            except Exception:
+                try:
+                    driver.close()
+                except Exception:
+                    pass
+        driver.switch_to.window(keep_handle)
+    except Exception:
+        pass
 
 
 def fetch_categories_map(supabase_client: Client) -> Dict[str, str]:
@@ -479,14 +553,27 @@ def scrape_movie_link(
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-gpu")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-popup-blocking")
     options.add_argument("--disable-extensions")
+    options.add_argument("--disable-notifications")
     options.add_argument("--blink-settings=imagesEnabled=false")
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     )
     options.add_argument("--window-size=1920,1080")
+    # 🛡️ Keep Chrome's native popup blocker ON (previously
+    # "--disable-popup-blocking" explicitly turned it OFF, letting every
+    # ad-triggered window.open() through during Steps 3 & 5). Also disable
+    # popups/notifications/geolocation prompts via prefs as a second layer.
+    options.add_experimental_option(
+        "prefs",
+        {
+            "profile.default_content_setting_values.notifications": 2,
+            "profile.default_content_setting_values.popups": 2,
+            "profile.managed_default_content_settings.popups": 2,
+            "profile.default_content_setting_values.geolocation": 2,
+        },
+    )
 
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=options
@@ -495,12 +582,28 @@ def scrape_movie_link(
     driver.set_script_timeout(10)
     wait = WebDriverWait(driver, 10)
 
+    # 🛡️ Network-level ad blocking via Chrome DevTools Protocol. This stops
+    # ad scripts / redirect chains from loading at all, so they can't hijack
+    # a click or spawn a popup tab during the "CLICK TO CONTINUE" -> 10s
+    # timer -> "GET LINKS" verification flow.
+    try:
+        driver.execute_cdp_cmd("Network.enable", {})
+        driver.execute_cdp_cmd(
+            "Network.setBlockedURLs",
+            {"urls": [f"*{domain}*" for domain in AD_NETWORK_DOMAINS]},
+        )
+    except Exception as cdp_err:
+        print(f"⚠️ CDP ad-blocking setup warning: {cdp_err}")
+
+    main_window = driver.current_window_handle
+
     try:
         # --- STEP 0: Single-pass Search Query if source_url is a Search URL ---
         if "/?s=" in source_url or "search" in source_url:
             print(f"[*] Searching HDHub4u for title: {source_url}")
             driver.get(source_url)
             time.sleep(1.5)
+            close_extra_ad_tabs(driver, main_window)
             try:
                 first_post = driver.find_element(
                     By.XPATH,
@@ -522,6 +625,7 @@ def scrape_movie_link(
         print(f"[*] Step 1: Opening main page & extracting metadata: {source_url}")
         driver.get(source_url)
         time.sleep(1.2)
+        close_extra_ad_tabs(driver, main_window)
 
         # 📌 METADATA EXTRACTION (POST HEADER SCOPED)
         try:
@@ -710,6 +814,7 @@ def scrape_movie_link(
             print("[*] Step 2: Opening verification page...")
             driver.get(download_url)
             time.sleep(1)
+            close_extra_ad_tabs(driver, main_window)
 
             # STEP 3
             print("[*] Step 3: Clicking 'CLICK TO CONTINUE'...")
@@ -729,6 +834,8 @@ def scrape_movie_link(
             for i in range(8):
                 try:
                     if driver.execute_script(js_click_initial):
+                        time.sleep(0.3)
+                        close_extra_ad_tabs(driver, main_window)
                         break
                 except:
                     pass
@@ -737,6 +844,7 @@ def scrape_movie_link(
             # STEP 4: Wait timer
             print("[*] Step 4: Waiting for 10s timer...")
             time.sleep(10)
+            close_extra_ad_tabs(driver, main_window)
 
             # STEP 5
             print("[*] Step 5: Clicking 'GET LINKS'...")
@@ -771,6 +879,10 @@ def scrape_movie_link(
             for i in range(8):
                 try:
                     if driver.execute_script(js_click_getlinks):
+                        time.sleep(0.3)
+                        close_extra_ad_tabs(
+                            driver, main_window, allow_url_keywords=["hblinks"]
+                        )
                         break
                 except:
                     pass
@@ -779,6 +891,14 @@ def scrape_movie_link(
             # STEP 6
             print("[*] Step 6: Getting HUBLinks URL...")
             time.sleep(1.2)
+            # 🛡️ Sweep any ad tabs that snuck through before deciding which
+            # window holds the real destination — only then is
+            # window_handles[-1] safe to trust as "the new tab".
+            close_extra_ad_tabs(
+                driver,
+                main_window,
+                allow_url_keywords=["hblinks", "hubcloud", "hubdrive"],
+            )
             hblinks_url = None
 
             if len(driver.window_handles) > 1:
@@ -832,6 +952,9 @@ def scrape_movie_link(
 
             # STEP 7
             print("[*] Step 7: Finding HubCloud link...")
+            close_extra_ad_tabs(
+                driver, main_window, allow_url_keywords=["hblinks", "hubcloud", "hubdrive"]
+            )
             hub_element = None
 
             for attempt in range(8):
@@ -922,6 +1045,7 @@ def scrape_movie_link(
             for cfl_attempt in range(3):
                 driver.get(hub_url)
                 time.sleep(2)
+                close_extra_ad_tabs(driver, main_window, allow_url_keywords=["hubcloud"])
                 body_text = ""
                 for _ in range(6):
                     try:
