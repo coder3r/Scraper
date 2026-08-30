@@ -7,6 +7,7 @@ import argparse
 import urllib.parse
 import urllib.request
 from typing import Optional, Tuple, Dict, Any, List
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from selenium import webdriver
@@ -208,6 +209,134 @@ def close_extra_ad_tabs(
         driver.switch_to.window(keep_handle)
     except Exception:
         pass
+
+
+# --- 🚀 CHROME DRIVER POOL (Speed Optimization) ---
+# Spinning up a brand-new Chrome process per movie costs 2-5s just for
+# chromedriver startup. Instead, each of the 5 parallel workers gets ONE
+# persistent driver that is reused across every movie assigned to that
+# thread, and only recreated if it crashes/dies mid-batch.
+
+_thread_local = threading.local()
+_driver_registry: List[Any] = []
+_driver_registry_lock = threading.Lock()
+
+_chromedriver_path: Optional[str] = None
+_chromedriver_path_lock = threading.Lock()
+
+
+def get_chromedriver_path() -> str:
+    """Resolves the chromedriver binary path ONCE per batch run (cached),
+    instead of every worker thread independently calling
+    ChromeDriverManager().install() (which does its own network/version
+    check and is wasteful + racy when done 5x in parallel)."""
+    global _chromedriver_path
+    if _chromedriver_path is None:
+        with _chromedriver_path_lock:
+            if _chromedriver_path is None:
+                _chromedriver_path = ChromeDriverManager().install()
+    return _chromedriver_path
+
+
+def create_chrome_driver(headless: bool = True):
+    """Builds one fully-configured Chrome driver: ad/popup blocking prefs,
+    network-level ad + image/font blocking via CDP, and general CI speed
+    flags. Used both for one-off (--url) runs and for populating the driver
+    pool used by batch processing."""
+    options = webdriver.ChromeOptions()
+    options.page_load_strategy = "eager"
+    if headless or os.environ.get("CI"):
+        options.add_argument("--headless=new")
+    options.add_argument("--start-maximized")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-notifications")
+    options.add_argument("--blink-settings=imagesEnabled=false")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    )
+    options.add_argument("--window-size=1920,1080")
+    # Extra CI speed flags — none of these change scraping behavior, they
+    # just strip out background Chrome work that's pointless in headless CI.
+    options.add_argument("--disable-background-networking")
+    options.add_argument("--disable-background-timer-throttling")
+    options.add_argument("--disable-renderer-backgrounding")
+    options.add_argument("--disable-component-update")
+    options.add_argument("--disable-default-apps")
+    options.add_argument("--no-first-run")
+    options.add_argument("--no-default-browser-check")
+    options.add_experimental_option(
+        "prefs",
+        {
+            "profile.default_content_setting_values.notifications": 2,
+            "profile.default_content_setting_values.popups": 2,
+            "profile.managed_default_content_settings.popups": 2,
+            "profile.default_content_setting_values.geolocation": 2,
+            # Block images at the network-request level (imagesEnabled=false
+            # above only stops rendering — this stops the fetch entirely).
+            "profile.managed_default_content_settings.images": 2,
+        },
+    )
+
+    driver = webdriver.Chrome(
+        service=Service(get_chromedriver_path()), options=options
+    )
+    driver.set_page_load_timeout(15)
+    driver.set_script_timeout(10)
+
+    try:
+        driver.execute_cdp_cmd("Network.enable", {})
+        blocked_patterns = [f"*{domain}*" for domain in AD_NETWORK_DOMAINS] + [
+            "*.woff", "*.woff2", "*.ttf", "*.otf", "*.mp4", "*.avi",
+        ]
+        driver.execute_cdp_cmd("Network.setBlockedURLs", {"urls": blocked_patterns})
+    except Exception as cdp_err:
+        print(f"⚠️ CDP ad-blocking setup warning: {cdp_err}")
+
+    return driver
+
+
+def get_pooled_driver(headless: bool = True):
+    """Returns this worker thread's persistent driver, creating one on first
+    use and transparently recreating it if a health-check shows it died."""
+    driver = getattr(_thread_local, "driver", None)
+    if driver is not None:
+        try:
+            _ = driver.current_url  # health check — raises if the browser died
+            return driver
+        except Exception:
+            try:
+                driver.quit()
+            except Exception:
+                pass
+            with _driver_registry_lock:
+                if driver in _driver_registry:
+                    _driver_registry.remove(driver)
+            driver = None
+
+    driver = create_chrome_driver(headless=headless)
+    _thread_local.driver = driver
+    with _driver_registry_lock:
+        _driver_registry.append(driver)
+    return driver
+
+
+def quit_all_pooled_drivers() -> int:
+    """Call once after a batch finishes to close every pooled driver. Must
+    be explicit — ThreadPoolExecutor shutting down does NOT quit Chrome for
+    us, and leaving browsers open leaks memory across GitHub Actions runs."""
+    with _driver_registry_lock:
+        drivers = list(_driver_registry)
+        _driver_registry.clear()
+    for d in drivers:
+        try:
+            d.quit()
+        except Exception:
+            pass
+    return len(drivers)
 
 
 def fetch_categories_map(supabase_client: Client) -> Dict[str, str]:
@@ -530,7 +659,9 @@ def extract_hubcloud_via_http(hub_url: str) -> Tuple[Optional[str], Optional[str
 
 
 def scrape_movie_link(
-    source_url: Optional[str] = None, headless: bool = False
+    source_url: Optional[str] = None,
+    headless: bool = False,
+    driver=None,
 ) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str], Dict[str, Any]]:
     if not source_url:
         source_url = DEFAULT_SOURCE_URL
@@ -544,56 +675,32 @@ def scrape_movie_link(
         "tags": [],
     }
 
-    # High-Performance Headless Chrome Configuration
-    options = webdriver.ChromeOptions()
-    options.page_load_strategy = "eager"
-    if headless or os.environ.get("CI"):
-        options.add_argument("--headless=new")
-    options.add_argument("--start-maximized")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--disable-notifications")
-    options.add_argument("--blink-settings=imagesEnabled=false")
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-    )
-    options.add_argument("--window-size=1920,1080")
-    # 🛡️ Keep Chrome's native popup blocker ON (previously
-    # "--disable-popup-blocking" explicitly turned it OFF, letting every
-    # ad-triggered window.open() through during Steps 3 & 5). Also disable
-    # popups/notifications/geolocation prompts via prefs as a second layer.
-    options.add_experimental_option(
-        "prefs",
-        {
-            "profile.default_content_setting_values.notifications": 2,
-            "profile.default_content_setting_values.popups": 2,
-            "profile.managed_default_content_settings.popups": 2,
-            "profile.default_content_setting_values.geolocation": 2,
-        },
-    )
+    # 🚀 Speed: reuse a pooled per-thread Chrome driver (passed in by a batch
+    # worker) instead of spawning + tearing down a brand-new Chrome process
+    # for every single movie — chromedriver startup alone costs 2-5s each,
+    # and 30 movies × a fresh browser used to be the single biggest cost in
+    # the whole batch.
+    own_driver = driver is None
+    if driver is None:
+        driver = create_chrome_driver(headless=headless)
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()), options=options
-    )
     driver.set_page_load_timeout(15)
     driver.set_script_timeout(10)
     wait = WebDriverWait(driver, 10)
 
-    # 🛡️ Network-level ad blocking via Chrome DevTools Protocol. This stops
-    # ad scripts / redirect chains from loading at all, so they can't hijack
-    # a click or spawn a popup tab during the "CLICK TO CONTINUE" -> 10s
-    # timer -> "GET LINKS" verification flow.
-    try:
-        driver.execute_cdp_cmd("Network.enable", {})
-        driver.execute_cdp_cmd(
-            "Network.setBlockedURLs",
-            {"urls": [f"*{domain}*" for domain in AD_NETWORK_DOMAINS]},
-        )
-    except Exception as cdp_err:
-        print(f"⚠️ CDP ad-blocking setup warning: {cdp_err}")
+    # If this is a reused pooled driver, make sure it starts this movie from
+    # a clean single-window state — a previous movie may have crashed before
+    # its own tab cleanup ran.
+    if not own_driver:
+        try:
+            handles = driver.window_handles
+            if len(handles) > 1:
+                for h in handles[1:]:
+                    driver.switch_to.window(h)
+                    driver.close()
+                driver.switch_to.window(handles[0])
+        except Exception:
+            pass
 
     main_window = driver.current_window_handle
 
@@ -841,9 +948,39 @@ def scrape_movie_link(
                     pass
                 time.sleep(0.4)
 
-            # STEP 4: Wait timer
-            print("[*] Step 4: Waiting for 10s timer...")
+            # STEP 4: Verification timer — HARD MINIMUM 10 seconds, no
+            # exceptions. This is a server-verified wait, not just a UI
+            # animation; clicking early risks the mediator rejecting the
+            # verification. We only poll AFTER the 10s floor, and only to
+            # absorb a couple extra seconds if the button is slow to render
+            # — never to shave time off the 10s itself.
+            print("[*] Step 4: Waiting for timer (hard minimum 10s)...")
             time.sleep(10)
+            timer_start = time.time()
+            get_links_ready = False
+            while time.time() - timer_start < 3:
+                try:
+                    if driver.execute_script(
+                        """
+                        let els = document.querySelectorAll('a, button, div');
+                        for (let el of els) {
+                            if (el.innerText && el.innerText.trim().toUpperCase() === 'GET LINKS') {
+                                return true;
+                            }
+                        }
+                        return false;
+                        """
+                    ):
+                        get_links_ready = True
+                        break
+                except Exception:
+                    pass
+                time.sleep(0.5)
+            if not get_links_ready:
+                time.sleep(1)  # small buffer if button render is just slow
+            print(
+                f"[*] Timer complete: 10s minimum + {round(time.time() - timer_start, 1)}s extra"
+            )
             close_extra_ad_tabs(driver, main_window)
 
             # STEP 5
@@ -1127,10 +1264,20 @@ def scrape_movie_link(
         print(f"❌ ERROR for {source_url}: {err_msg}")
         return None, None, None, err_msg, extracted_meta
     finally:
-        try:
-            driver.quit()
-        except:
-            pass
+        if own_driver:
+            try:
+                driver.quit()
+            except:
+                pass
+        else:
+            # 🚀 Pooled driver: don't quit it — clean up so the next movie
+            # on this worker thread starts fresh (close leftover tabs, free
+            # the loaded page's memory by navigating to a blank page).
+            try:
+                close_extra_ad_tabs(driver, main_window)
+                driver.get("about:blank")
+            except Exception:
+                pass
 
 
 def fetch_netlify_source_urls() -> Dict[str, str]:
@@ -1196,8 +1343,9 @@ def _process_single_movie_worker(
         )
 
     try:
+        pooled_driver = get_pooled_driver(headless=True)
         hub_url, name, file_size, err_reason, extracted_meta = scrape_movie_link(
-            source_url, headless=True
+            source_url, headless=True, driver=pooled_driver
         )
 
         is_valid_hubcloud = (
@@ -1342,6 +1490,13 @@ def process_batch_missing_links():
                 future.result()
             except Exception as e:
                 print(f"⚠️ Parallel worker exception: {e}")
+
+    # 🚀 Explicitly close the pooled Chrome drivers now that the batch is
+    # done — they stayed alive across movies for speed, but ThreadPoolExecutor
+    # shutting down does NOT quit Chrome for us; leaving them open leaks
+    # memory across GitHub Actions runs.
+    pooled_count = quit_all_pooled_drivers()
+    print(f"🧹 Closed {pooled_count} pooled Chrome driver(s).")
 
     elapsed = round(time.time() - start_time, 2)
     print(
