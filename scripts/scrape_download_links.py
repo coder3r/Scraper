@@ -6,6 +6,7 @@ import json
 import argparse
 import urllib.parse
 import urllib.request
+import requests
 from typing import Optional, Tuple, Dict, Any, List
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -170,6 +171,148 @@ def send_telegram_alert(
         print(f"📡 Sent Telegram Alert for '{movie_title}' to Bot Suri.")
     except Exception as e:
         print(f"⚠️ Could not send Telegram alert for '{movie_title}': {e}")
+
+
+def send_telegram_photo(photo_path: str, caption: str):
+    """Sends a screenshot/debug image to the admin Telegram chat. Used for
+    debug snapshots so a structural site-change is visible immediately
+    without needing to dig through GitHub Actions logs or re-run locally."""
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
+    if not bot_token or not chat_id or not os.path.exists(photo_path):
+        return
+    try:
+        api_url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
+        with open(photo_path, "rb") as f:
+            requests.post(
+                api_url,
+                data={"chat_id": chat_id, "caption": caption[:1024], "parse_mode": "HTML"},
+                files={"photo": f},
+                timeout=20,
+            )
+    except Exception as e:
+        print(f"⚠️ Could not send Telegram debug photo: {e}")
+
+
+# --- 🩺 DEBUG SNAPSHOTS (capped, so one bad site-change doesn't spam) ---
+DEBUG_SNAPSHOT_DIR = "debug_snapshots"
+MAX_DEBUG_SNAPSHOTS_PER_RUN = 3
+_debug_snapshot_count = 0
+_debug_snapshot_lock = threading.Lock()
+
+
+def reset_debug_snapshot_counter():
+    global _debug_snapshot_count
+    with _debug_snapshot_lock:
+        _debug_snapshot_count = 0
+
+
+def save_debug_snapshot(driver, title: str, reason: str) -> Optional[str]:
+    """On a genuine STRUCTURAL failure (site markup changed, not just a
+    missing/old title), save a screenshot + HTML dump and — capped at
+    MAX_DEBUG_SNAPSHOTS_PER_RUN per batch — send the screenshot straight to
+    Telegram so the failure is visible without needing to guess from logs.
+    Deliberately NOT called for every failure: 'search yielded 0 results'
+    or a known dead-link pattern doesn't need a fresh screenshot each time.
+    """
+    global _debug_snapshot_count
+    with _debug_snapshot_lock:
+        if _debug_snapshot_count >= MAX_DEBUG_SNAPSHOTS_PER_RUN:
+            return None
+        _debug_snapshot_count += 1
+        snapshot_index = _debug_snapshot_count
+
+    try:
+        os.makedirs(DEBUG_SNAPSHOT_DIR, exist_ok=True)
+        safe_name = normalize_title(title)[:40] or "unknown"
+        ts = int(time.time())
+        screenshot_path = os.path.join(DEBUG_SNAPSHOT_DIR, f"{safe_name}_{ts}.png")
+        html_path = os.path.join(DEBUG_SNAPSHOT_DIR, f"{safe_name}_{ts}.html")
+        driver.save_screenshot(screenshot_path)
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+
+        send_telegram_photo(
+            screenshot_path,
+            f"🩺 <b>Debug Snapshot #{snapshot_index}</b>\n🎬 {title}\n❗ {reason}",
+        )
+        return screenshot_path
+    except Exception as e:
+        print(f"⚠️ Could not save debug snapshot for '{title}': {e}")
+        return None
+
+
+# --- 📊 TELEGRAM DIGEST MODE ---
+# Instead of one Telegram message per movie (30 pings for a 30-movie batch),
+# every worker records a lightweight event here, and ONE summary digest is
+# sent after the whole batch finishes.
+_batch_events: List[Dict[str, Any]] = []
+_batch_events_lock = threading.Lock()
+
+
+def reset_batch_events():
+    with _batch_events_lock:
+        _batch_events.clear()
+
+
+def record_batch_event(category: str, title: str, release_year: Any, reason: Optional[str] = None):
+    """category: 'success' | 'inactive' | 'retry_active'"""
+    with _batch_events_lock:
+        _batch_events.append(
+            {"category": category, "title": title, "year": release_year, "reason": reason}
+        )
+
+
+def send_batch_digest(elapsed_seconds: float):
+    """Builds and sends ONE Telegram summary for the whole batch, grouping
+    failures by reason (instead of a flood of per-movie alerts)."""
+    with _batch_events_lock:
+        events = list(_batch_events)
+
+    if not events:
+        return
+
+    success = [e for e in events if e["category"] == "success"]
+    inactive = [e for e in events if e["category"] == "inactive"]
+    retry_active = [e for e in events if e["category"] == "retry_active"]
+
+    lines = [
+        f"📊 <b>Dev Downloader Batch Digest</b>",
+        f"⏱ {len(events)} movies in {round(elapsed_seconds, 1)}s",
+        "",
+        f"✅ Success: {len(success)}",
+    ]
+
+    if inactive:
+        lines.append(f"🚫 Marked inactive: {len(inactive)}")
+        by_reason: Dict[str, List[str]] = {}
+        for e in inactive:
+            by_reason.setdefault(e["reason"] or "Unknown reason", []).append(e["title"])
+        for reason, titles in by_reason.items():
+            shown = ", ".join(titles[:5])
+            more = f" (+{len(titles) - 5} more)" if len(titles) > 5 else ""
+            lines.append(f"   • {reason}: {len(titles)} — {shown}{more}")
+
+    if retry_active:
+        titles = ", ".join(e["title"] for e in retry_active[:5])
+        more = f" (+{len(retry_active) - 5} more)" if len(retry_active) > 5 else ""
+        lines.append(f"⏳ Kept active for auto-retry (transient): {len(retry_active)} — {titles}{more}")
+
+    text = "\n".join(lines)
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
+    if not bot_token or not chat_id:
+        print("⚠️ Cannot send batch digest: TELEGRAM_BOT_TOKEN or TELEGRAM_ADMIN_CHAT_ID missing.")
+        return
+    try:
+        api_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        data = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "HTML"}).encode("utf-8")
+        req = urllib.request.Request(api_url, data=data, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req):
+            pass
+        print("📡 Sent batch digest to Bot Suri.")
+    except Exception as e:
+        print(f"⚠️ Could not send batch digest: {e}")
 
 
 def close_extra_ad_tabs(
@@ -662,9 +805,18 @@ def scrape_movie_link(
     source_url: Optional[str] = None,
     headless: bool = False,
     driver=None,
+    movie_title: Optional[str] = None,
+    log_prefix: str = "",
 ) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str], Dict[str, Any]]:
     if not source_url:
         source_url = DEFAULT_SOURCE_URL
+
+    # 🧹 Clean logs: every line this call prints is tagged with the movie
+    # it belongs to, so 5-8 workers' interleaved output in the GitHub
+    # Actions log stays traceable instead of turning into a wall of
+    # unattributed "[*] Step 3..." lines.
+    def log(msg: str):
+        print(f"{log_prefix}{msg}")
 
     extracted_meta = {
         "genres": [],
@@ -707,7 +859,7 @@ def scrape_movie_link(
     try:
         # --- STEP 0: Single-pass Search Query if source_url is a Search URL ---
         if "/?s=" in source_url or "search" in source_url:
-            print(f"[*] Searching HDHub4u for title: {source_url}")
+            log(f"[*] Searching HDHub4u for title: {source_url}")
             driver.get(source_url)
             time.sleep(1.5)
             close_extra_ad_tabs(driver, main_window)
@@ -717,10 +869,10 @@ def scrape_movie_link(
                     "//div[contains(@class, 'result') or contains(@class, 'post') or contains(@class, 'thumb')]//a | //h2/a",
                 )
                 source_url = first_post.get_attribute("href")
-                print(f"[*] Found post page: {source_url}")
+                log(f"[*] Found post page: {source_url}")
             except Exception:
                 err = "Search yielded 0 results on HDHub4u"
-                print(f"⚠️ {err} for: {source_url}")
+                log(f"⚠️ {err} for: {source_url}")
                 return None, None, None, err, extracted_meta
 
         # Ensure active domain
@@ -729,7 +881,7 @@ def scrape_movie_link(
         )
 
         # --- STEP 1: Main page se download link nikaalo & EXTRACT METADATA ---
-        print(f"[*] Step 1: Opening main page & extracting metadata: {source_url}")
+        log(f"[*] Step 1: Opening main page & extracting metadata: {source_url}")
         driver.get(source_url)
         time.sleep(1.2)
         close_extra_ad_tabs(driver, main_window)
@@ -807,12 +959,12 @@ def scrape_movie_link(
             if qual_match:
                 extracted_meta["quality"] = qual_match.group(1).strip()
 
-            print(
+            log(
                 f"📊 Extracted Page Meta: Genres={extracted_meta['genres']}, Stars={len(extracted_meta['actors'])}, Badges={len(extracted_meta['tags'])}"
             )
 
         except Exception as meta_err:
-            print(f"⚠️ Page metadata extraction warning: {meta_err}")
+            log(f"⚠️ Page metadata extraction warning: {meta_err}")
 
         link_element = None
         all_a_tags = driver.find_elements(By.TAG_NAME, "a")
@@ -837,7 +989,7 @@ def scrape_movie_link(
                 and "/file/" not in href
             ):
                 link_element = a
-                print(f"🎯 Selected 1080p x264 download link: {a.text or href}")
+                log(f"🎯 Selected 1080p x264 download link: {a.text or href}")
                 break
 
         # Pass 2: Any 1080p mediator or direct link
@@ -853,7 +1005,7 @@ def scrape_movie_link(
                     and "/file/" not in href
                 ):
                     link_element = a
-                    print(f"🎯 Selected 1080p download link: {a.text or href}")
+                    log(f"🎯 Selected 1080p download link: {a.text or href}")
                     break
 
         # Pass 3: Fallback to 720p x264 links
@@ -870,7 +1022,7 @@ def scrape_movie_link(
                     and "/file/" not in href
                 ):
                     link_element = a
-                    print(
+                    log(
                         f"🎯 Selected 720p x264 fallback download link: {a.text or href}"
                     )
                     break
@@ -888,12 +1040,13 @@ def scrape_movie_link(
                     and "/file/" not in href
                 ):
                     link_element = a
-                    print(f"🎯 Selected 720p fallback download link: {a.text or href}")
+                    log(f"🎯 Selected 720p fallback download link: {a.text or href}")
                     break
 
         if not link_element:
             err = "Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)"
-            print(f"⚠️ {err}: {source_url}")
+            log(f"⚠️ {err}: {source_url}")
+            save_debug_snapshot(driver, movie_title or source_url, err)
             return None, None, None, err, extracted_meta
 
         download_url = link_element.get_attribute("href")
@@ -903,7 +1056,7 @@ def scrape_movie_link(
             or "/file/" in download_url.lower()
         ):
             err = f"Step 1 selected an invalid link ({download_url})"
-            print(f"⚠️ {err}. Skipping.")
+            log(f"⚠️ {err}. Skipping.")
             return None, None, None, err, extracted_meta
 
         # --- SMART DIRECT HUBCLOUD DETECTION ---
@@ -912,19 +1065,19 @@ def scrape_movie_link(
         ) and not any(bad in download_url.lower() for bad in BAD_DOMAINS_FINAL)
 
         if is_direct_hubcloud:
-            print(
+            log(
                 f"🚀 Direct HubCloud link detected on post page: {download_url}. Bypassing mediator steps 2-7!"
             )
             hub_url = download_url
         else:
             # STEP 2
-            print("[*] Step 2: Opening verification page...")
+            log("[*] Step 2: Opening verification page...")
             driver.get(download_url)
             time.sleep(1)
             close_extra_ad_tabs(driver, main_window)
 
             # STEP 3
-            print("[*] Step 3: Clicking 'CLICK TO CONTINUE'...")
+            log("[*] Step 3: Clicking 'CLICK TO CONTINUE'...")
             js_click_initial = """
             function clickInitial() {
                 let btns = document.querySelectorAll('button, a');
@@ -954,7 +1107,7 @@ def scrape_movie_link(
             # verification. We only poll AFTER the 10s floor, and only to
             # absorb a couple extra seconds if the button is slow to render
             # — never to shave time off the 10s itself.
-            print("[*] Step 4: Waiting for timer (hard minimum 10s)...")
+            log("[*] Step 4: Waiting for timer (hard minimum 10s)...")
             time.sleep(10)
             timer_start = time.time()
             get_links_ready = False
@@ -978,13 +1131,13 @@ def scrape_movie_link(
                 time.sleep(0.5)
             if not get_links_ready:
                 time.sleep(1)  # small buffer if button render is just slow
-            print(
+            log(
                 f"[*] Timer complete: 10s minimum + {round(time.time() - timer_start, 1)}s extra"
             )
             close_extra_ad_tabs(driver, main_window)
 
             # STEP 5
-            print("[*] Step 5: Clicking 'GET LINKS'...")
+            log("[*] Step 5: Clicking 'GET LINKS'...")
             js_click_getlinks = """
             function clickGetLinks() {
                 let els = document.querySelectorAll('a, button, div');
@@ -1026,7 +1179,7 @@ def scrape_movie_link(
                 time.sleep(0.6)
 
             # STEP 6
-            print("[*] Step 6: Getting HUBLinks URL...")
+            log("[*] Step 6: Getting HUBLinks URL...")
             time.sleep(1.2)
             # 🛡️ Sweep any ad tabs that snuck through before deciding which
             # window holds the real destination — only then is
@@ -1088,7 +1241,7 @@ def scrape_movie_link(
                 driver.get(hblinks_url)
 
             # STEP 7
-            print("[*] Step 7: Finding HubCloud link...")
+            log("[*] Step 7: Finding HubCloud link...")
             close_extra_ad_tabs(
                 driver, main_window, allow_url_keywords=["hblinks", "hubcloud", "hubdrive"]
             )
@@ -1172,12 +1325,12 @@ def scrape_movie_link(
         # STEP 8: Fast Direct HTTP Bypass first
         movie_name, file_size = extract_hubcloud_via_http(hub_url)
         if movie_name and file_size and movie_name != "N/A" and file_size != "N/A":
-            print(
+            log(
                 f"🚀 Extracted HubCloud data via direct Fast HTTP in 0.4s: {movie_name} [{file_size}]"
             )
         else:
             # Fallback to Selenium rendering if HTTP is blocked by Cloudflare
-            print(f"[*] Step 8: Extracting clean data from HubCloud: {hub_url}")
+            log(f"[*] Step 8: Extracting clean data from HubCloud: {hub_url}")
             body_text = ""
             for cfl_attempt in range(3):
                 driver.get(hub_url)
@@ -1200,7 +1353,7 @@ def scrape_movie_link(
                     and "Connection timed out" not in body_text
                 ):
                     break
-                print(
+                log(
                     f"⚠️ Cloudflare 522 detected on HubCloud page. Retrying attempt {cfl_attempt + 1}/3..."
                 )
                 time.sleep(1.5)
@@ -1250,18 +1403,20 @@ def scrape_movie_link(
         if file_size == "N/A":
             raise Exception("Could not extract valid file size from HubCloud page")
 
-        print("\n" + "=" * 40)
-        print("✅ PROCESS COMPLETE!")
-        print(f"🎬 Movies Name : {movie_name}")
-        print(f"📦 File Size   : {file_size}")
-        print(f"🔗 HubCloud URL: {hub_url}")
-        print("=" * 40 + "\n")
+        log("\n" + "=" * 40)
+        log("✅ PROCESS COMPLETE!")
+        log(f"🎬 Movies Name : {movie_name}")
+        log(f"📦 File Size   : {file_size}")
+        log(f"🔗 HubCloud URL: {hub_url}")
+        log("=" * 40 + "\n")
 
         return hub_url, movie_name, file_size, None, extracted_meta
 
     except Exception as e:
         err_msg = str(e)
-        print(f"❌ ERROR for {source_url}: {err_msg}")
+        log(f"❌ ERROR for {source_url}: {err_msg}")
+        if "Cloudflare" not in err_msg and "temporary" not in err_msg.lower():
+            save_debug_snapshot(driver, movie_title or source_url, err_msg)
         return None, None, None, err_msg, extracted_meta
     finally:
         if own_driver:
@@ -1342,10 +1497,16 @@ def _process_single_movie_worker(
             source_url,
         )
 
+    log_prefix = f"[{title[:30]}] "
+
     try:
         pooled_driver = get_pooled_driver(headless=True)
         hub_url, name, file_size, err_reason, extracted_meta = scrape_movie_link(
-            source_url, headless=True, driver=pooled_driver
+            source_url,
+            headless=True,
+            driver=pooled_driver,
+            movie_title=title,
+            log_prefix=log_prefix,
         )
 
         is_valid_hubcloud = (
@@ -1360,24 +1521,19 @@ def _process_single_movie_worker(
             save_movie_data_to_supabase(
                 m_id, title, hub_url, file_size, extracted_meta, movie, cat_map
             )
+            record_batch_event("success", title, movie.get("release_year"))
         else:
             reason = err_reason or "1080p/720p HubCloud link not found on HDHub4u"
             is_transient_error = "Cloudflare 522" in reason or "temporary" in reason
 
             if is_transient_error:
                 print(
-                    f"⚠️ Transient error for '{title}': {reason}. Keeping status = 'active' for auto-retry."
+                    f"{log_prefix}⚠️ Transient error: {reason}. Keeping status = 'active' for auto-retry."
                 )
-                send_telegram_alert(
-                    title,
-                    movie.get("release_year"),
-                    source_url,
-                    reason,
-                    action_text="Kept ACTIVE for Auto-Retry",
-                )
+                record_batch_event("retry_active", title, movie.get("release_year"), reason)
             else:
                 print(
-                    f"⚠️ Discarded invalid link for '{title}'. Setting status = 'inactive'. Reason: {reason}"
+                    f"{log_prefix}⚠️ Discarded invalid link. Setting status = 'inactive'. Reason: {reason}"
                 )
 
                 # Save all extracted metadata & category badges (Genres, Languages, Platforms, Quality) BEFORE setting inactive
@@ -1393,37 +1549,23 @@ def _process_single_movie_worker(
                         )
                     except Exception as meta_save_err:
                         print(
-                            f"⚠️ Could not save category badges before setting inactive for '{title}': {meta_save_err}"
+                            f"{log_prefix}⚠️ Could not save category badges before setting inactive: {meta_save_err}"
                         )
 
                 try:
                     supabase.from_("movies").update({"status": "inactive"}).eq(
                         "id", m_id
                     ).execute()
-                    print(
-                        f"🚫 Marked '{title}' (ID: {m_id}) as INACTIVE in Supabase DB."
-                    )
+                    print(f"{log_prefix}🚫 Marked INACTIVE (ID: {m_id}) in Supabase DB.")
                 except Exception as db_err:
-                    print(f"⚠️ Could not set status to inactive: {db_err}")
+                    print(f"{log_prefix}⚠️ Could not set status to inactive: {db_err}")
 
-                send_telegram_alert(
-                    title,
-                    movie.get("release_year"),
-                    source_url,
-                    reason,
-                    action_text="Set status to INACTIVE",
-                )
+                record_batch_event("inactive", title, movie.get("release_year"), reason)
 
     except Exception as err:
         err_str = str(err)
-        print(f"⚠️ Error processing '{title}': {err_str}")
-        send_telegram_alert(
-            title,
-            movie.get("release_year"),
-            source_url,
-            err_str,
-            action_text="Set status to INACTIVE",
-        )
+        print(f"{log_prefix}⚠️ Error processing: {err_str}")
+        record_batch_event("inactive", title, movie.get("release_year"), err_str)
 
 
 def process_batch_missing_links():
@@ -1478,6 +1620,10 @@ def process_batch_missing_links():
     )
     netlify_urls = fetch_netlify_source_urls()
 
+    # 📊 Fresh state for this run's digest + debug-snapshot cap
+    reset_batch_events()
+    reset_debug_snapshot_counter()
+
     # Launch 5 Parallel Workers for ultra-fast 1.5-min batch completion
     start_time = time.time()
     with ThreadPoolExecutor(max_workers=5) as executor:
@@ -1502,6 +1648,9 @@ def process_batch_missing_links():
     print(
         f"⚡ Batch Processing Complete! {len(movies)} movies processed in {elapsed} seconds!"
     )
+
+    # 📊 One summary message instead of a per-movie Telegram flood
+    send_batch_digest(elapsed)
 
 
 if __name__ == "__main__":
