@@ -35,8 +35,14 @@ scripts/
   auto-sync.js                Node.js task runner — TMDB imports, user requests, Netlify sync
   requirements.txt            Python dependencies
 
-.github/workflows/
-  auto-sync.yml               Scheduled workflow (every 15 min) — runs both scripts
+.github/
+  workflows/
+    auto-sync.yml             Scheduled workflow (every 15 min) — runs both scripts
+  ISSUE_TEMPLATE/
+    bug_report.md             Bug report template
+    feature_request.md        Feature request template
+    question.md               Question/help template
+  pull_request_template.md    PR template
 ```
 
 **How it fits together:**
@@ -162,23 +168,30 @@ Verify `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env`. Service role ke
 
 ## Support & Documentation
 
-- **Issues** — [GitHub Issues](https://github.com/coder3r/Scraper/issues)
+- **Issues** — [Report a bug](https://github.com/coder3r/Scraper/issues/new?template=bug_report.md) | [Request a feature](https://github.com/coder3r/Scraper/issues/new?template=feature_request.md) | [Ask a question](https://github.com/coder3r/Scraper/issues/new?template=question.md)
+- **Discussions** — [GitHub Discussions](https://github.com/coder3r/Scraper/discussions)
 - **TMDB API** — [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
 - **Supabase Docs** — [supabase.com/docs](https://supabase.com/docs)
 
 ## Contributing
 
-Contributions welcome! Please:
+Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+**Quick Start:**
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
+3. Commit changes (`git commit -m 'feat: add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+5. Open a [Pull Request](https://github.com/coder3r/Scraper/compare)
 
 ## License
 
-See [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see [LICENSE](LICENSE) file for details.
+
+## Code of Conduct
+
+This project adheres to the Contributor Covenant Code of Conduct. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
 
 ## Maintainer
 
