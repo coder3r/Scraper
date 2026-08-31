@@ -207,11 +207,12 @@ def reset_debug_snapshot_counter():
         _debug_snapshot_count = 0
 
 
-def save_debug_snapshot(driver, title: str, reason: str) -> Optional[str]:
+def save_debug_snapshot(driver, title: str, reason: str, source_url: str = "") -> Optional[str]:
     """On a genuine STRUCTURAL failure (site markup changed, not just a
     missing/old title), save a screenshot + HTML dump and — capped at
     MAX_DEBUG_SNAPSHOTS_PER_RUN per batch — send the screenshot straight to
-    Telegram so the failure is visible without needing to guess from logs.
+    Telegram (with the exact page URL attached) so the failure can be
+    manually inspected without needing to guess from logs.
     Deliberately NOT called for every failure: 'search yielded 0 results'
     or a known dead-link pattern doesn't need a fresh screenshot each time.
     """
@@ -232,10 +233,14 @@ def save_debug_snapshot(driver, title: str, reason: str) -> Optional[str]:
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(driver.page_source)
 
-        send_telegram_photo(
-            screenshot_path,
-            f"🩺 <b>Debug Snapshot #{snapshot_index}</b>\n🎬 {title}\n❗ {reason}",
+        clean_url = (source_url or "").replace("<", "").replace(">", "")
+        caption = (
+            f"🩺 <b>Debug Snapshot #{snapshot_index}</b>\n"
+            f"🎬 {title}\n"
+            f"❗ {reason}\n"
+            f"🔗 {clean_url}"
         )
+        send_telegram_photo(screenshot_path, caption)
         return screenshot_path
     except Exception as e:
         print(f"⚠️ Could not save debug snapshot for '{title}': {e}")
@@ -255,11 +260,19 @@ def reset_batch_events():
         _batch_events.clear()
 
 
-def record_batch_event(category: str, title: str, release_year: Any, reason: Optional[str] = None):
+def record_batch_event(
+    category: str, title: str, release_year: Any, reason: Optional[str] = None, url: str = ""
+):
     """category: 'success' | 'inactive' | 'retry_active'"""
     with _batch_events_lock:
         _batch_events.append(
-            {"category": category, "title": title, "year": release_year, "reason": reason}
+            {
+                "category": category,
+                "title": title,
+                "year": release_year,
+                "reason": reason,
+                "url": url,
+            }
         )
 
 
@@ -283,22 +296,33 @@ def send_batch_digest(elapsed_seconds: float):
         f"✅ Success: {len(success)}",
     ]
 
+    def link_or_plain(e: Dict[str, Any]) -> str:
+        title = e["title"]
+        url = (e.get("url") or "").replace("<", "").replace(">", "")
+        return f'<a href="{url}">{title}</a>' if url else title
+
     if inactive:
         lines.append(f"🚫 Marked inactive: {len(inactive)}")
-        by_reason: Dict[str, List[str]] = {}
+        by_reason: Dict[str, List[Dict[str, Any]]] = {}
         for e in inactive:
-            by_reason.setdefault(e["reason"] or "Unknown reason", []).append(e["title"])
-        for reason, titles in by_reason.items():
-            shown = ", ".join(titles[:5])
-            more = f" (+{len(titles) - 5} more)" if len(titles) > 5 else ""
-            lines.append(f"   • {reason}: {len(titles)} — {shown}{more}")
+            by_reason.setdefault(e["reason"] or "Unknown reason", []).append(e)
+        for reason, evs in by_reason.items():
+            lines.append(f"   • {reason}: {len(evs)}")
+            for e in evs[:5]:
+                lines.append(f"      - {link_or_plain(e)}")
+            if len(evs) > 5:
+                lines.append(f"      …+{len(evs) - 5} more (see log)")
 
     if retry_active:
-        titles = ", ".join(e["title"] for e in retry_active[:5])
-        more = f" (+{len(retry_active) - 5} more)" if len(retry_active) > 5 else ""
-        lines.append(f"⏳ Kept active for auto-retry (transient): {len(retry_active)} — {titles}{more}")
+        lines.append(f"⏳ Kept active for auto-retry (transient): {len(retry_active)}")
+        for e in retry_active[:5]:
+            lines.append(f"      - {link_or_plain(e)}")
+        if len(retry_active) > 5:
+            lines.append(f"      …+{len(retry_active) - 5} more (see log)")
 
     text = "\n".join(lines)
+    if len(text) > 3900:
+        text = text[:3900] + "\n\n…(truncated — see full log for the rest)"
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
     if not bot_token or not chat_id:
@@ -1046,7 +1070,7 @@ def scrape_movie_link(
         if not link_element:
             err = "Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)"
             log(f"⚠️ {err}: {source_url}")
-            save_debug_snapshot(driver, movie_title or source_url, err)
+            save_debug_snapshot(driver, movie_title or source_url, err, source_url)
             return None, None, None, err, extracted_meta
 
         download_url = link_element.get_attribute("href")
@@ -1416,7 +1440,7 @@ def scrape_movie_link(
         err_msg = str(e)
         log(f"❌ ERROR for {source_url}: {err_msg}")
         if "Cloudflare" not in err_msg and "temporary" not in err_msg.lower():
-            save_debug_snapshot(driver, movie_title or source_url, err_msg)
+            save_debug_snapshot(driver, movie_title or source_url, err_msg, source_url)
         return None, None, None, err_msg, extracted_meta
     finally:
         if own_driver:
@@ -1521,7 +1545,7 @@ def _process_single_movie_worker(
             save_movie_data_to_supabase(
                 m_id, title, hub_url, file_size, extracted_meta, movie, cat_map
             )
-            record_batch_event("success", title, movie.get("release_year"))
+            record_batch_event("success", title, movie.get("release_year"), url=source_url)
         else:
             reason = err_reason or "1080p/720p HubCloud link not found on HDHub4u"
             is_transient_error = "Cloudflare 522" in reason or "temporary" in reason
@@ -1530,7 +1554,9 @@ def _process_single_movie_worker(
                 print(
                     f"{log_prefix}⚠️ Transient error: {reason}. Keeping status = 'active' for auto-retry."
                 )
-                record_batch_event("retry_active", title, movie.get("release_year"), reason)
+                record_batch_event(
+                    "retry_active", title, movie.get("release_year"), reason, url=source_url
+                )
             else:
                 print(
                     f"{log_prefix}⚠️ Discarded invalid link. Setting status = 'inactive'. Reason: {reason}"
@@ -1560,12 +1586,16 @@ def _process_single_movie_worker(
                 except Exception as db_err:
                     print(f"{log_prefix}⚠️ Could not set status to inactive: {db_err}")
 
-                record_batch_event("inactive", title, movie.get("release_year"), reason)
+                record_batch_event(
+                    "inactive", title, movie.get("release_year"), reason, url=source_url
+                )
 
     except Exception as err:
         err_str = str(err)
         print(f"{log_prefix}⚠️ Error processing: {err_str}")
-        record_batch_event("inactive", title, movie.get("release_year"), err_str)
+        record_batch_event(
+            "inactive", title, movie.get("release_year"), err_str, url=source_url
+        )
 
 
 def process_batch_missing_links():
