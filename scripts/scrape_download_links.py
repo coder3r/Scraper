@@ -1333,51 +1333,6 @@ def scrape_movie_link(
                     break
                 time.sleep(0.6)
 
-            # --- 🌉 FALLBACK: HubDrive bridge ---
-            # Many HUBLinks pages don't expose a hubcloud link directly —
-            # they only have a "Drive [HubDrive]" link (hubdrive.tips),
-            # which the loop above correctly skips since hubdrive.tips is
-            # in BAD_DOMAINS_FINAL (it's not itself a valid final link).
-            # But that hubdrive.tips page has its OWN "[HubCloud Server]"
-            # button pointing to the real hubcloud.cx/.ist link. Follow the
-            # bridge instead of giving up.
-            if not hub_element:
-                log("[*] Step 7b: No direct HubCloud link — trying HubDrive bridge...")
-                hubdrive_url = None
-                try:
-                    for a in driver.find_elements(By.TAG_NAME, "a"):
-                        href = (a.get_attribute("href") or "")
-                        text = (a.text or "").lower()
-                        if "hubdrive" in href.lower() or "hubdrive" in text:
-                            hubdrive_url = href
-                            break
-                except Exception:
-                    hubdrive_url = None
-
-                if hubdrive_url:
-                    try:
-                        driver.get(hubdrive_url)
-                        time.sleep(1.5)
-                        close_extra_ad_tabs(
-                            driver, main_window, allow_url_keywords=["hubcloud", "hubdrive"]
-                        )
-                        for a in driver.find_elements(By.TAG_NAME, "a"):
-                            href = (a.get_attribute("href") or "").lower()
-                            text = (a.text or "").lower()
-                            if (
-                                ("hubcloud" in href or "hubcloud" in text)
-                                and "/file/" not in href
-                            ):
-                                hub_element = a
-                                log(f"[*] Found HubCloud link via HubDrive bridge: {href}")
-                                break
-                        if not hub_element:
-                            log("⚠️ HubDrive bridge page had no '[HubCloud Server]' link either.")
-                    except Exception as bridge_err:
-                        log(f"⚠️ HubDrive bridge attempt failed: {bridge_err}")
-                else:
-                    log("⚠️ No 'Drive [HubDrive]' link found on HUBLinks page to bridge through.")
-
             if not hub_element:
                 err = "HubCloud link not found on HUBLinks page"
                 raise Exception(err)
