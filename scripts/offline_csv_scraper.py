@@ -126,8 +126,8 @@ def load_movie_categories_map_from_csv(movie_categories_csv_path: str) -> Dict[s
     return existing_map
 
 
-def load_pending_movies_from_csv(movies_csv_path: str) -> List[Dict[str, Any]]:
-    """Reads movies_rows.csv and returns a list of active movies needing download_url or file_size."""
+def load_pending_movies_from_csv(movies_csv_path: str, include_all: bool = False) -> List[Dict[str, Any]]:
+    """Reads movies_rows.csv and returns a list of inactive movies needing download_url or file_size."""
     pending_movies = []
     if not os.path.exists(movies_csv_path):
         print(f"❌ Error: Movies CSV file '{movies_csv_path}' not found!")
@@ -136,30 +136,39 @@ def load_pending_movies_from_csv(movies_csv_path: str) -> List[Dict[str, Any]]:
     try:
         with open(movies_csv_path, mode="r", encoding="utf-8-sig") as f:
             reader = csv.DictReader(f)
-            for row in reader:
-                m_id = (row.get("id") or "").strip()
-                title = (row.get("title") or "").strip()
-                status = (row.get("status") or "").strip().lower()
-                download_url = (row.get("download_url") or "").strip()
-                file_size = (row.get("file_size") or "").strip()
+            for raw_row in reader:
+                # Normalize row keys to lowercase stripped strings to handle quotes / BOM / capitalization
+                row = {str(k or "").strip().lower(): str(v or "").strip() for k, v in raw_row.items() if k}
 
-                is_active = status in ["", "active", "null", "none"]
-                needs_download = (not download_url or download_url == "NOT_FOUND") or (not file_size or file_size == "N/A")
+                m_id = row.get("id", "")
+                title = row.get("title", "")
+                status = row.get("status", "").lower()
+                download_url = row.get("download_url", "")
+                file_size = row.get("file_size", "")
 
-                if m_id and title and is_active and needs_download:
+                is_inactive_or_missing = status in ["inactive", "disabled", "none", "null"] or not download_url or download_url.lower() in ["null", "none", "not_found", "n/a", ""]
+                needs_download = (
+                    not download_url
+                    or download_url.lower() in ["null", "none", "not_found", "n/a", ""]
+                ) or (
+                    not file_size
+                    or file_size.lower() in ["null", "none", "n/a", ""]
+                )
+
+                if m_id and title and (include_all or (is_inactive_or_missing and needs_download)):
                     pending_movies.append({
                         "id": m_id,
                         "title": title,
-                        "release_year": (row.get("release_year") or "").strip(),
-                        "quality": (row.get("quality") or "").strip(),
-                        "genres": row.get("genres"),
-                        "actors": row.get("actors"),
-                        "director": row.get("director"),
-                        "language": row.get("language"),
+                        "release_year": row.get("release_year") or row.get("year") or "",
+                        "quality": row.get("quality", ""),
+                        "genres": row.get("genres", ""),
+                        "actors": row.get("actors", ""),
+                        "director": row.get("director", ""),
+                        "language": row.get("language", ""),
                         "status": status,
                     })
 
-        print(f"📌 Loaded {len(pending_movies)} pending active movie(s) needing links from '{movies_csv_path}'")
+        print(f"📌 Loaded {len(pending_movies)} INACTIVE movie(s) needing download links from '{movies_csv_path}'")
     except Exception as e:
         print(f"❌ Error reading movies CSV '{movies_csv_path}': {e}")
 
