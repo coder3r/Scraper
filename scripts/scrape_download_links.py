@@ -73,11 +73,6 @@ BAD_DOMAINS_FINAL = [
 ]
 
 # --- AD & POPUP BLOCKING CONFIGURATION ---
-# Common ad-network / redirect-chain domains known to hijack clicks or spawn
-# popup tabs during the mediator verification flow (Step 2-7: "CLICK TO
-# CONTINUE" -> 10s timer -> "GET LINKS"). These are blocked at the network
-# level via Chrome DevTools Protocol so they never get a chance to load a
-# script, redirect the page, or open a new window in the first place.
 AD_NETWORK_DOMAINS = [
     "popads.net",
     "popcash.net",
@@ -186,7 +181,11 @@ def send_telegram_photo(photo_path: str, caption: str):
         with open(photo_path, "rb") as f:
             requests.post(
                 api_url,
-                data={"chat_id": chat_id, "caption": caption[:1024], "parse_mode": "HTML"},
+                data={
+                    "chat_id": chat_id,
+                    "caption": caption[:1024],
+                    "parse_mode": "HTML",
+                },
                 files={"photo": f},
                 timeout=20,
             )
@@ -194,7 +193,7 @@ def send_telegram_photo(photo_path: str, caption: str):
         print(f"⚠️ Could not send Telegram debug photo: {e}")
 
 
-# --- 🩺 DEBUG SNAPSHOTS (capped, so one bad site-change doesn't spam) ---
+# --- 🩺 DEBUG SNAPSHOTS
 DEBUG_SNAPSHOT_DIR = "debug_snapshots"
 MAX_DEBUG_SNAPSHOTS_PER_RUN = 3
 _debug_snapshot_count = 0
@@ -207,7 +206,9 @@ def reset_debug_snapshot_counter():
         _debug_snapshot_count = 0
 
 
-def save_debug_snapshot(driver, title: str, reason: str, source_url: str = "") -> Optional[str]:
+def save_debug_snapshot(
+    driver, title: str, reason: str, source_url: str = ""
+) -> Optional[str]:
     """On a genuine STRUCTURAL failure (site markup changed, not just a
     missing/old title), save a screenshot + HTML dump and — capped at
     MAX_DEBUG_SNAPSHOTS_PER_RUN per batch — send the screenshot straight to
@@ -248,9 +249,6 @@ def save_debug_snapshot(driver, title: str, reason: str, source_url: str = "") -
 
 
 # --- 📊 TELEGRAM DIGEST MODE ---
-# Instead of one Telegram message per movie (30 pings for a 30-movie batch),
-# every worker records a lightweight event here, and ONE summary digest is
-# sent after the whole batch finishes.
 _batch_events: List[Dict[str, Any]] = []
 _batch_events_lock = threading.Lock()
 
@@ -261,7 +259,11 @@ def reset_batch_events():
 
 
 def record_batch_event(
-    category: str, title: str, release_year: Any, reason: Optional[str] = None, url: str = ""
+    category: str,
+    title: str,
+    release_year: Any,
+    reason: Optional[str] = None,
+    url: str = "",
 ):
     """category: 'success' | 'inactive' | 'retry_active'"""
     with _batch_events_lock:
@@ -326,12 +328,18 @@ def send_batch_digest(elapsed_seconds: float):
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
     if not bot_token or not chat_id:
-        print("⚠️ Cannot send batch digest: TELEGRAM_BOT_TOKEN or TELEGRAM_ADMIN_CHAT_ID missing.")
+        print(
+            "⚠️ Cannot send batch digest: TELEGRAM_BOT_TOKEN or TELEGRAM_ADMIN_CHAT_ID missing."
+        )
         return
     try:
         api_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        data = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "HTML"}).encode("utf-8")
-        req = urllib.request.Request(api_url, data=data, headers={"Content-Type": "application/json"})
+        data = json.dumps(
+            {"chat_id": chat_id, "text": text, "parse_mode": "HTML"}
+        ).encode("utf-8")
+        req = urllib.request.Request(
+            api_url, data=data, headers={"Content-Type": "application/json"}
+        )
         with urllib.request.urlopen(req):
             pass
         print("📡 Sent batch digest to Bot Suri.")
@@ -365,7 +373,7 @@ def close_extra_ad_tabs(
                 is_known_ad = any(ad in curr_url for ad in AD_NETWORK_DOMAINS)
                 is_legit = any(kw in curr_url for kw in allow_url_keywords)
                 if is_legit and not is_known_ad:
-                    continue  # keep — likely the real next step, not an ad
+                    continue
                 driver.close()
                 print(f"🧹 Closed ad/popup tab: {curr_url[:80] or 'about:blank'}")
             except Exception:
@@ -378,11 +386,7 @@ def close_extra_ad_tabs(
         pass
 
 
-# --- 🚀 CHROME DRIVER POOL (Speed Optimization) ---
-# Spinning up a brand-new Chrome process per movie costs 2-5s just for
-# chromedriver startup. Instead, each of the 5 parallel workers gets ONE
-# persistent driver that is reused across every movie assigned to that
-# thread, and only recreated if it crashes/dies mid-batch.
+# --- 🚀 CHROME DRIVER POOL
 
 _thread_local = threading.local()
 _driver_registry: List[Any] = []
@@ -426,8 +430,6 @@ def create_chrome_driver(headless: bool = True):
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     )
     options.add_argument("--window-size=1920,1080")
-    # Extra CI speed flags — none of these change scraping behavior, they
-    # just strip out background Chrome work that's pointless in headless CI.
     options.add_argument("--disable-background-networking")
     options.add_argument("--disable-background-timer-throttling")
     options.add_argument("--disable-renderer-backgrounding")
@@ -442,22 +444,23 @@ def create_chrome_driver(headless: bool = True):
             "profile.default_content_setting_values.popups": 2,
             "profile.managed_default_content_settings.popups": 2,
             "profile.default_content_setting_values.geolocation": 2,
-            # Block images at the network-request level (imagesEnabled=false
-            # above only stops rendering — this stops the fetch entirely).
             "profile.managed_default_content_settings.images": 2,
         },
     )
 
-    driver = webdriver.Chrome(
-        service=Service(get_chromedriver_path()), options=options
-    )
+    driver = webdriver.Chrome(service=Service(get_chromedriver_path()), options=options)
     driver.set_page_load_timeout(15)
     driver.set_script_timeout(10)
 
     try:
         driver.execute_cdp_cmd("Network.enable", {})
         blocked_patterns = [f"*{domain}*" for domain in AD_NETWORK_DOMAINS] + [
-            "*.woff", "*.woff2", "*.ttf", "*.otf", "*.mp4", "*.avi",
+            "*.woff",
+            "*.woff2",
+            "*.ttf",
+            "*.otf",
+            "*.mp4",
+            "*.avi",
         ]
         driver.execute_cdp_cmd("Network.setBlockedURLs", {"urls": blocked_patterns})
     except Exception as cdp_err:
@@ -472,7 +475,7 @@ def get_pooled_driver(headless: bool = True):
     driver = getattr(_thread_local, "driver", None)
     if driver is not None:
         try:
-            _ = driver.current_url  # health check — raises if the browser died
+            _ = driver.current_url
             return driver
         except Exception:
             try:
@@ -835,10 +838,6 @@ def scrape_movie_link(
     if not source_url:
         source_url = DEFAULT_SOURCE_URL
 
-    # 🧹 Clean logs: every line this call prints is tagged with the movie
-    # it belongs to, so 5-8 workers' interleaved output in the GitHub
-    # Actions log stays traceable instead of turning into a wall of
-    # unattributed "[*] Step 3..." lines.
     def log(msg: str):
         print(f"{log_prefix}{msg}")
 
@@ -851,11 +850,6 @@ def scrape_movie_link(
         "tags": [],
     }
 
-    # 🚀 Speed: reuse a pooled per-thread Chrome driver (passed in by a batch
-    # worker) instead of spawning + tearing down a brand-new Chrome process
-    # for every single movie — chromedriver startup alone costs 2-5s each,
-    # and 30 movies × a fresh browser used to be the single biggest cost in
-    # the whole batch.
     own_driver = driver is None
     if driver is None:
         driver = create_chrome_driver(headless=headless)
@@ -864,9 +858,6 @@ def scrape_movie_link(
     driver.set_script_timeout(10)
     wait = WebDriverWait(driver, 10)
 
-    # If this is a reused pooled driver, make sure it starts this movie from
-    # a clean single-window state — a previous movie may have crashed before
-    # its own tab cleanup ran.
     if not own_driver:
         try:
             handles = driver.window_handles
@@ -1125,20 +1116,15 @@ def scrape_movie_link(
                     pass
                 time.sleep(0.4)
 
-            # STEP 4: Verification timer — HARD MINIMUM 10 seconds, no
-            # exceptions. This is a server-verified wait, not just a UI
-            # animation; clicking early risks the mediator rejecting the
-            # verification. We only poll AFTER the 10s floor, and only to
-            # absorb a couple extra seconds if the button is slow to render
-            # — never to shave time off the 10s itself.
+            # STEP 4: Wait timer
+
             log("[*] Step 4: Waiting for timer (hard minimum 10s)...")
             time.sleep(10)
             timer_start = time.time()
             get_links_ready = False
             while time.time() - timer_start < 3:
                 try:
-                    if driver.execute_script(
-                        """
+                    if driver.execute_script("""
                         let els = document.querySelectorAll('a, button, div');
                         for (let el of els) {
                             if (el.innerText && el.innerText.trim().toUpperCase() === 'GET LINKS') {
@@ -1146,15 +1132,14 @@ def scrape_movie_link(
                             }
                         }
                         return false;
-                        """
-                    ):
+                        """):
                         get_links_ready = True
                         break
                 except Exception:
                     pass
                 time.sleep(0.5)
             if not get_links_ready:
-                time.sleep(1)  # small buffer if button render is just slow
+                time.sleep(1)
             log(
                 f"[*] Timer complete: 10s minimum + {round(time.time() - timer_start, 1)}s extra"
             )
@@ -1205,9 +1190,6 @@ def scrape_movie_link(
             # STEP 6
             log("[*] Step 6: Getting HUBLinks URL...")
             time.sleep(1.2)
-            # 🛡️ Sweep any ad tabs that snuck through before deciding which
-            # window holds the real destination — only then is
-            # window_handles[-1] safe to trust as "the new tab".
             close_extra_ad_tabs(
                 driver,
                 main_window,
@@ -1267,7 +1249,9 @@ def scrape_movie_link(
             # STEP 7
             log("[*] Step 7: Finding HubCloud link...")
             close_extra_ad_tabs(
-                driver, main_window, allow_url_keywords=["hblinks", "hubcloud", "hubdrive"]
+                driver,
+                main_window,
+                allow_url_keywords=["hblinks", "hubcloud", "hubdrive"],
             )
             hub_element = None
 
@@ -1359,7 +1343,9 @@ def scrape_movie_link(
             for cfl_attempt in range(3):
                 driver.get(hub_url)
                 time.sleep(2)
-                close_extra_ad_tabs(driver, main_window, allow_url_keywords=["hubcloud"])
+                close_extra_ad_tabs(
+                    driver, main_window, allow_url_keywords=["hubcloud"]
+                )
                 body_text = ""
                 for _ in range(6):
                     try:
@@ -1449,9 +1435,7 @@ def scrape_movie_link(
             except:
                 pass
         else:
-            # 🚀 Pooled driver: don't quit it — clean up so the next movie
-            # on this worker thread starts fresh (close leftover tabs, free
-            # the loaded page's memory by navigating to a blank page).
+
             try:
                 close_extra_ad_tabs(driver, main_window)
                 driver.get("about:blank")
@@ -1545,7 +1529,9 @@ def _process_single_movie_worker(
             save_movie_data_to_supabase(
                 m_id, title, hub_url, file_size, extracted_meta, movie, cat_map
             )
-            record_batch_event("success", title, movie.get("release_year"), url=source_url)
+            record_batch_event(
+                "success", title, movie.get("release_year"), url=source_url
+            )
         else:
             reason = err_reason or "1080p/720p HubCloud link not found on HDHub4u"
             is_transient_error = "Cloudflare 522" in reason or "temporary" in reason
@@ -1555,7 +1541,11 @@ def _process_single_movie_worker(
                     f"{log_prefix}⚠️ Transient error: {reason}. Keeping status = 'active' for auto-retry."
                 )
                 record_batch_event(
-                    "retry_active", title, movie.get("release_year"), reason, url=source_url
+                    "retry_active",
+                    title,
+                    movie.get("release_year"),
+                    reason,
+                    url=source_url,
                 )
             else:
                 print(
@@ -1582,7 +1572,9 @@ def _process_single_movie_worker(
                     supabase.from_("movies").update({"status": "inactive"}).eq(
                         "id", m_id
                     ).execute()
-                    print(f"{log_prefix}🚫 Marked INACTIVE (ID: {m_id}) in Supabase DB.")
+                    print(
+                        f"{log_prefix}🚫 Marked INACTIVE (ID: {m_id}) in Supabase DB."
+                    )
                 except Exception as db_err:
                     print(f"{log_prefix}⚠️ Could not set status to inactive: {db_err}")
 
@@ -1621,7 +1613,9 @@ def process_batch_missing_links():
 
     res = (
         supabase.from_("movies")
-        .select("id, title, release_year, genres, quality, language, status, download_url, file_size")
+        .select(
+            "id, title, release_year, genres, quality, language, status, download_url, file_size"
+        )
         .or_("status.eq.active,status.is.null")
         .or_("download_url.is.null,download_url.eq.,file_size.is.null,file_size.eq.")
         .order("created_at", desc=True)
@@ -1650,7 +1644,6 @@ def process_batch_missing_links():
     )
     netlify_urls = fetch_netlify_source_urls()
 
-    # 📊 Fresh state for this run's digest + debug-snapshot cap
     reset_batch_events()
     reset_debug_snapshot_counter()
 
@@ -1667,10 +1660,6 @@ def process_batch_missing_links():
             except Exception as e:
                 print(f"⚠️ Parallel worker exception: {e}")
 
-    # 🚀 Explicitly close the pooled Chrome drivers now that the batch is
-    # done — they stayed alive across movies for speed, but ThreadPoolExecutor
-    # shutting down does NOT quit Chrome for us; leaving them open leaks
-    # memory across GitHub Actions runs.
     pooled_count = quit_all_pooled_drivers()
     print(f"🧹 Closed {pooled_count} pooled Chrome driver(s).")
 
@@ -1679,7 +1668,6 @@ def process_batch_missing_links():
         f"⚡ Batch Processing Complete! {len(movies)} movies processed in {elapsed} seconds!"
     )
 
-    # 📊 One summary message instead of a per-movie Telegram flood
     send_batch_digest(elapsed)
 
 
@@ -1688,9 +1676,13 @@ if __name__ == "__main__":
         description="Movie Download Link Scraper & DB Enricher"
     )
     parser.add_argument("--url", type=str, help="Specific source URL to scrape")
+    parser.add_argument("--csv", action="store_true", help="Run in 100% Offline CSV -> SQL mode")
     args = parser.parse_args()
 
-    if args.url:
+    if args.csv:
+        from offline_csv_scraper import run_offline_csv_scraper
+        run_offline_csv_scraper()
+    elif args.url:
         hub_url, name, file_size, err_reason, extracted_meta = scrape_movie_link(
             args.url
         )
