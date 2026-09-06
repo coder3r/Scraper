@@ -146,16 +146,17 @@ def load_pending_movies_from_csv(movies_csv_path: str, include_all: bool = False
                 download_url = row.get("download_url", "")
                 file_size = row.get("file_size", "")
 
-                is_inactive_or_missing = status in ["inactive", "disabled", "none", "null"] or not download_url or download_url.lower() in ["null", "none", "not_found", "n/a", ""]
+                is_not_found = download_url.lower() in ["not_found", "coming_soon"] or status == "coming_soon"
+                is_inactive_or_missing = status in ["inactive", "disabled", "none", "null"] or not download_url or download_url.lower() in ["null", "none", "n/a", ""]
                 needs_download = (
                     not download_url
-                    or download_url.lower() in ["null", "none", "not_found", "n/a", ""]
+                    or download_url.lower() in ["null", "none", "n/a", ""]
                 ) or (
                     not file_size
                     or file_size.lower() in ["null", "none", "n/a", ""]
                 )
 
-                if m_id and title and (include_all or (is_inactive_or_missing and needs_download)):
+                if m_id and title and not is_not_found and (include_all or (is_inactive_or_missing and needs_download)):
                     pending_movies.append({
                         "id": m_id,
                         "title": title,
@@ -221,8 +222,13 @@ def generate_sql_for_movie(
         # Check if transient error (Cloudflare 522) or permanent
         is_transient = err_reason and ("Cloudflare 522" in err_reason or "temporary" in err_reason)
         if not is_transient:
-            # Mark INACTIVE
-            sql_update = f"-- MARK INACTIVE: {title} (ID: {m_id}) | Reason: {err_reason or 'No valid link'}\nUPDATE movies SET status = 'inactive', updated_at = NOW() WHERE id = {escape_sql_str(m_id)};"
+            is_search_missing = err_reason and ("0 search results" in err_reason.lower() or "search 0 results" in err_reason.lower() or "no search results" in err_reason.lower())
+            if is_search_missing:
+                # Mark COMING SOON + download_url = 'not_found'
+                sql_update = f"-- MARK COMING SOON: {title} (ID: {m_id}) | Reason: {err_reason}\nUPDATE movies SET status = 'coming_soon', download_url = 'not_found', updated_at = NOW() WHERE id = {escape_sql_str(m_id)};"
+            else:
+                # Mark INACTIVE & download_url = 'not_found'
+                sql_update = f"-- MARK INACTIVE & NOT FOUND: {title} (ID: {m_id}) | Reason: {err_reason or 'No valid link'}\nUPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = {escape_sql_str(m_id)};"
             statements.append(sql_update)
 
     # Collect and Link Category Badges into movie_categories
@@ -311,7 +317,7 @@ def _process_csv_movie_worker(
 
         is_valid_hubcloud = (
             hub_url
-            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower())
+            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower() or "hubdrive" in hub_url.lower() or "/file/" in hub_url.lower())
             and not any(bad in hub_url.lower() for bad in BAD_DOMAINS_FINAL)
             and file_size
             and file_size != "N/A"
