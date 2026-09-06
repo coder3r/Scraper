@@ -1,51 +1,48 @@
-name: Dev Downloader Auto Sync & Link Scraper
+name: Dev Downloader Offline CSV -> SQL Generator Scraper
 
 on:
   push:
     branches: [develop, main]
   schedule:
-    # Uses offset minutes (7, 22, 37, 52) to bypass GitHub global queue throttling at :00, :15, :30, :45
     - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 jobs:
-  auto-sync:
+  offline-csv-sync:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Node & Python Dependencies
+      - name: Install Python Dependencies
         run: |
-          npm install @supabase/supabase-js
-          pip install selenium webdriver-manager supabase python-dotenv
+          pip install selenium webdriver-manager supabase python-dotenv requests
 
-      - name: Run Auto Sync & Netlify Scraper
+      - name: Run 100% Offline CSV -> SQL Generator Scraper
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
         run: |
-          node scripts/auto-sync.js
+          python scripts/offline_csv_scraper.py --movies movies_rows.csv --categories categories_rows.csv --movie-categories movie_categories_rows.csv --output output_updates.sql
 
-      - name: Run Python Link Scraper & DB Enricher (Parallel 4 Workers)
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+      - name: Upload Output SQL Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: output_updates_sql
+          path: output_updates.sql
+
+      - name: Commit & Push Generated SQL to Repository
         run: |
-          python scripts/scrape_download_links.py || true
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output_updates.sql || true
+          git commit -m "chore(auto): update output_updates.sql with latest scraped movie links" || echo "No changes to commit"
+          git push || echo "Nothing to push"
