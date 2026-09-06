@@ -38,7 +38,11 @@ def format_sql_array(arr: Optional[List[str]]) -> str:
     """Formats a Python list of strings into a PostgreSQL ARRAY['val1', 'val2']::text[] literal."""
     if not arr or len(arr) == 0:
         return "NULL"
-    escaped_elements = [f"'{str(item).replace('\'', '\'\'')}'" for item in arr if item]
+    escaped_elements = []
+    for item in arr:
+        if item:
+            clean_item = str(item).replace("'", "''")
+            escaped_elements.append(f"'{clean_item}'")
     if not escaped_elements:
         return "NULL"
     return f"ARRAY[{', '.join(escaped_elements)}]::text[]"
