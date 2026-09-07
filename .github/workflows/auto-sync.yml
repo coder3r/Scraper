@@ -7,6 +7,9 @@ on:
     - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   offline-csv-sync:
     runs-on: ubuntu-latest
@@ -31,7 +34,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
         run: |
-          python scripts/offline_csv_scraper.py --movies movies_rows.csv --categories categories_rows.csv --movie-categories movie_categories_rows.csv --output output_updates.sql
+          python scripts/offline_csv_scraper.py --movies movies_rows.csv --categories categories_rows.csv --movie-categories movie_categories_rows.csv --output output_updates.sql --max-batches 4
 
       - name: Upload Output SQL Artifact
         uses: actions/upload-artifact@v4
@@ -39,10 +42,10 @@ jobs:
           name: output_updates_sql
           path: output_updates.sql
 
-      - name: Commit & Push Generated SQL to Repository
+      - name: Commit & Push Progress & Generated SQL to Repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add output_updates.sql || true
-          git commit -m "chore(auto): update output_updates.sql with latest scraped movie links" || echo "No changes to commit"
+          git add output_updates.sql movies_rows.csv || true
+          git commit -m "chore(auto): update output_updates.sql and save movies_rows.csv progress" || echo "No changes to commit"
           git push || echo "Nothing to push"
