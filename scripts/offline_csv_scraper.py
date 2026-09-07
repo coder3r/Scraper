@@ -330,13 +330,64 @@ def _process_csv_movie_worker(
 
         append_sql_statements(sql_stmts, output_sql_path)
 
+        # Prepare field updates for in-place CSV tracking
+        up_dict = {}
         if is_valid_hubcloud:
+            q_str = str(extracted_meta.get("quality") or movie.get("quality") or "").lower()
+            quality_val = (
+                "1080p"
+                if "1080p" in q_str
+                else ("720p" if "720p" in q_str else ("4K" if "4k" in q_str else extracted_meta.get("quality") or movie.get("quality")))
+            )
+            up_dict = {"download_url": hub_url, "file_size": file_size, "status": "active", "quality": quality_val}
             print(f"✅ [SUCCESS] Generated SQL for '{title}' -> {hub_url} [{file_size}]")
         else:
+            is_transient = err_reason and ("Cloudflare 522" in err_reason or "temporary" in err_reason)
+            if not is_transient:
+                is_search_missing = err_reason and ("0 search results" in err_reason.lower() or "search 0 results" in err_reason.lower() or "no search results" in err_reason.lower())
+                if is_search_missing:
+                    up_dict = {"download_url": "not_found", "status": "coming_soon"}
+                else:
+                    up_dict = {"download_url": "not_found", "status": "inactive"}
             print(f"⚠️ [INACTIVE] Generated SQL for '{title}' (Reason: {err_reason or 'No valid link'})")
+
+        return m_id, up_dict
 
     except Exception as e:
         print(f"⚠️ Worker error for '{title}': {e}")
+        return m_id, {}
+
+
+def update_movies_csv_in_place(movies_csv_path: str, batch_updates: Dict[str, Dict[str, Any]]):
+    """Updates processed movie rows in movies_rows.csv on disk so future runs remember progress."""
+    if not os.path.exists(movies_csv_path) or not batch_updates:
+        return
+
+    fieldnames = []
+    rows = []
+
+    try:
+        with open(movies_csv_path, mode="r", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            fieldnames = list(reader.fieldnames) if reader.fieldnames else []
+            for row in reader:
+                m_id = (row.get("id") or "").strip()
+                if m_id in batch_updates:
+                    up = batch_updates[m_id]
+                    for k, v in up.items():
+                        if k in fieldnames and v is not None:
+                            row[k] = str(v)
+                    row["updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S+00")
+                rows.append(row)
+
+        with open(movies_csv_path, mode="w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+
+        print(f"💾 Saved progress for {len(batch_updates)} row(s) to '{movies_csv_path}'.")
+    except Exception as e:
+        print(f"⚠️ Warning: Could not update '{movies_csv_path}': {e}")
 
 
 def run_offline_csv_scraper(
@@ -345,7 +396,8 @@ def run_offline_csv_scraper(
     movie_categories_csv: str = "movie_categories_rows.csv",
     output_sql: str = DEFAULT_OUTPUT_SQL_FILE,
     batch_size: int = 30,
-    max_workers: int = 5
+    max_workers: int = 5,
+    max_batches: int = 4
 ):
     print("\n" + "=" * 70)
     print("🚀 DEV DOWNLOADER - OFFLINE CSV -> SQL GENERATOR ENGINE")
@@ -356,6 +408,7 @@ def run_offline_csv_scraper(
     print(f"📁 [Movie Categories CSV]: {movie_categories_csv}")
     print(f"📄 [Output SQL File]: {output_sql}")
     print(f"🧵 [Parallel Workers]: {max_workers} Workers")
+    print(f"⏱️ [Max Batches per Run]: {max_batches if max_batches > 0 else 'Unlimited'}")
     print("=" * 70 + "\n")
 
     # Write initial header comment in SQL file if not exists
@@ -385,6 +438,7 @@ def run_offline_csv_scraper(
 
         print(f"\n🔄 [BATCH #{batch_num}/{total_batches}] Processing {len(batch)} movies (Progress: {processed_count}/{total_pending})...")
         start_time = time.time()
+        batch_updates_map = {}
 
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = [
@@ -393,17 +447,28 @@ def run_offline_csv_scraper(
             ]
             for future in as_completed(futures):
                 try:
-                    future.result()
+                    res = future.result()
+                    if res and len(res) == 2:
+                        m_id, up_dict = res
+                        if m_id and up_dict:
+                            batch_updates_map[m_id] = up_dict
                 except Exception as e:
                     print(f"⚠️ Batch execution exception: {e}")
+
+        # Update movies_rows.csv on disk after each batch
+        update_movies_csv_in_place(movies_csv, batch_updates_map)
 
         processed_count += len(batch)
         elapsed = round(time.time() - start_time, 2)
         print(f"⚡ [BATCH #{batch_num}/{total_batches}] Complete in {elapsed}s! Appended SQL to '{output_sql}'.")
 
+        if max_batches > 0 and batch_num >= max_batches:
+            print(f"\n⏱️ Reached max batches limit ({max_batches} batches / {processed_count} movies). Stopping cleanly to keep GitHub Actions fast & green! Next run will continue automatically.")
+            break
+
     quit_all_pooled_drivers()
     print("\n" + "=" * 70)
-    print(f"🎉 OFFLINE PROCESSING COMPLETE!")
+    print(f"🎉 OFFLINE BATCH RUN COMPLETE!")
     print(f"📄 Output SQL generated at: {os.path.abspath(output_sql)}")
     print("💡 You can now open this .sql file and run it in Supabase SQL Editor in 1 click!")
     print("=" * 70 + "\n")
@@ -417,6 +482,7 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default="output_updates.sql", help="Output .sql file path")
     parser.add_argument("--batch", type=int, default=30, help="Batch size (default: 30)")
     parser.add_argument("--workers", type=int, default=5, help="Number of parallel workers (default: 5)")
+    parser.add_argument("--max-batches", type=int, default=4, help="Max batches per run (default: 4, set 0 for all)")
     args = parser.parse_args()
 
     run_offline_csv_scraper(
@@ -426,4 +492,5 @@ if __name__ == "__main__":
         output_sql=args.output,
         batch_size=args.batch,
         max_workers=args.workers,
+        max_batches=args.max_batches,
     )
