@@ -9,6 +9,7 @@ import urllib.parse
 from typing import Optional, Tuple, Dict, Any, List, Set
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import requests
 
 # Import core scraper functions and browser pooling from scrape_download_links
 from scrape_download_links import (
@@ -390,6 +391,71 @@ def update_movies_csv_in_place(movies_csv_path: str, batch_updates: Dict[str, Di
         print(f"⚠️ Warning: Could not update '{movies_csv_path}': {e}")
 
 
+def send_telegram_report(
+    total_processed: int,
+    passed_count: int,
+    coming_soon_count: int,
+    inactive_count: int,
+    remaining_pending: int,
+    elapsed_seconds: float,
+    batch_count: int,
+    sql_filename: str = "output_updates.sql",
+):
+    """Sends a clean, structured HTML report summary to Telegram admin chat."""
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
+    if not bot_token or not chat_id:
+        print("ℹ️ Telegram report skipped (TELEGRAM_BOT_TOKEN or TELEGRAM_ADMIN_CHAT_ID not configured).")
+        return
+
+    mins = int(elapsed_seconds // 60)
+    secs = int(elapsed_seconds % 60)
+    time_str = f"{mins}m {secs}s" if mins > 0 else f"{secs}s"
+
+    if remaining_pending > 0:
+        chain_msg = "🚀 <b>Auto-Chain:</b> Next batch run starting automatically..."
+    else:
+        chain_msg = "🎉 <b>Complete:</b> All inactive movies fully scanned!"
+
+    msg_lines = [
+        "🎬 <b>DEV DOWNLOADER — SCRAPER RUN REPORT</b>",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        "📊 <b>Run Summary:</b>",
+        f"• <b>Total Processed:</b> {total_processed} movies",
+        f"• 🟢 <b>Passed (Link Found):</b> {passed_count} movies",
+        f"• 🟡 <b>Coming Soon (0 Search):</b> {coming_soon_count} movies",
+        f"• 🔴 <b>Inactive (Dead Link):</b> {inactive_count} movies",
+        "",
+        "📈 <b>Backlog Progress:</b>",
+        f"• ⏳ <b>Remaining Pending:</b> {remaining_pending:,} movies left",
+        "",
+        "⏱️ <b>Execution Details:</b>",
+        f"• <b>Batches Completed:</b> {batch_count}",
+        f"• <b>Run Duration:</b> {time_str}",
+        f"• 📄 <b>SQL Updates File:</b> <code>{sql_filename}</code> (Saved & Pushed)",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        chain_msg,
+    ]
+
+    message = "\n".join(msg_lines)
+
+    try:
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        payload = {
+            "chat_id": chat_id,
+            "text": message,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": True,
+        }
+        res = requests.post(url, json=payload, timeout=10)
+        if res.status_code == 200:
+            print("✅ Clean Telegram run report sent successfully!")
+        else:
+            print(f"⚠️ Telegram API error ({res.status_code}): {res.text}")
+    except Exception as e:
+        print(f"⚠️ Failed to send Telegram report: {e}")
+
+
 def run_offline_csv_scraper(
     movies_csv: str = "movies_rows.csv",
     categories_csv: str = "categories_rows.csv",
@@ -428,12 +494,18 @@ def run_offline_csv_scraper(
 
     total_pending = len(pending_movies)
     processed_count = 0
+    total_passed = 0
+    total_coming_soon = 0
+    total_inactive = 0
+    overall_start_time = time.time()
+    last_batch_num = 0
 
     print(f"\n📌 Processing {total_pending} pending movie(s) in batches of {batch_size}...\n")
 
     for i in range(0, total_pending, batch_size):
         batch = pending_movies[i : i + batch_size]
         batch_num = (i // batch_size) + 1
+        last_batch_num = batch_num
         total_batches = (total_pending + batch_size - 1) // batch_size
 
         print(f"\n🔄 [BATCH #{batch_num}/{total_batches}] Processing {len(batch)} movies (Progress: {processed_count}/{total_pending})...")
@@ -452,6 +524,13 @@ def run_offline_csv_scraper(
                         m_id, up_dict = res
                         if m_id and up_dict:
                             batch_updates_map[m_id] = up_dict
+                            st = up_dict.get("status")
+                            if st == "active":
+                                total_passed += 1
+                            elif st == "coming_soon":
+                                total_coming_soon += 1
+                            else:
+                                total_inactive += 1
                 except Exception as e:
                     print(f"⚠️ Batch execution exception: {e}")
 
@@ -467,6 +546,23 @@ def run_offline_csv_scraper(
             break
 
     quit_all_pooled_drivers()
+
+    # Calculate remaining pending & overall elapsed time
+    remaining_pending = len(load_pending_movies_from_csv(movies_csv))
+    overall_elapsed = time.time() - overall_start_time
+
+    # Send clean, professional Telegram report
+    send_telegram_report(
+        total_processed=processed_count,
+        passed_count=total_passed,
+        coming_soon_count=total_coming_soon,
+        inactive_count=total_inactive,
+        remaining_pending=remaining_pending,
+        elapsed_seconds=overall_elapsed,
+        batch_count=last_batch_num,
+        sql_filename=os.path.basename(output_sql),
+    )
+
     print("\n" + "=" * 70)
     print(f"🎉 OFFLINE BATCH RUN COMPLETE!")
     print(f"📄 Output SQL generated at: {os.path.abspath(output_sql)}")
