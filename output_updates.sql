@@ -15347,3 +15347,6 @@ UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = 
 -- LINK CATEGORIES: Daaka (['action', '300mb', 'hd', 'bollywood', '1080p', 'punjabi'])
 INSERT INTO movie_categories (movie_id, category_slug) VALUES ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', 'action'), ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', '300mb'), ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', 'hd'), ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', 'bollywood'), ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', '1080p'), ('ffcd4bdf-01a0-4b3e-bfb5-6ccc3476d246', 'punjabi') ON CONFLICT DO NOTHING;
 
+-- MARK INACTIVE & NOT FOUND: Thimiru Pudichavan (ID: fff2fc63-43cf-49fa-acc1-7b6f237235d4) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'fff2fc63-43cf-49fa-acc1-7b6f237235d4';
+
