@@ -13031,3 +13031,483 @@ UPDATE movies SET download_url = 'https://hubcloud.cx/drive/gf0v011vvvfadd0', fi
 -- UPDATE MOVIE: Solis (ID: d9d0dd42-f917-4c40-a95c-0b2e377e2713)
 UPDATE movies SET download_url = 'https://hubcloud.cx/drive/1sq8oitmzoq1_55', file_size = '934.28 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'd9d0dd42-f917-4c40-a95c-0b2e377e2713';
 
+-- MARK INACTIVE & NOT FOUND: The Ninja Immovable Heart (ID: da586722-0699-49a1-a94d-e2961b0bb9a0) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da586722-0699-49a1-a94d-e2961b0bb9a0';
+
+-- MARK INACTIVE & NOT FOUND: Kidnapping Mr. Heineken (ID: da5d9307-b06a-4df4-81f1-196ace3bc1dc) | Reason: Message: timeout: Timed out receiving message from renderer: -0.003
+  (Session info: chrome=152.0.7977.64)
+Stacktrace:
+#0 0x5576261b703a <unknown>
+#1 0x557625b1f4c9 <unknown>
+#2 0x557625b06f5b <unknown>
+#3 0x557625b06bd6 <unknown>
+#4 0x557625b047b8 <unknown>
+#5 0x557625b0513f <unknown>
+#6 0x557625b14200 <unknown>
+#7 0x557625b2e147 <unknown>
+#8 0x557625b35b1b <unknown>
+#9 0x557625b05899 <unknown>
+#10 0x557625b2dea7 <unknown>
+#11 0x557625bbd470 <unknown>
+#12 0x557625b6883b <unknown>
+#13 0x557625b69621 <unknown>
+#14 0x55762617b5f0 <unknown>
+#15 0x557626179c6a <unknown>
+#16 0x5576261649f5 <unknown>
+#17 0x55762617a92a <unknown>
+#18 0x55762614dd10 <unknown>
+#19 0x5576261a2158 <unknown>
+#20 0x5576261a22f5 <unknown>
+#21 0x5576261b5bc3 <unknown>
+#22 0x7f6b0589cb84 <unknown>
+#23 0x7f6b05929d6c <unknown>
+
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da5d9307-b06a-4df4-81f1-196ace3bc1dc';
+
+-- MARK INACTIVE & NOT FOUND: Jackpot 2 (ID: da646934-2a78-46cb-b76f-2452bd41f64d) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da646934-2a78-46cb-b76f-2452bd41f64d';
+
+-- LINK CATEGORIES: Jackpot 2 (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('da646934-2a78-46cb-b76f-2452bd41f64d', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Aake (ID: da22f436-aec7-4cef-b6cf-f75096d956ef) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da22f436-aec7-4cef-b6cf-f75096d956ef';
+
+-- MARK INACTIVE & NOT FOUND: The Tax Collector (ID: da06d5a9-474c-454f-906b-bf590a8dddce) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da06d5a9-474c-454f-906b-bf590a8dddce';
+
+-- MARK INACTIVE & NOT FOUND: Girls Trip (ID: da0d5804-3813-435a-811e-d81f0559287f) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da0d5804-3813-435a-811e-d81f0559287f';
+
+-- UPDATE MOVIE: MegaFault (ID: da516dbf-875f-4246-b5fd-81a8ffe96613)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/erambbx1mb8mxki', file_size = '1.22 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'da516dbf-875f-4246-b5fd-81a8ffe96613';
+
+-- LINK CATEGORIES: MegaFault (['hindi-dubbed', 'bluray', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('da516dbf-875f-4246-b5fd-81a8ffe96613', 'hindi-dubbed'), ('da516dbf-875f-4246-b5fd-81a8ffe96613', 'bluray'), ('da516dbf-875f-4246-b5fd-81a8ffe96613', 'dual-audio'), ('da516dbf-875f-4246-b5fd-81a8ffe96613', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Sayen: Desert Road (ID: da6fb3d5-da0f-41f2-b859-0883cda2c396) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da6fb3d5-da0f-41f2-b859-0883cda2c396';
+
+-- LINK CATEGORIES: Sayen: Desert Road (['hindi-dubbed', 'dual-audio'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('da6fb3d5-da0f-41f2-b859-0883cda2c396', 'hindi-dubbed'), ('da6fb3d5-da0f-41f2-b859-0883cda2c396', 'dual-audio') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Mubarakan (ID: da6ac233-b02f-4b40-8b9e-8256471ae122) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'da6ac233-b02f-4b40-8b9e-8256471ae122';
+
+-- MARK INACTIVE & NOT FOUND: Torrente: The Dumb Arm of the Law (ID: daccc758-c7ba-420f-8d02-beb88b53ea18) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'daccc758-c7ba-420f-8d02-beb88b53ea18';
+
+-- UPDATE MOVIE: Lou (ID: da919e1c-18af-4c54-8d2b-4a2863515436)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/gki3h62twqtn42h', file_size = '694.5 MB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'da919e1c-18af-4c54-8d2b-4a2863515436';
+
+-- UPDATE MOVIE: Double Blind (ID: da717b13-4890-4fe3-8104-a2e16f349def)
+UPDATE movies SET download_url = 'https://hubcloud.ist/drive/rmi4n8t8l433e3g', file_size = '794.95 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'da717b13-4890-4fe3-8104-a2e16f349def';
+
+-- MARK INACTIVE & NOT FOUND: Chokehold (ID: daa29d3e-4f01-452f-ba79-40a2672fef0e) | Reason: Could not extract valid file size from HubCloud page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'daa29d3e-4f01-452f-ba79-40a2672fef0e';
+
+-- UPDATE MOVIE: Ayogya (ID: daae7e1a-cc5a-4f77-92f1-0d59d15bdb21)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/yy9vewyyg1y6e1z', file_size = '3.23 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'daae7e1a-cc5a-4f77-92f1-0d59d15bdb21';
+
+-- MARK INACTIVE & NOT FOUND: Nightmare Alley (ID: dae56b83-4510-432e-8c01-f7700208dae9) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/1644696679)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dae56b83-4510-432e-8c01-f7700208dae9';
+
+-- UPDATE MOVIE: Invisible Cop (ID: dae96f0a-f1a1-462d-b082-0473246dd675)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/dpo99pj5ppc5ytd', file_size = '1.13 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dae96f0a-f1a1-462d-b082-0473246dd675';
+
+-- MARK INACTIVE & NOT FOUND: Clash (ID: db072c81-8d2f-4a1e-a62c-f33f3c79efec) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db072c81-8d2f-4a1e-a62c-f33f3c79efec';
+
+-- UPDATE MOVIE: Anubhavinchu Raja (ID: daf6a6d7-38eb-4350-bb03-ee5df118b35b)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/um3but6d1qu1n23', file_size = '2.55 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'daf6a6d7-38eb-4350-bb03-ee5df118b35b';
+
+-- MARK INACTIVE & NOT FOUND: Thappu Thanda (ID: daf4bd55-1ea2-41f4-841b-279db8f1c985) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/2389307763)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'daf4bd55-1ea2-41f4-841b-279db8f1c985';
+
+-- UPDATE MOVIE: Blood Brothers (ID: dafba661-3bb6-4c6b-aa90-3f53e115ffb0)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/lsllwulcsihzlbl', file_size = '784.75 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dafba661-3bb6-4c6b-aa90-3f53e115ffb0';
+
+-- UPDATE MOVIE: Agilan (ID: db30c787-2f14-4878-a981-e2c0a97ccf11)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/fizxkieyj2g1yg4', file_size = '2.2 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'db30c787-2f14-4878-a981-e2c0a97ccf11';
+
+-- MARK INACTIVE & NOT FOUND: Hostel: Part II (ID: db37769c-58b0-459f-96fe-f2d671eb8c88) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db37769c-58b0-459f-96fe-f2d671eb8c88';
+
+-- LINK CATEGORIES: Hostel: Part II (['horror', 'hindi-dubbed', 'thriller', 'dual-audio', 'hd', 'crime', 'hollywood', '1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'horror'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'hindi-dubbed'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'thriller'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'dual-audio'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'hd'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'crime'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', 'hollywood'), ('db37769c-58b0-459f-96fe-f2d671eb8c88', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Never Let Go (2015) (ID: db6f80d2-1c37-47f0-b06c-41f56dd0553a) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db6f80d2-1c37-47f0-b06c-41f56dd0553a';
+
+-- UPDATE MOVIE: The Guardsman (ID: db305523-5b8c-4ef4-b62a-3aa982766ec5)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/uuu6lrtgtuujcg8', file_size = '801.22 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'db305523-5b8c-4ef4-b62a-3aa982766ec5';
+
+-- UPDATE MOVIE: Kimi (ID: db0f4d2d-8273-470b-8dda-99c7e7c6b281)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/1nlws8spk06ssx_', file_size = '795.69 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'db0f4d2d-8273-470b-8dda-99c7e7c6b281';
+
+-- UPDATE MOVIE: Last Film Show (ID: db4653d9-05b2-46e6-850a-13be5ecce244)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/ogej8hswxwvwpvx', file_size = '1.91 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'db4653d9-05b2-46e6-850a-13be5ecce244';
+
+-- UPDATE MOVIE: The Interview: Night of 26/11 (ID: db62e939-6eb0-4f24-bfc1-bf5829963601)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/pit1vaq92rle1tl', file_size = '1.01 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'db62e939-6eb0-4f24-bfc1-bf5829963601';
+
+-- MARK INACTIVE & NOT FOUND: Kuntham (ID: db7c0bec-8a20-4755-ab3e-b59f82a1c443) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db7c0bec-8a20-4755-ab3e-b59f82a1c443';
+
+-- MARK INACTIVE & NOT FOUND: Chintu Ka Birthday (ID: db88100b-bfdf-4e81-953a-f3cf7029e272) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db88100b-bfdf-4e81-953a-f3cf7029e272';
+
+-- UPDATE MOVIE: Jim Button and the Wild 13 (ID: db71a633-1f8b-447e-bb58-ec719eeb0104)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/rekrtjoaick5mii', file_size = '1.15 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'db71a633-1f8b-447e-bb58-ec719eeb0104';
+
+-- MARK INACTIVE & NOT FOUND: Mom (ID: dbc4e47e-d9d4-4e1b-bb62-f10b21fe0ee0) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dbc4e47e-d9d4-4e1b-bb62-f10b21fe0ee0';
+
+-- MARK INACTIVE & NOT FOUND: The Spiderwick Chronicles (ID: dbe87644-0e8e-4bd7-aa21-a1db27757ac4) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dbe87644-0e8e-4bd7-aa21-a1db27757ac4';
+
+-- LINK CATEGORIES: The Spiderwick Chronicles (['hindi-dubbed', 'family', 'dual-audio', 'hd', 'hollywood', 'fantasy', 'adventure', '1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'hindi-dubbed'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'family'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'dual-audio'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'hd'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'hollywood'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'fantasy'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', 'adventure'), ('dbe87644-0e8e-4bd7-aa21-a1db27757ac4', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Super Ranga (ID: db9b7395-6d74-45cf-bf57-141ef3acc7c9) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'db9b7395-6d74-45cf-bf57-141ef3acc7c9';
+
+-- MARK INACTIVE & NOT FOUND: Immanence (ID: dc026c88-bfa5-45f3-ac75-a2e6c60c3361) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/1924519864)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc026c88-bfa5-45f3-ac75-a2e6c60c3361';
+
+-- MARK INACTIVE & NOT FOUND: Fearless Kungfu King (ID: dc068021-64ad-458e-99b5-6c955aba695e) | Reason: [HubCloud Server] button not found on HubDrive page (https://drivehub.ws/file/1676209680)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc068021-64ad-458e-99b5-6c955aba695e';
+
+-- MARK INACTIVE & NOT FOUND: Seetharam Benoy (ID: dc1a79b5-4b0f-4312-a40f-88fa3c36b2e2) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc1a79b5-4b0f-4312-a40f-88fa3c36b2e2';
+
+-- UPDATE MOVIE: My Son (ID: dc0a364d-aa5b-4040-a3c3-070c8e8b14f1)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/rdj2norf3b8j1ma', file_size = '837.04 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dc0a364d-aa5b-4040-a3c3-070c8e8b14f1';
+
+-- MARK INACTIVE & NOT FOUND: Thodi Thodi Si Manmaaniyan (ID: dc18a81e-7981-4340-a812-9cfb1e0bbc7c) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc18a81e-7981-4340-a812-9cfb1e0bbc7c';
+
+-- MARK INACTIVE & NOT FOUND: Ghost Town (ID: dc110caa-59bc-44cf-9a8d-28e19df5316d) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc110caa-59bc-44cf-9a8d-28e19df5316d';
+
+-- LINK CATEGORIES: Ghost Town (['hindi-dubbed', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dc110caa-59bc-44cf-9a8d-28e19df5316d', 'hindi-dubbed'), ('dc110caa-59bc-44cf-9a8d-28e19df5316d', 'dual-audio'), ('dc110caa-59bc-44cf-9a8d-28e19df5316d', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Jal Wayu Enclave (ID: dc1ed563-7649-4e43-8cd9-737a115ef233) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/3312115181)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc1ed563-7649-4e43-8cd9-737a115ef233';
+
+-- MARK INACTIVE & NOT FOUND: Step Up: Year of the Dance (ID: dc4d3793-a532-4e35-82d2-b58bb7b77d21) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc4d3793-a532-4e35-82d2-b58bb7b77d21';
+
+-- UPDATE MOVIE: Main Mulayam Singh Yadav (ID: dc1ac379-299e-482d-b660-cca004ee628b)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/tnsmxldhqsirizq', file_size = '3.21 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'dc1ac379-299e-482d-b660-cca004ee628b';
+
+-- MARK INACTIVE & NOT FOUND: Saggi Phull (ID: dc1fd65d-387a-44ae-b019-d702c022a077) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/2448866658)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc1fd65d-387a-44ae-b019-d702c022a077';
+
+-- UPDATE MOVIE: Body Cam (ID: dc35245a-70e0-46e3-9b14-37bbaf3245c6)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/lyukkqtycelfoiu', file_size = '1.96 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'dc35245a-70e0-46e3-9b14-37bbaf3245c6';
+
+-- MARK INACTIVE & NOT FOUND: Always Be My Maybe (ID: dc73ff98-e6de-417f-addb-5de0ff412b88) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc73ff98-e6de-417f-addb-5de0ff412b88';
+
+-- LINK CATEGORIES: Always Be My Maybe (['hindi-dubbed', 'dual-audio', 'hd', 'hollywood', 'romance', '1080p', 'comedy'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'hindi-dubbed'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'dual-audio'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'hd'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'hollywood'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'romance'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', '1080p'), ('dc73ff98-e6de-417f-addb-5de0ff412b88', 'comedy') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Blutsschwestern - Jung, magisch, tödlich (ID: dcb298df-8a9f-4721-ab3a-2c6b9fb5c578) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dcb298df-8a9f-4721-ab3a-2c6b9fb5c578';
+
+-- MARK INACTIVE & NOT FOUND: Namaste England (ID: dc6f0ab9-6f65-4a46-9d86-4092ef9495c8) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc6f0ab9-6f65-4a46-9d86-4092ef9495c8';
+
+-- MARK INACTIVE & NOT FOUND: Nehle Pe Dehla (ID: dc5379b7-61ef-435d-b564-b37c786d98d1) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc5379b7-61ef-435d-b564-b37c786d98d1';
+
+-- MARK INACTIVE & NOT FOUND: Jaanbaaz (ID: dcc1c9aa-204a-4f4c-85e9-5a3eefb5447c) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dcc1c9aa-204a-4f4c-85e9-5a3eefb5447c';
+
+-- LINK CATEGORIES: Jaanbaaz (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dcc1c9aa-204a-4f4c-85e9-5a3eefb5447c', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Ice Sharks (ID: dc82fa6e-ae89-40e0-9e38-22cf3c1c85a4) | Reason: [HubCloud Server] button not found on HubDrive page (https://drivehub.ws/file/1807348836)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc82fa6e-ae89-40e0-9e38-22cf3c1c85a4';
+
+-- MARK INACTIVE & NOT FOUND: Bleeding Steel (ID: dc8f9f55-8913-4b13-a334-7710e13f3a9f) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dc8f9f55-8913-4b13-a334-7710e13f3a9f';
+
+-- MARK INACTIVE & NOT FOUND: Sadak 2 (ID: dcb60a25-e166-4f8d-b3fe-3dca45ad79df) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/2469925874)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dcb60a25-e166-4f8d-b3fe-3dca45ad79df';
+
+-- MARK INACTIVE & NOT FOUND: Mrs Sen (ID: dd02590e-daab-49c3-af62-a7a71206d471) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd02590e-daab-49c3-af62-a7a71206d471';
+
+-- UPDATE MOVIE: Mermaid Down (ID: dcbf35e2-d200-472a-97cd-ccbf16062db7)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/jdfd3n5xxvxxn5d', file_size = '992.37 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dcbf35e2-d200-472a-97cd-ccbf16062db7';
+
+-- MARK INACTIVE & NOT FOUND: Bihu attack (ID: dd1a8389-afb4-4f66-81a9-bf6f9dcb310c) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd1a8389-afb4-4f66-81a9-bf6f9dcb310c';
+
+-- UPDATE MOVIE: Alpha Wolf (ID: dcebb7b3-2942-42ff-8599-7adeb177381f)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/bin8h3wuq8xy2hq', file_size = '863.78 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dcebb7b3-2942-42ff-8599-7adeb177381f';
+
+-- MARK INACTIVE & NOT FOUND: Winner (ID: dcfaf4e4-6d37-46b4-8a6f-bafe20b15bfd) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dcfaf4e4-6d37-46b4-8a6f-bafe20b15bfd';
+
+-- MARK INACTIVE & NOT FOUND: Who Am I (ID: dd00ec21-8cc9-42a0-833a-9055b50c293d) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd00ec21-8cc9-42a0-833a-9055b50c293d';
+
+-- LINK CATEGORIES: Who Am I (['drama', 'hindi-dubbed', 'hd', 'action', 'adventure', '1080p', 'chinese'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'drama'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'hindi-dubbed'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'hd'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'action'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'adventure'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', '1080p'), ('dd00ec21-8cc9-42a0-833a-9055b50c293d', 'chinese') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: War Chod Na Yaar (ID: dd0e5e50-166e-47e7-9741-e7b9fa66366b) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd0e5e50-166e-47e7-9741-e7b9fa66366b';
+
+-- UPDATE MOVIE: Mega Crocodile (ID: dd201ba7-538a-428b-b7a6-0653d4064112)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/lomcnnor_di010q', file_size = '875.36 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dd201ba7-538a-428b-b7a6-0653d4064112';
+
+-- MARK INACTIVE & NOT FOUND: Zero Woman 2 (ID: dd574e13-3f19-466b-8000-185d4f28aab0) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd574e13-3f19-466b-8000-185d4f28aab0';
+
+-- LINK CATEGORIES: Zero Woman 2 (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dd574e13-3f19-466b-8000-185d4f28aab0', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Aurat Aurat Aurat (ID: dd7e678b-0ec4-4368-aaa6-d934e9733cf5) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd7e678b-0ec4-4368-aaa6-d934e9733cf5';
+
+-- MARK INACTIVE & NOT FOUND: A Bad Moms Christmas (ID: dd228913-030a-48b8-be8f-c6b0bdcab79a) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd228913-030a-48b8-be8f-c6b0bdcab79a';
+
+-- LINK CATEGORIES: A Bad Moms Christmas (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dd228913-030a-48b8-be8f-c6b0bdcab79a', '1080p') ON CONFLICT DO NOTHING;
+
+-- UPDATE MOVIE: Aadhi (ID: dd810424-b6e8-4961-bf32-f04aec126924)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/6-sxssekexss6sm', file_size = '1.91 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'dd810424-b6e8-4961-bf32-f04aec126924';
+
+-- MARK INACTIVE & NOT FOUND: Meri Nimmo (ID: dd6b3e72-fd4f-430a-a928-1b4173fea5c5) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd6b3e72-fd4f-430a-a928-1b4173fea5c5';
+
+-- MARK INACTIVE & NOT FOUND: The Colors of Love (ID: dde41d60-7e35-48d3-ae8f-4361d53f5dc8) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dde41d60-7e35-48d3-ae8f-4361d53f5dc8';
+
+-- MARK INACTIVE & NOT FOUND: Teddy (ID: dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed';
+
+-- LINK CATEGORIES: Teddy (['hindi-dubbed', 'thriller', 'dual-audio', 'tamil'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed', 'hindi-dubbed'), ('dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed', 'thriller'), ('dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed', 'dual-audio'), ('dd8a76fa-5745-4b1e-90ed-3cfdbf3ef6ed', 'tamil') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: The Brave Archer (ID: de02dfb4-57b3-48bc-8e54-cdc095928d56) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de02dfb4-57b3-48bc-8e54-cdc095928d56';
+
+-- UPDATE MOVIE: I Am Toxic (ID: dd925635-16d5-4bab-8227-9207907168b4)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/kqzrzhpp7muph8-', file_size = '871.72 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dd925635-16d5-4bab-8227-9207907168b4';
+
+-- MARK INACTIVE & NOT FOUND: Blue Bayou (ID: dd94478b-3505-4e88-83de-f7a4494330e3) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/1071111353)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dd94478b-3505-4e88-83de-f7a4494330e3';
+
+-- MARK INACTIVE & NOT FOUND: Velaiyilla Pattathari 2 (ID: de3195f1-d510-4864-aebc-7ee5d9e74d94) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de3195f1-d510-4864-aebc-7ee5d9e74d94';
+
+-- UPDATE MOVIE: Spontaneous (ID: dd9adb30-77fb-4782-98ce-03b653f04be9)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/lj8gsmvjcmv8mj1', file_size = '2.06 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'dd9adb30-77fb-4782-98ce-03b653f04be9';
+
+-- UPDATE MOVIE: Henry's Crime (ID: de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/vxjebb1ry8f8dbb', file_size = '1.8 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff';
+
+-- LINK CATEGORIES: Henry's Crime (['hindi-dubbed', 'bluray', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff', 'hindi-dubbed'), ('de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff', 'bluray'), ('de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff', 'dual-audio'), ('de2ccd1a-69b3-49cb-87e9-ed6e0e44a1ff', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: The Rescue (ID: de1e97ae-8740-4a4f-9d19-4d47b23596a5) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de1e97ae-8740-4a4f-9d19-4d47b23596a5';
+
+-- UPDATE MOVIE: Rising Shaolin: The Protector (ID: ddf4c08a-1368-437f-b16e-d518eb2bc765)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/7qpqiqepzsjhh1n', file_size = '1.03 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'ddf4c08a-1368-437f-b16e-d518eb2bc765';
+
+-- UPDATE MOVIE: Ekkadiki Pothavu Chinnavada (ID: de379311-876d-49c7-b871-c36807014ae9)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/hrhp3raxprx__bg', file_size = '2.7 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'de379311-876d-49c7-b871-c36807014ae9';
+
+-- MARK INACTIVE & NOT FOUND: Bāhubali: The Beginning (ID: de869a12-74f0-427b-8870-25776ae395d8) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de869a12-74f0-427b-8870-25776ae395d8';
+
+-- MARK INACTIVE & NOT FOUND: The Giver (ID: de6ab181-dd20-45a6-a780-e7b5e824fbe2) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de6ab181-dd20-45a6-a780-e7b5e824fbe2';
+
+-- MARK INACTIVE & NOT FOUND: Wolf Beach (ID: de97c8f2-9af3-43af-911b-3756609e2c82) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de97c8f2-9af3-43af-911b-3756609e2c82';
+
+-- MARK INACTIVE & NOT FOUND: BlackBerry (ID: de58eb4d-53f6-41c5-889c-f090f5d34b9b) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de58eb4d-53f6-41c5-889c-f090f5d34b9b';
+
+-- MARK INACTIVE & NOT FOUND: Ram Singh Charlie (ID: de9b2707-9349-4deb-a6b9-1ecc5c4d95b7) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de9b2707-9349-4deb-a6b9-1ecc5c4d95b7';
+
+-- MARK INACTIVE & NOT FOUND: The Kill List (ID: de6395a2-d347-4cf3-83db-273d2366ef65) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de6395a2-d347-4cf3-83db-273d2366ef65';
+
+-- MARK INACTIVE & NOT FOUND: Mr. Chandramouli (ID: de96dfcd-75a0-48d2-aac3-41c2112f5830) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'de96dfcd-75a0-48d2-aac3-41c2112f5830';
+
+-- MARK INACTIVE & NOT FOUND: Wrong Turn at Tahoe (ID: dec46849-ec87-44f4-9557-0afaa7dcf19b) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dec46849-ec87-44f4-9557-0afaa7dcf19b';
+
+-- UPDATE MOVIE: Lifechanger (ID: de7f4d3d-b891-4ea5-bef3-0e2996e94805)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/rw_5lkndizblgle', file_size = '843.7 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'de7f4d3d-b891-4ea5-bef3-0e2996e94805';
+
+-- MARK INACTIVE & NOT FOUND: Ten Meter Tower (ID: decf3788-c0c9-4fea-8c1f-4c2da4df01ab) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'decf3788-c0c9-4fea-8c1f-4c2da4df01ab';
+
+-- MARK INACTIVE & NOT FOUND: Yeh Saali Zindagi (ID: dea6356e-4f04-4240-bf95-95c4095e2e6b) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dea6356e-4f04-4240-bf95-95c4095e2e6b';
+
+-- LINK CATEGORIES: Yeh Saali Zindagi (['drama', 'thriller', 'hd', 'crime', 'bollywood', '720p', '300mb', '1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dea6356e-4f04-4240-bf95-95c4095e2e6b', 'drama'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', 'thriller'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', 'hd'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', 'crime'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', 'bollywood'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', '720p'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', '300mb'), ('dea6356e-4f04-4240-bf95-95c4095e2e6b', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Kolara (ID: deb9b8e1-ec02-4238-8f34-a3e4d0e00134) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'deb9b8e1-ec02-4238-8f34-a3e4d0e00134';
+
+-- MARK INACTIVE & NOT FOUND: Hacksaw Ridge (ID: dec816a5-256a-4998-b3ff-5326f482e425) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dec816a5-256a-4998-b3ff-5326f482e425';
+
+-- MARK INACTIVE & NOT FOUND: Ticking Clock (ID: dedbe64b-cbcb-4477-8d41-842d64cc34b6) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dedbe64b-cbcb-4477-8d41-842d64cc34b6';
+
+-- MARK INACTIVE & NOT FOUND: Slayers (ID: df0e5fe3-1d2e-4f8e-b725-67347b09fa40) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df0e5fe3-1d2e-4f8e-b725-67347b09fa40';
+
+-- MARK INACTIVE & NOT FOUND: Gunde Jaari Gallanthayyinde (ID: df028bfa-51e8-4fad-9460-34e6c16b13f7) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df028bfa-51e8-4fad-9460-34e6c16b13f7';
+
+-- MARK INACTIVE & NOT FOUND: Raising Helen (ID: df105d3c-3fc7-4e80-adfe-16a75063723d) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df105d3c-3fc7-4e80-adfe-16a75063723d';
+
+-- LINK CATEGORIES: Raising Helen (['hindi-dubbed', 'dual-audio'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('df105d3c-3fc7-4e80-adfe-16a75063723d', 'hindi-dubbed'), ('df105d3c-3fc7-4e80-adfe-16a75063723d', 'dual-audio') ON CONFLICT DO NOTHING;
+
+-- UPDATE MOVIE: 500 MPH Storm (ID: df1ace88-d6b8-4f29-97bb-019d106f6cb6)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/asnbnebjenr1ebd', file_size = '893 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'df1ace88-d6b8-4f29-97bb-019d106f6cb6';
+
+-- LINK CATEGORIES: 500 MPH Storm (['dual-audio'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('df1ace88-d6b8-4f29-97bb-019d106f6cb6', 'dual-audio') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Cute Little Buggers (ID: df2ce691-fc9f-4735-ab50-6b6234857dad) | Reason: [HubCloud Server] button not found on HubDrive page (https://hubdrive.tips/file/972723633)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df2ce691-fc9f-4735-ab50-6b6234857dad';
+
+-- MARK INACTIVE & NOT FOUND: Aatadukundam Raa (ID: df9c59d0-1588-4f21-ae25-9090a08ab058) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df9c59d0-1588-4f21-ae25-9090a08ab058';
+
+-- LINK CATEGORIES: Aatadukundam Raa (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('df9c59d0-1588-4f21-ae25-9090a08ab058', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Challenge Game (ID: dfa2f1f2-8aa2-49fe-a9b9-398343d0896d) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dfa2f1f2-8aa2-49fe-a9b9-398343d0896d';
+
+-- LINK CATEGORIES: Challenge Game (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dfa2f1f2-8aa2-49fe-a9b9-398343d0896d', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Subramanyapuram (ID: dfb1f972-f7a6-495b-8b5e-7e9df1369c5d) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dfb1f972-f7a6-495b-8b5e-7e9df1369c5d';
+
+-- MARK INACTIVE & NOT FOUND: Basic Instinct 2 (ID: df462db8-520d-43ca-a3f9-551c1f172061) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df462db8-520d-43ca-a3f9-551c1f172061';
+
+-- LINK CATEGORIES: Basic Instinct 2 (['drama', 'hindi-dubbed', 'dual-audio'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('df462db8-520d-43ca-a3f9-551c1f172061', 'drama'), ('df462db8-520d-43ca-a3f9-551c1f172061', 'hindi-dubbed'), ('df462db8-520d-43ca-a3f9-551c1f172061', 'dual-audio') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Bunga Desa (ID: dfeb86a8-3e75-4be9-82ee-16ee9a56b605) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dfeb86a8-3e75-4be9-82ee-16ee9a56b605';
+
+-- LINK CATEGORIES: Bunga Desa (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dfeb86a8-3e75-4be9-82ee-16ee9a56b605', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Gajab Thai Gayo! (ID: df4c08e1-1077-4ec0-ab1c-a98bc9a9a217) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df4c08e1-1077-4ec0-ab1c-a98bc9a9a217';
+
+-- MARK INACTIVE & NOT FOUND: Setters (ID: df5ad86e-d766-4e57-9979-6cb6daa7cd5b) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'df5ad86e-d766-4e57-9979-6cb6daa7cd5b';
+
+-- MARK INACTIVE & NOT FOUND: The Texas Chainsaw Massacre (ID: e018f5af-3b4b-4919-a575-0287455ae7ab) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e018f5af-3b4b-4919-a575-0287455ae7ab';
+
+-- MARK INACTIVE & NOT FOUND: The Crocodiles (ID: dfc65fcc-a342-49b5-b057-87abf8b5d3f2) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'dfc65fcc-a342-49b5-b057-87abf8b5d3f2';
+
+-- LINK CATEGORIES: The Crocodiles (['hindi-dubbed'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('dfc65fcc-a342-49b5-b057-87abf8b5d3f2', 'hindi-dubbed') ON CONFLICT DO NOTHING;
+
+-- UPDATE MOVIE: Iddarammayilatho (ID: df89256c-8b80-4d94-b3c9-5045e7cee05f)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/ahscbsy5xavts18', file_size = '1.38 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'df89256c-8b80-4d94-b3c9-5045e7cee05f';
+
+-- UPDATE MOVIE: Aruvam (ID: dff653db-4f41-4750-b28a-25176e4fc818)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/jxxi_hpxs5zzz4n', file_size = '1.02 GB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'dff653db-4f41-4750-b28a-25176e4fc818';
+
+-- MARK INACTIVE & NOT FOUND: Atçalı Kel Mehmet (ID: e064963b-2f71-45df-bc6a-a4d1d7e0d6d7) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e064963b-2f71-45df-bc6a-a4d1d7e0d6d7';
+
+-- LINK CATEGORIES: Atçalı Kel Mehmet (['1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e064963b-2f71-45df-bc6a-a4d1d7e0d6d7', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Nayagi (ID: e0660090-aba1-409e-a161-deb4a5914639) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e0660090-aba1-409e-a161-deb4a5914639';
+
+-- MARK INACTIVE & NOT FOUND: The League of Extraordinary Gentlemen (ID: e011b7f2-325c-4654-b396-a0c41642977c) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e011b7f2-325c-4654-b396-a0c41642977c';
+
+-- LINK CATEGORIES: The League of Extraordinary Gentlemen (['hindi-dubbed', 'dual-audio', 'hd', 'action', 'hollywood', 'fantasy', 'adventure', '1080p'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e011b7f2-325c-4654-b396-a0c41642977c', 'hindi-dubbed'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'dual-audio'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'hd'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'action'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'hollywood'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'fantasy'), ('e011b7f2-325c-4654-b396-a0c41642977c', 'adventure'), ('e011b7f2-325c-4654-b396-a0c41642977c', '1080p') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: The Unborn (ID: e01a5e98-98ee-4908-b989-1739e16e9959) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e01a5e98-98ee-4908-b989-1739e16e9959';
+
+-- LINK CATEGORIES: The Unborn (['drama', 'hindi-dubbed', 'dual-audio'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e01a5e98-98ee-4908-b989-1739e16e9959', 'drama'), ('e01a5e98-98ee-4908-b989-1739e16e9959', 'hindi-dubbed'), ('e01a5e98-98ee-4908-b989-1739e16e9959', 'dual-audio') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Machete (ID: e034425f-bf5c-4f8a-be3c-c4371e8acb28) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e034425f-bf5c-4f8a-be3c-c4371e8acb28';
+
+-- LINK CATEGORIES: Machete (['hindi-dubbed', 'dual-audio', 'crime', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e034425f-bf5c-4f8a-be3c-c4371e8acb28', 'hindi-dubbed'), ('e034425f-bf5c-4f8a-be3c-c4371e8acb28', 'dual-audio'), ('e034425f-bf5c-4f8a-be3c-c4371e8acb28', 'crime'), ('e034425f-bf5c-4f8a-be3c-c4371e8acb28', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Arthur and the Invisibles (ID: e03d10d1-915d-4ae4-8038-da55fca22a83) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e03d10d1-915d-4ae4-8038-da55fca22a83';
+
+-- LINK CATEGORIES: Arthur and the Invisibles (['hindi-dubbed', 'dual-audio', 'hollywood'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e03d10d1-915d-4ae4-8038-da55fca22a83', 'hindi-dubbed'), ('e03d10d1-915d-4ae4-8038-da55fca22a83', 'dual-audio'), ('e03d10d1-915d-4ae4-8038-da55fca22a83', 'hollywood') ON CONFLICT DO NOTHING;
+
+-- UPDATE MOVIE: Starfish (ID: e07b598f-1c1b-4d15-b7b4-59b5ef0933d7)
+UPDATE movies SET download_url = 'https://hubcloud.ist/drive/dmxmrjq2q_rr2ms', file_size = '2.31 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'e07b598f-1c1b-4d15-b7b4-59b5ef0933d7';
+
+-- LINK CATEGORIES: Starfish (['thriller', 'bollywood', 'romance', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e07b598f-1c1b-4d15-b7b4-59b5ef0933d7', 'thriller'), ('e07b598f-1c1b-4d15-b7b4-59b5ef0933d7', 'bollywood'), ('e07b598f-1c1b-4d15-b7b4-59b5ef0933d7', 'romance'), ('e07b598f-1c1b-4d15-b7b4-59b5ef0933d7', '300mb') ON CONFLICT DO NOTHING;
+
+-- UPDATE MOVIE: The Piper (ID: e098eb10-2d24-4a0c-9623-6e160d482782)
+UPDATE movies SET download_url = 'https://hubcloud.ist/drive/ncryvy5qm6srrll', file_size = '1.61 GB', status = 'active', updated_at = NOW(), quality = '1080p' WHERE id = 'e098eb10-2d24-4a0c-9623-6e160d482782';
+
+-- LINK CATEGORIES: The Piper (['hindi-dubbed', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e098eb10-2d24-4a0c-9623-6e160d482782', 'hindi-dubbed'), ('e098eb10-2d24-4a0c-9623-6e160d482782', 'dual-audio'), ('e098eb10-2d24-4a0c-9623-6e160d482782', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Kala (ID: e0c7db35-4e64-4a15-8c99-9ec4e0a842df) | Reason: [HubCloud Server] button not found on HubDrive page (https://drivehub.ws/file/2464860659)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e0c7db35-4e64-4a15-8c99-9ec4e0a842df';
+
+-- LINK CATEGORIES: Kala (['hindi-dubbed', 'thriller', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e0c7db35-4e64-4a15-8c99-9ec4e0a842df', 'hindi-dubbed'), ('e0c7db35-4e64-4a15-8c99-9ec4e0a842df', 'thriller'), ('e0c7db35-4e64-4a15-8c99-9ec4e0a842df', 'dual-audio'), ('e0c7db35-4e64-4a15-8c99-9ec4e0a842df', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Bhoothnath Returns (ID: e15213a7-1901-4307-9d1a-faf4e4bf2320) | Reason: Search yielded 0 results on HDHub4u
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e15213a7-1901-4307-9d1a-faf4e4bf2320';
+
+-- UPDATE MOVIE: Zombieland (ID: e0673a0b-673a-4b2e-8b75-d4ed181f7fba)
+UPDATE movies SET download_url = 'https://hubcloud.cx/drive/iz2l8bupaw5dg2z', file_size = '799.7 MB', status = 'active', updated_at = NOW(), quality = '720p' WHERE id = 'e0673a0b-673a-4b2e-8b75-d4ed181f7fba';
+
+-- LINK CATEGORIES: Zombieland (['hindi-dubbed', 'bluray', 'dual-audio', 'action', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e0673a0b-673a-4b2e-8b75-d4ed181f7fba', 'hindi-dubbed'), ('e0673a0b-673a-4b2e-8b75-d4ed181f7fba', 'bluray'), ('e0673a0b-673a-4b2e-8b75-d4ed181f7fba', 'dual-audio'), ('e0673a0b-673a-4b2e-8b75-d4ed181f7fba', 'action'), ('e0673a0b-673a-4b2e-8b75-d4ed181f7fba', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Night Drive (ID: e119a5d3-7e18-48a8-8243-f24624341ba3) | Reason: [HubCloud Server] button not found on HubDrive page (https://drivehub.ws/file/4148855639)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e119a5d3-7e18-48a8-8243-f24624341ba3';
+
+-- LINK CATEGORIES: Night Drive (['south-hindi-dubbed', 'hindi-dubbed', 'dual-audio', '300mb'])
+INSERT INTO movie_categories (movie_id, category_slug) VALUES ('e119a5d3-7e18-48a8-8243-f24624341ba3', 'south-hindi-dubbed'), ('e119a5d3-7e18-48a8-8243-f24624341ba3', 'hindi-dubbed'), ('e119a5d3-7e18-48a8-8243-f24624341ba3', 'dual-audio'), ('e119a5d3-7e18-48a8-8243-f24624341ba3', '300mb') ON CONFLICT DO NOTHING;
+
+-- MARK INACTIVE & NOT FOUND: Sat Shri Akaal England (ID: e120dc52-eb0b-4a56-a1eb-42434a466a52) | Reason: Neither 1080p nor 720p mediator link found on page (480p is explicitly ignored)
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e120dc52-eb0b-4a56-a1eb-42434a466a52';
+
+-- MARK INACTIVE & NOT FOUND: Juliet Lover of Idiot (ID: e12071cf-4111-46db-881b-67c6e96c2622) | Reason: HubCloud/HubDrive link not found on HUBLinks page
+UPDATE movies SET download_url = 'not_found', status = 'inactive', updated_at = NOW() WHERE id = 'e12071cf-4111-46db-881b-67c6e96c2622';
+
