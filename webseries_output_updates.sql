@@ -634,3 +634,9 @@ UPDATE seasons SET download_url_720p = 'https://hubdrive.pics/', download_url_10
 -- UPDATE SEASON: Sacred Games S1 (ID: 5f7e5a39-e87a-4f32-9433-247cc13b1ae2)
 UPDATE seasons SET download_url_720p = 'https://hubdrive.pics/', download_url_1080p = NULL, file_size_720p = '12 mb', file_size_1080p = NULL, updated_at = NOW() WHERE id = '5f7e5a39-e87a-4f32-9433-247cc13b1ae2';
 
+-- UPDATE SEASON: Sacred Games S2 (ID: 23169f26-0831-4e7e-90a9-6342e2996386)
+UPDATE seasons SET download_url_720p = 'https://hubdrive.pics/', download_url_1080p = NULL, file_size_720p = '12 mb', file_size_1080p = NULL, updated_at = NOW() WHERE id = '23169f26-0831-4e7e-90a9-6342e2996386';
+
+-- UPDATE SEASON: Sacred Games S1 (ID: 5f7e5a39-e87a-4f32-9433-247cc13b1ae2)
+UPDATE seasons SET download_url_720p = 'https://hubdrive.pics/', download_url_1080p = NULL, file_size_720p = '12 mb', file_size_1080p = NULL, updated_at = NOW() WHERE id = '5f7e5a39-e87a-4f32-9433-247cc13b1ae2';
+
