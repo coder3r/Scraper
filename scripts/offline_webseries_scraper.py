@@ -122,8 +122,9 @@ def update_seasons_csv_in_place(seasons_csv_path: str, season_updates: Dict[str,
     try:
         with open(seasons_csv_path, mode="r", encoding="utf-8-sig") as f:
             reader = csv.DictReader(f)
-            fieldnames = list(reader.fieldnames) if reader.fieldnames else []
+            fieldnames = [fn for fn in (reader.fieldnames or []) if fn is not None]
             for row in reader:
+                row.pop(None, None)
                 s_id = (row.get("id") or "").strip()
                 if s_id in season_updates:
                     up = season_updates[s_id]
@@ -134,7 +135,7 @@ def update_seasons_csv_in_place(seasons_csv_path: str, season_updates: Dict[str,
                 rows.append(row)
 
         with open(seasons_csv_path, mode="w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
             writer.writeheader()
             writer.writerows(rows)
         print(f"💾 Saved progress for {len(season_updates)} season(s) to '{seasons_csv_path}'.")
@@ -151,8 +152,9 @@ def update_episodes_csv_in_place(episodes_csv_path: str, episode_updates: Dict[s
     try:
         with open(episodes_csv_path, mode="r", encoding="utf-8-sig") as f:
             reader = csv.DictReader(f)
-            fieldnames = list(reader.fieldnames) if reader.fieldnames else []
+            fieldnames = [fn for fn in (reader.fieldnames or []) if fn is not None]
             for row in reader:
+                row.pop(None, None)
                 e_id = (row.get("id") or "").strip()
                 if e_id in episode_updates:
                     up = episode_updates[e_id]
@@ -163,7 +165,7 @@ def update_episodes_csv_in_place(episodes_csv_path: str, episode_updates: Dict[s
                 rows.append(row)
 
         with open(episodes_csv_path, mode="w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
             writer.writeheader()
             writer.writerows(rows)
         print(f"💾 Saved progress for {len(episode_updates)} episode(s) to '{episodes_csv_path}'.")
