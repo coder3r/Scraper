@@ -104,3 +104,9 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=SGVkepWZSIbAM1QNbWfIkh_MVz2j1MaJoTHeu-C1L9CnHtam&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: Undekhi S3 (ID: 5613fcfb-2836-4d5e-a910-87fa3f52a9a6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubdrive.pics/', file_size_720p = NULL, file_size_1080p = '12 mb', updated_at = NOW() WHERE id = '5613fcfb-2836-4d5e-a910-87fa3f52a9a6';
+
+-- UPDATE SEASON: Undekhi S1 (ID: b68fe1e3-d7c8-493a-b00b-bb6fc12b963b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubdrive.pics/', file_size_720p = NULL, file_size_1080p = '12 mb', updated_at = NOW() WHERE id = 'b68fe1e3-d7c8-493a-b00b-bb6fc12b963b';
