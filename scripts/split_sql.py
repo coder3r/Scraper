@@ -22,11 +22,14 @@ def split_sql_file(sql_path: str = "output_updates.sql", num_parts: int = 3):
         total = len(body)
         part_size = (total + num_parts - 1) // num_parts
 
+        base_stem = os.path.splitext(os.path.basename(sql_path))[0]
+        prefix = "webseries_part" if "webseries" in base_stem.lower() else "output_part"
+
         for idx in range(num_parts):
             part_stmts = body[idx * part_size : (idx + 1) * part_size]
             if not part_stmts:
                 continue
-            filename = f"output_part{idx + 1}.sql"
+            filename = f"{prefix}{idx + 1}.sql"
             with open(filename, "w", encoding="utf-8") as f_out:
                 f_out.write(f"-- DEV DOWNLOADER SQL UPDATE - PART {idx + 1} OF {num_parts}\n\n")
                 f_out.write("\n\n".join(part_stmts))
