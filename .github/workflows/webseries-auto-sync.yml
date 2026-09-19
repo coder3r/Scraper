@@ -1,0 +1,70 @@
+name: Dev Downloader WebSeries Offline CSV -> SQL Generator Scraper
+
+on:
+  push:
+    branches: [develop, main]
+  schedule:
+    - cron: "*/25 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  webseries-csv-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python Dependencies
+        run: |
+          pip install selenium webdriver-manager supabase python-dotenv requests
+
+      - name: Run WebSeries Offline CSV -> SQL Generator Scraper
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+        run: |
+          python scripts/offline_webseries_scraper.py --series web_series_rows.csv --seasons seasons_rows.csv --episodes episodes_rows.csv --output webseries_output_updates.sql --max-batches 4
+
+      - name: Upload Output SQL Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webseries_output_updates_sql
+          path: webseries_output_updates.sql
+
+      - name: Commit & Push Progress & Generated SQL to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add webseries_output_updates.sql webseries_part*.sql seasons_rows.csv episodes_rows.csv || true
+          git commit -m "chore(auto): update webseries_output_updates.sql and save seasons/episodes progress" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+
+      - name: Trigger Next Run Automatically (Auto-Chain)
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PENDING_COUNT=$(python scripts/check_pending_webseries.py || echo "0")
+          echo "Remaining pending seasons/episodes in CSV: $PENDING_COUNT"
+          if [ "$PENDING_COUNT" -gt "0" ]; then
+            echo "Auto-Chain: Triggering next WebSeries run immediately via GitHub API..."
+            curl -X POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              https://api.github.com/repos/${{ github.repository }}/actions/workflows/webseries-auto-sync.yml/dispatches \
+              -d '{"ref":"main"}' || echo "Auto-chain trigger call finished."
+          else
+            echo "All WebSeries seasons/episodes have been fully processed! Auto-chaining stopped."
+          fi
