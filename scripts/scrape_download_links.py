@@ -11,6 +11,13 @@ from typing import Optional, Tuple, Dict, Any, List
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -55,6 +62,7 @@ DEFAULT_SOURCE_URL = (
 BAD_DOMAINS_STEP1 = [
     "yodrive.",
     "linkrit.",
+    "hubdrive.tips",
     "facebook.",
     "whatsapp.",
     "telegram.",
@@ -65,6 +73,7 @@ BAD_DOMAINS_FINAL = [
     "yodrive.",
     "linkrit.",
     "greenmount",
+    "hubdrive.tips",
     "facebook.",
     "whatsapp.",
     "telegram.",
@@ -826,6 +835,159 @@ def extract_hubcloud_via_http(hub_url: str) -> Tuple[Optional[str], Optional[str
     return None, None
 
 
+def resolve_hubdrive_page(
+    url: str,
+    driver: Optional[webdriver.Chrome] = None,
+    log_prefix: str = "",
+) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """
+    Resolves a hubdrive/hublinks/mediator URL to a direct HubCloud/Drive link and extracts file size.
+    Returns: (resolved_url, file_size, error_message)
+    """
+    if not url:
+        return None, None, "URL is empty"
+
+    def log(msg: str):
+        print(f"{log_prefix}{msg}")
+
+    # 1. Direct HubCloud/Drive check
+    is_direct = ("hubcloud" in url.lower() or "/drive/" in url.lower()) and not any(
+        bad in url.lower() for bad in BAD_DOMAINS_FINAL
+    )
+    if is_direct:
+        _, size = extract_hubcloud_via_http(url)
+        return url, (size if size and size != "N/A" else None), None
+
+    if driver is None:
+        _, size = extract_hubcloud_via_http(url)
+        if size and size != "N/A":
+            return url, size, None
+        return None, None, "Driver required for mediator page resolution"
+
+    try:
+        main_window = driver.current_window_handle
+    except Exception:
+        main_window = driver.window_handles[0] if driver.window_handles else None
+
+    try:
+        log(f"[*] Resolving mediator link: {url}")
+        driver.get(url)
+        time.sleep(1.2)
+        if main_window:
+            close_extra_ad_tabs(driver, main_window)
+
+        curr = driver.current_url
+        if ("hubcloud" in curr.lower() or "/drive/" in curr.lower()) and not any(
+            bad in curr.lower() for bad in BAD_DOMAINS_FINAL
+        ):
+            _, size = extract_hubcloud_via_http(curr)
+            return curr, (size if size and size != "N/A" else None), None
+
+        # STEP A: Click 'CLICK TO CONTINUE' if on verification page
+        js_click_initial = """
+        function clickInitial() {
+            let btns = document.querySelectorAll('button, a');
+            for (let b of btns) {
+                if (b.innerText && b.innerText.toUpperCase().includes('CLICK TO CONTINUE')) {
+                    b.click();
+                    return true;
+                }
+            }
+            return false;
+        }
+        return clickInitial();
+        """
+        for _ in range(5):
+            try:
+                if driver.execute_script(js_click_initial):
+                    time.sleep(0.3)
+                    if main_window:
+                        close_extra_ad_tabs(driver, main_window)
+                    break
+            except Exception:
+                pass
+            time.sleep(0.3)
+
+        # STEP B: Wait & Click 'GET LINKS'
+        time.sleep(2)
+        js_click_getlinks = """
+        function clickGetLinks() {
+            let els = document.querySelectorAll('a, button, div');
+            for (let el of els) {
+                if (el.innerText && el.innerText.trim().toUpperCase() === 'GET LINKS') {
+                    el.removeAttribute('target');
+                    el.click();
+                    return true;
+                }
+            }
+            return false;
+        }
+        return clickGetLinks();
+        """
+        for _ in range(5):
+            try:
+                if driver.execute_script(js_click_getlinks):
+                    time.sleep(0.3)
+                    if main_window:
+                        close_extra_ad_tabs(
+                            driver, main_window, allow_url_keywords=["hblinks", "hubcloud", "hubdrive"]
+                        )
+                    break
+            except Exception:
+                pass
+            time.sleep(0.4)
+
+        # STEP C: Scan links on current page / tabs for direct HubCloud link
+        time.sleep(1.0)
+        if main_window:
+            close_extra_ad_tabs(
+                driver, main_window, allow_url_keywords=["hblinks", "hubcloud", "hubdrive"]
+            )
+
+        if len(driver.window_handles) > 1:
+            try:
+                driver.switch_to.window(driver.window_handles[-1])
+            except Exception:
+                pass
+
+        all_a_tags = driver.find_elements(By.TAG_NAME, "a")
+        hub_url = None
+        for a in all_a_tags:
+            href = (a.get_attribute("href") or "").lower()
+            text = (a.text or "").lower()
+            is_hubcloud = (
+                "hubcloud" in href
+                or "hubcloud" in text
+                or "/drive/" in href
+                or "hubdrive" in href
+            )
+            is_bad = any(bad in href for bad in BAD_DOMAINS_FINAL) or "/file/" in href
+            if is_hubcloud and not is_bad:
+                hub_url = a.get_attribute("href")
+                break
+
+        if not hub_url:
+            curr = driver.current_url
+            if ("hubcloud" in curr.lower() or "/drive/" in curr.lower()) and not any(
+                bad in curr.lower() for bad in BAD_DOMAINS_FINAL
+            ):
+                hub_url = curr
+
+        if hub_url:
+            log(f"✅ Resolved direct HubCloud link: {hub_url}")
+            _, size = extract_hubcloud_via_http(hub_url)
+            return hub_url, (size if size and size != "N/A" else None), None
+        else:
+            err = f"Could not find direct HubCloud link on mediator page: {url}"
+            log(f"⚠️ {err}")
+            return None, None, err
+
+    except Exception as e:
+        err = f"Exception resolving mediator link '{url}': {e}"
+        log(f"⚠️ {err}")
+        return None, None, err
+
+
 def scrape_movie_link(
     source_url: Optional[str] = None,
     headless: bool = False,
@@ -1244,8 +1406,8 @@ def scrape_movie_link(
             ):
                 driver.get(hblinks_url)
 
-            # STEP 7: Finding HubCloud or HubDrive link on HUBLinks page
-            log("[*] Step 7: Finding HubCloud / HubDrive link on HUBLinks page...")
+            # STEP 7
+            log("[*] Step 7: Finding HubCloud link...")
             close_extra_ad_tabs(
                 driver,
                 main_window,
@@ -1253,10 +1415,8 @@ def scrape_movie_link(
             )
             hub_element = None
 
-            for attempt in range(3):
+            for attempt in range(8):
                 all_a_hblinks = driver.find_elements(By.TAG_NAME, "a")
-
-                # Pass 1: Direct HubCloud Button
                 for a in all_a_hblinks:
                     href = (a.get_attribute("href") or "").lower()
                     text = (a.text or "").lower()
@@ -1274,40 +1434,18 @@ def scrape_movie_link(
                         or "hubcloud" in text
                         or "hubcloud" in img_src
                         or "hubcloud" in img_alt
+                        or "/drive/" in href
+                        or "hubdrive" in href
                     )
-                    is_bad = any(bad in href for bad in BAD_DOMAINS_FINAL)
+                    is_bad = (
+                        any(bad in href for bad in BAD_DOMAINS_FINAL)
+                        or "/file/" in href
+                    )
 
                     if is_hubcloud and not is_bad:
                         hub_element = a
                         break
 
-                # Pass 2: HubDrive Button (if direct HubCloud missing)
-                if not hub_element:
-                    for a in all_a_hblinks:
-                        href = (a.get_attribute("href") or "").lower()
-                        text = (a.text or "").lower()
-                        img_src = ""
-                        img_alt = ""
-                        try:
-                            img = a.find_element(By.TAG_NAME, "img")
-                            img_src = (img.get_attribute("src") or "").lower()
-                            img_alt = (img.get_attribute("alt") or "").lower()
-                        except:
-                            pass
-
-                        is_hubdrive = (
-                            "hubdrive" in href
-                            or "hubdrive" in text
-                            or "hubdrive" in img_src
-                            or "hubdrive" in img_alt
-                        )
-                        is_bad = any(bad in href for bad in BAD_DOMAINS_FINAL)
-
-                        if is_hubdrive and not is_bad:
-                            hub_element = a
-                            break
-
-                # Pass 3: Check iframes if still not found
                 if not hub_element:
                     iframes = driver.find_elements(By.TAG_NAME, "iframe")
                     for frame in iframes:
@@ -1317,14 +1455,16 @@ def scrape_movie_link(
                             for a in frame_a_tags:
                                 href = (a.get_attribute("href") or "").lower()
                                 text = (a.text or "").lower()
-                                is_drive = (
+                                is_hubcloud = (
                                     "hubcloud" in href
                                     or "hubcloud" in text
-                                    or "hubdrive" in href
-                                    or "hubdrive" in text
+                                    or "/drive/" in href
                                 )
-                                is_bad = any(bad in href for bad in BAD_DOMAINS_FINAL)
-                                if is_drive and not is_bad:
+                                is_bad = (
+                                    any(bad in href for bad in BAD_DOMAINS_FINAL)
+                                    or "/file/" in href
+                                )
+                                if is_hubcloud and not is_bad:
                                     hub_element = a
                                     break
                             driver.switch_to.default_content()
@@ -1335,62 +1475,19 @@ def scrape_movie_link(
 
                 if hub_element:
                     break
-                time.sleep(0.3)
+                time.sleep(0.6)
 
             if not hub_element:
-                err = "HubCloud/HubDrive link not found on HUBLinks page"
+                err = "HubCloud link not found on HUBLinks page"
                 raise Exception(err)
 
             hub_url = hub_element.get_attribute("href")
 
-            # STEP 7.5: Intermediate HubDrive Resolver -> Extract [HubCloud Server] button
-            if "hubdrive" in hub_url.lower() or "/file/" in hub_url.lower():
-                log(f"[*] Step 7.5: Intermediate HubDrive page detected ({hub_url}). Resolving [HubCloud Server] link...")
-                extracted_hc = None
-
-                # Fast HTTP attempt first
-                try:
-                    req_hd = urllib.request.Request(
-                        hub_url,
-                        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122.0.0.0 Safari/537.36"}
-                    )
-                    with urllib.request.urlopen(req_hd, timeout=5) as resp_hd:
-                        html_hd = resp_hd.read().decode("utf-8", errors="ignore")
-                        hc_match = re.search(r'href=["\'](https?://[^"\']*hubcloud[^"\']*/drive/[^"\']*)["\']', html_hd, re.IGNORECASE)
-                        if hc_match:
-                            extracted_hc = hc_match.group(1)
-                except Exception:
-                    pass
-
-                # Browser DOM Rendering fallback if HTTP didn't match
-                if not extracted_hc:
-                    try:
-                        driver.get(hub_url)
-                        time.sleep(1.2)
-                        close_extra_ad_tabs(driver, main_window, allow_url_keywords=["hubdrive", "hubcloud"])
-                        all_hd_a = driver.find_elements(By.TAG_NAME, "a")
-                        for a in all_hd_a:
-                            href = (a.get_attribute("href") or "").lower()
-                            text = (a.text or "").lower()
-                            if ("hubcloud" in href or "hubcloud server" in text or "hubcloud" in text) and ("/drive/" in href or "http" in href):
-                                if not any(bad in href for bad in BAD_DOMAINS_FINAL):
-                                    extracted_hc = a.get_attribute("href")
-                                    break
-                    except Exception as e_hd:
-                        log(f"⚠️ Error rendering HubDrive DOM: {e_hd}")
-
-                if extracted_hc:
-                    log(f"🚀 Successfully extracted [HubCloud Server] link from HubDrive: {extracted_hc}")
-                    hub_url = extracted_hc
-                else:
-                    err = f"[HubCloud Server] button not found on HubDrive page ({hub_url})"
-                    raise Exception(err)
-
         if (
             any(bad in hub_url.lower() for bad in BAD_DOMAINS_FINAL)
-            or ("hubcloud" not in hub_url.lower() and "/drive/" not in hub_url.lower())
+            or "/file/" in hub_url.lower()
         ):
-            err = f"Extracted link is invalid non-HubCloud URL ({hub_url})"
+            err = f"Extracted link is invalid/HubDrive ({hub_url})"
             raise Exception(err)
 
         # STEP 8: Fast Direct HTTP Bypass first
@@ -1582,7 +1679,7 @@ def _process_single_movie_worker(
 
         is_valid_hubcloud = (
             hub_url
-            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower() or "hubdrive" in hub_url.lower() or "/file/" in hub_url.lower())
+            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower())
             and not any(bad in hub_url.lower() for bad in BAD_DOMAINS_FINAL)
             and file_size
             and file_size != "N/A"
@@ -1739,19 +1836,15 @@ if __name__ == "__main__":
         description="Movie Download Link Scraper & DB Enricher"
     )
     parser.add_argument("--url", type=str, help="Specific source URL to scrape")
-    parser.add_argument("--csv", action="store_true", help="Run in 100% Offline CSV -> SQL mode")
     args = parser.parse_args()
 
-    if args.csv:
-        from offline_csv_scraper import run_offline_csv_scraper
-        run_offline_csv_scraper()
-    elif args.url:
+    if args.url:
         hub_url, name, file_size, err_reason, extracted_meta = scrape_movie_link(
             args.url
         )
         is_valid_hubcloud = (
             hub_url
-            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower() or "hubdrive" in hub_url.lower() or "/file/" in hub_url.lower())
+            and ("hubcloud" in hub_url.lower() or "/drive/" in hub_url.lower())
             and not any(bad in hub_url.lower() for bad in BAD_DOMAINS_FINAL)
             and file_size
             and file_size != "N/A"
