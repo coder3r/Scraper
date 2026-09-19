@@ -1,11 +1,5 @@
 -- DEV DOWNLOADER SQL UPDATE - PART 3 OF 3
 
--- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
-UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=NmxDddDfpD6J1CUY7orUY2ii59fvqdLagKHaL1tf9SAT0Qcj&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
-
--- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
-UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=NmxDddDfpD6J1CUY7orUY2ii59fvqdLagKHaL1tf9SAT0Qcj&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
-
 -- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=NmxDddDfpD6J1CUY7orUY2ii59fvqdLagKHaL1tf9SAT0Qcj&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
 
@@ -221,3 +215,15 @@ UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/llsyy111n3siv
 
 -- UPDATE SEASON: Outer Banks S2 (ID: f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/llsyy111n3sivlm', download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = '46GB', file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a';
+
+-- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=rGPxohA61nTtQGD26juftN9WF-8oFz6a4DAjxgLz4CPSAFa2&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=rGPxohA61nTtQGD26juftN9WF-8oFz6a4DAjxgLz4CPSAFa2&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=rGPxohA61nTtQGD26juftN9WF-8oFz6a4DAjxgLz4CPSAFa2&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/search-recover.php?from_ac=rGPxohA61nTtQGD26juftN9WF-8oFz6a4DAjxgLz4CPSAFa2&q=Rm91ciBNb3JlIFNob3RzIFBsZWFzZSEgUzAyIDEwODBwIHppcA', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
