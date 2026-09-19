@@ -275,3 +275,9 @@ UPDATE seasons SET download_url_720p = 'https://hubdrive.pics/', download_url_10
 
 -- UPDATE SEASON: Undekhi S1 (ID: b68fe1e3-d7c8-493a-b00b-bb6fc12b963b)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubdrive.pics/', file_size_720p = NULL, file_size_1080p = '12 mb', updated_at = NOW() WHERE id = 'b68fe1e3-d7c8-493a-b00b-bb6fc12b963b';
+
+-- UPDATE SEASON: Undekhi S2 (ID: ea82510e-94ba-401f-a498-2e6f04d7fb02)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubdrive.pics/', file_size_720p = NULL, file_size_1080p = '12 mb', updated_at = NOW() WHERE id = 'ea82510e-94ba-401f-a498-2e6f04d7fb02';
+
+-- UPDATE SEASON: Outer Banks S3 (ID: 6228e746-ac64-4305-9d29-2287bcf5ddaf)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/llsyy111n3sivlm', download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = '46GB', file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '6228e746-ac64-4305-9d29-2287bcf5ddaf';
