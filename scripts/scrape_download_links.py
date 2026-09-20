@@ -412,7 +412,19 @@ def get_chromedriver_path() -> str:
     if _chromedriver_path is None:
         with _chromedriver_path_lock:
             if _chromedriver_path is None:
-                _chromedriver_path = ChromeDriverManager().install()
+                try:
+                    _chromedriver_path = ChromeDriverManager().install()
+                except Exception:
+                    lock_path = os.path.expanduser(os.path.join("~", ".wdm", ".wdm-lock-chromedriver-win64"))
+                    if os.path.exists(lock_path):
+                        try:
+                            os.remove(lock_path)
+                        except Exception:
+                            pass
+                    try:
+                        _chromedriver_path = ChromeDriverManager().install()
+                    except Exception:
+                        _chromedriver_path = "chromedriver"
     return _chromedriver_path
 
 
@@ -835,6 +847,21 @@ def extract_hubcloud_via_http(hub_url: str) -> Tuple[Optional[str], Optional[str
     return None, None
 
 
+def is_valid_direct_hubcloud(url: Optional[str]) -> bool:
+    """Strictly validates if a URL is a direct HubCloud destination landing page (e.g., hubcloud.ist/drive/pup2pa21vsusle5)."""
+    if not url or not isinstance(url, str):
+        return False
+    low = url.lower().strip()
+    if any(bad in low for bad in BAD_DOMAINS_FINAL):
+        return False
+    if any(bad in low for bad in ["hubdrive.", "search-recover.php", "/?s=", "search", "index.php", "login", "register"]):
+        return False
+    # MUST contain hubcloud in domain AND /drive/ or /file/ path with an ID
+    if "hubcloud" in low and re.search(r"/(?:drive|file)/[a-zA-Z0-9_-]{5,}", low):
+        return True
+    return False
+
+
 def resolve_hubdrive_page(
     url: str,
     driver: Optional[webdriver.Chrome] = None,
@@ -851,17 +878,14 @@ def resolve_hubdrive_page(
         print(f"{log_prefix}{msg}")
 
     # 1. Direct HubCloud/Drive check
-    is_direct = ("hubcloud" in url.lower() or "/drive/" in url.lower()) and not any(
-        bad in url.lower() for bad in BAD_DOMAINS_FINAL
-    )
-    if is_direct:
+    if is_valid_direct_hubcloud(url):
         _, size = extract_hubcloud_via_http(url)
         return url, (size if size and size != "N/A" else None), None
 
     if driver is None:
-        _, size = extract_hubcloud_via_http(url)
-        if size and size != "N/A":
-            return url, size, None
+        if is_valid_direct_hubcloud(url):
+            _, size = extract_hubcloud_via_http(url)
+            return url, (size if size and size != "N/A" else None), None
         return None, None, "Driver required for mediator page resolution"
 
     try:
@@ -877,9 +901,7 @@ def resolve_hubdrive_page(
             close_extra_ad_tabs(driver, main_window)
 
         curr = driver.current_url
-        if ("hubcloud" in curr.lower() or "/drive/" in curr.lower()) and not any(
-            bad in curr.lower() for bad in BAD_DOMAINS_FINAL
-        ):
+        if is_valid_direct_hubcloud(curr):
             _, size = extract_hubcloud_via_http(curr)
             return curr, (size if size and size != "N/A" else None), None
 
@@ -953,24 +975,14 @@ def resolve_hubdrive_page(
         all_a_tags = driver.find_elements(By.TAG_NAME, "a")
         hub_url = None
         for a in all_a_tags:
-            href = (a.get_attribute("href") or "").lower()
-            text = (a.text or "").lower()
-            is_hubcloud = (
-                "hubcloud" in href
-                or "hubcloud" in text
-                or "/drive/" in href
-                or "hubdrive" in href
-            )
-            is_bad = any(bad in href for bad in BAD_DOMAINS_FINAL) or "/file/" in href
-            if is_hubcloud and not is_bad:
-                hub_url = a.get_attribute("href")
+            href = (a.get_attribute("href") or "").strip()
+            if is_valid_direct_hubcloud(href):
+                hub_url = href
                 break
 
         if not hub_url:
             curr = driver.current_url
-            if ("hubcloud" in curr.lower() or "/drive/" in curr.lower()) and not any(
-                bad in curr.lower() for bad in BAD_DOMAINS_FINAL
-            ):
+            if is_valid_direct_hubcloud(curr):
                 hub_url = curr
 
         if hub_url:
