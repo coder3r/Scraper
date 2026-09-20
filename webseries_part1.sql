@@ -476,3 +476,69 @@ UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswof
 
 -- UPDATE SEASON: Little House on the Prairie S1 (ID: 0edce5dc-10ac-4a26-a3fd-297619e1c119)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/n1lubbdublv15om', download_url_1080p = 'https://hubcloud.ist/drive/1dcu1qkodf8srmc', file_size_720p = '2.7GB', file_size_1080p = '26.2GB', updated_at = NOW() WHERE id = '0edce5dc-10ac-4a26-a3fd-297619e1c119';
+
+-- UPDATE SEASON: The Mentalist S5 (ID: 0d2e9433-c407-4853-8953-4b297fd10b88)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '0d2e9433-c407-4853-8953-4b297fd10b88';
+
+-- UPDATE SEASON: Made in India: A Titan Story S1 (ID: 7352aedb-6c65-47c7-9dff-ab299b3e4354)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/tecup4pqncqquqn', file_size_720p = NULL, file_size_1080p = '19.9GB', updated_at = NOW() WHERE id = '7352aedb-6c65-47c7-9dff-ab299b3e4354';
+
+-- UPDATE SEASON: Super Subbu S1 (ID: 4aa67bac-5a4b-436b-af22-4a47f04f19de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/b9xt6645vxv4801', file_size_720p = NULL, file_size_1080p = '15.7GB', updated_at = NOW() WHERE id = '4aa67bac-5a4b-436b-af22-4a47f04f19de';
+
+-- UPDATE SEASON: The Mentalist S4 (ID: 1eeda36d-1270-47ad-be43-4897d353155d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '1eeda36d-1270-47ad-be43-4897d353155d';
+
+-- UPDATE EPISODE: Mr. Robot S2E1 (ID: 30b53fee-4dd2-49cf-93a4-447a608cfb5e)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30b53fee-4dd2-49cf-93a4-447a608cfb5e';
+
+-- UPDATE EPISODE: Mr. Robot S2E2 (ID: 5b3cbb9c-8666-4801-9e7a-d29417f08f35)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '5b3cbb9c-8666-4801-9e7a-d29417f08f35';
+
+-- UPDATE SEASON: Summer '36 S1 (ID: 10559fa0-a318-4398-852a-3d7bb553c0f2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ftxocy9mxky18zt', file_size_720p = NULL, file_size_1080p = '14.8GB', updated_at = NOW() WHERE id = '10559fa0-a318-4398-852a-3d7bb553c0f2';
+
+-- UPDATE EPISODE: Mr. Robot S4E1 (ID: 31e671ff-fceb-4e3c-920d-75fb23daa3cd)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '31e671ff-fceb-4e3c-920d-75fb23daa3cd';
+
+-- UPDATE SEASON: The Mentalist S2 (ID: 7e92e976-3038-4348-b745-92bd19745c7e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/zicyategeacmvnm', file_size_720p = NULL, file_size_1080p = '71.2GB', updated_at = NOW() WHERE id = '7e92e976-3038-4348-b745-92bd19745c7e';
+
+-- UPDATE SEASON: The Pitt S2 (ID: efb59ac2-c51d-42dd-ab94-6e85df946eb9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/oicsc1cji385y3y', file_size_720p = NULL, file_size_1080p = '44.9GB', updated_at = NOW() WHERE id = 'efb59ac2-c51d-42dd-ab94-6e85df946eb9';
+
+-- UPDATE SEASON: House of the Dragon S3 (ID: 38a5875d-90b6-4fcb-a295-0848cae1e9ad)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/pmgukx2rv35kwv6', download_url_1080p = 'https://hubcloud.ist/drive/gwwgvaaveyy9vev', file_size_720p = '3GB', file_size_1080p = '6.8GB', updated_at = NOW() WHERE id = '38a5875d-90b6-4fcb-a295-0848cae1e9ad';
+
+-- UPDATE SEASON: Who's Your Gynac S1 (ID: 2a2345d5-7100-48c0-be3b-ad029c449df1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/1133nggx15lxrq6', file_size_720p = NULL, file_size_1080p = '5.3GB', updated_at = NOW() WHERE id = '2a2345d5-7100-48c0-be3b-ad029c449df1';
+
+-- UPDATE SEASON: House of the Dragon S2 (ID: 41269614-4aa0-4252-a623-8a45d371532e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ycl9alpgdiva11p', file_size_720p = NULL, file_size_1080p = '10.5GB', updated_at = NOW() WHERE id = '41269614-4aa0-4252-a623-8a45d371532e';
+
+-- UPDATE SEASON: The Mentalist S3 (ID: 9b9680a6-2ea0-428d-9009-0c098c4e75a4)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/lkrlk0s4a4zkn2t', file_size_720p = NULL, file_size_1080p = '73.2GB', updated_at = NOW() WHERE id = '9b9680a6-2ea0-428d-9009-0c098c4e75a4';
+
+-- UPDATE SEASON: Who's Your Gynac S2 (ID: 48f82a56-5417-4251-b504-4d491c4912a1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ml2pqipilsf44es', file_size_720p = NULL, file_size_1080p = '6.1GB', updated_at = NOW() WHERE id = '48f82a56-5417-4251-b504-4d491c4912a1';
+
+-- UPDATE SEASON: The Mentalist S6 (ID: d4cf1d17-51c3-4a3e-ae54-b29708607b99)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'd4cf1d17-51c3-4a3e-ae54-b29708607b99';
+
+-- UPDATE SEASON: The Mentalist S7 (ID: f1186f3a-ddf1-4a36-a0b5-239a7b1e02be)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'f1186f3a-ddf1-4a36-a0b5-239a7b1e02be';
+
+-- UPDATE SEASON: The Mentalist S1 (ID: fed0912d-e0fc-4f6e-a1c4-ca0e308b7604)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/m10p77azaa8u1ki', file_size_720p = NULL, file_size_1080p = '71.9GB', updated_at = NOW() WHERE id = 'fed0912d-e0fc-4f6e-a1c4-ca0e308b7604';
+
+-- UPDATE SEASON: Vadhandhi S2 (ID: 8cddc4a8-2441-435d-9943-0f3bacca473e)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bprr22a3mntjrd5', download_url_1080p = 'https://hubcloud.ist/drive/jvpjcwdtcjp1jyw', file_size_720p = '2.3GB', file_size_1080p = '5.4GB', updated_at = NOW() WHERE id = '8cddc4a8-2441-435d-9943-0f3bacca473e';
+
+-- UPDATE SEASON: Dynamite Kiss S1 (ID: d6322dc8-91da-4bc0-ab80-6b1e0832fb6f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/vnm7upsvhsm7t1m', file_size_720p = NULL, file_size_1080p = '33.7GB', updated_at = NOW() WHERE id = 'd6322dc8-91da-4bc0-ab80-6b1e0832fb6f';
+
+-- UPDATE SEASON: Fallout S2 (ID: 74eb542c-df01-4532-98e5-60b34470e829)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/d1sxnddxxlaxrkx', download_url_1080p = 'https://hubcloud.cx/drive/a32nanbab3hh9ye', file_size_720p = '2.6GB', file_size_1080p = '6GB', updated_at = NOW() WHERE id = '74eb542c-df01-4532-98e5-60b34470e829';
+
+-- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
