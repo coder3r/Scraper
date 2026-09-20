@@ -239,3 +239,72 @@ UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cy7tart1sznf1
 
 -- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S2 (ID: 44072962-3810-4c34-b47f-6b4faa769407)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/r5rrhr5whrr6ewy', file_size_720p = NULL, file_size_1080p = '15.3GB', updated_at = NOW() WHERE id = '44072962-3810-4c34-b47f-6b4faa769407';
+
+-- UPDATE SEASON: S Line S1 (ID: e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswofrr', download_url_1080p = 'https://hubcloud.ist/drive/uv1durc1eadcwk1', file_size_720p = '1.9GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5';
+
+-- UPDATE SEASON: Mousetrap S1 (ID: 3404b0a7-3f31-4e11-a209-58c000ff74db)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/okenwspdpxokhxz', download_url_1080p = 'https://hubcloud.ist/drive/zlptqvlqc75lt76', file_size_720p = '3.8GB', file_size_1080p = '9.2GB', updated_at = NOW() WHERE id = '3404b0a7-3f31-4e11-a209-58c000ff74db';
+
+-- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S1 (ID: 528ca82f-c9bf-4431-9033-3841b811b3de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/56dqd00nkq6wktm', file_size_720p = NULL, file_size_1080p = '23.1GB', updated_at = NOW() WHERE id = '528ca82f-c9bf-4431-9033-3841b811b3de';
+
+-- UPDATE SEASON: I Will Find You S2 (ID: 25902eba-776f-4bca-ac1c-f38a0c80a7a3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '25902eba-776f-4bca-ac1c-f38a0c80a7a3';
+
+-- UPDATE SEASON: Poker Face S2 (ID: 65cb1002-9c9e-41ff-985f-5969bdb956b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/cgi6tm4gpfekeif', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = '65cb1002-9c9e-41ff-985f-5969bdb956b6';
+
+-- UPDATE SEASON: Notes from the Last Row S1 (ID: bfb65dec-60b1-45f1-96ec-cba7904654f2)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/s9kss1ubej14jks', download_url_1080p = 'https://hubcloud.ist/drive/juo0u0ovi32fyay', file_size_720p = '2.5GB', file_size_1080p = '5.9GB', updated_at = NOW() WHERE id = 'bfb65dec-60b1-45f1-96ec-cba7904654f2';
+
+-- UPDATE SEASON: I Will Find You S1 (ID: 8f24c083-60cc-4c53-bcc0-193e5f7f0228)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '8f24c083-60cc-4c53-bcc0-193e5f7f0228';
+
+-- UPDATE SEASON: Ransom Canyon S1 (ID: 4290061f-0471-4e8b-836f-94b9bcee1fec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/pw68mkxuj1cp116', file_size_720p = NULL, file_size_1080p = '28GB', updated_at = NOW() WHERE id = '4290061f-0471-4e8b-836f-94b9bcee1fec';
+
+-- UPDATE SEASON: Daredevil: Born Again S2 (ID: b2b541e9-086f-4ce6-96ca-639e48306907)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ig1erdoep1ii5f2', file_size_720p = NULL, file_size_1080p = '15.5GB', updated_at = NOW() WHERE id = 'b2b541e9-086f-4ce6-96ca-639e48306907';
+
+-- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: Ransom Canyon S2 (ID: e6fc8660-3898-4117-9674-284b62e1aaf2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/p1dr4mqsy7es4jj', file_size_720p = NULL, file_size_1080p = '19.3GB', updated_at = NOW() WHERE id = 'e6fc8660-3898-4117-9674-284b62e1aaf2';
+
+-- UPDATE SEASON: Who's Your Gynac S1 (ID: 2a2345d5-7100-48c0-be3b-ad029c449df1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/1133nggx15lxrq6', file_size_720p = NULL, file_size_1080p = '5.3GB', updated_at = NOW() WHERE id = '2a2345d5-7100-48c0-be3b-ad029c449df1';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: Daredevil: Born Again S1 (ID: d4190015-e1de-4b42-b908-f9e219fca396)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/hcbtrkxtdrrasod', file_size_720p = NULL, file_size_1080p = '17.2GB', updated_at = NOW() WHERE id = 'd4190015-e1de-4b42-b908-f9e219fca396';
+
+-- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
+
+-- UPDATE SEASON: Who's Your Gynac S2 (ID: 48f82a56-5417-4251-b504-4d491c4912a1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ml2pqipilsf44es', file_size_720p = NULL, file_size_1080p = '6.1GB', updated_at = NOW() WHERE id = '48f82a56-5417-4251-b504-4d491c4912a1';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: Neagley S1 (ID: 3c6380b5-a404-4154-a26f-d8626e04aca5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dlodxhrowzllbfa', download_url_1080p = 'https://hubcloud.ist/drive/mw2lyjx7jjxll97', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '3c6380b5-a404-4154-a26f-d8626e04aca5';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: The East Palace S1 (ID: 200bab05-78b3-44a9-900b-4f3349fa8e40)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qpkkdbiiiddvdtq', file_size_720p = NULL, file_size_1080p = '27.5GB', updated_at = NOW() WHERE id = '200bab05-78b3-44a9-900b-4f3349fa8e40';
+
+-- UPDATE SEASON: The Pyramid Scheme S1 (ID: ecdd37cc-c240-49a2-9b81-5b083b474296)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cntl1llkni5ig1k', download_url_1080p = 'https://hubcloud.ist/drive/4gt4q4q5y7jcxfv', file_size_720p = '1.7GB', file_size_1080p = '4.1GB', updated_at = NOW() WHERE id = 'ecdd37cc-c240-49a2-9b81-5b083b474296';
+
+-- UPDATE SEASON: The Mentalist S5 (ID: 0d2e9433-c407-4853-8953-4b297fd10b88)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '0d2e9433-c407-4853-8953-4b297fd10b88';
+
+-- UPDATE SEASON: A Knight of the Seven Kingdoms S1 (ID: 6d2ce719-c039-4924-87a9-975861a4c5c6)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/9zwwh1fq7ybvsvl', download_url_1080p = 'https://hubcloud.cx/drive/bjyykp01kuzmmds', file_size_720p = '1.2GB', file_size_1080p = '2.8GB', updated_at = NOW() WHERE id = '6d2ce719-c039-4924-87a9-975861a4c5c6';
