@@ -287,7 +287,7 @@ def run_offline_webseries_scraper(
 
             if not source_url:
                 clean_t = clean_title_for_search(s_title) or s_title
-                source_url = f"https://new5.hdhub4u.cl/?s={urllib.parse.quote(clean_t)}"
+                source_url = f"https://new6.hdhub4u.cl/search.html?q={urllib.parse.quote(clean_t)}"
 
             # Get all seasons for this series
             ws_seasons = [s for s in seasons_list if s.get("web_series_id") == ws_id]
