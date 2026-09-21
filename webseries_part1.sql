@@ -1265,3 +1265,78 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
+
+-- UPDATE SEASON: Raktanchal S1 (ID: bc83b1dc-8470-4b42-be38-b72346f65a4f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/j6x6cqjqfjzzgx1', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = 'bc83b1dc-8470-4b42-be38-b72346f65a4f';
+
+-- UPDATE SEASON: The Revolutionaries S1 (ID: a80960fa-ab4c-4578-b063-4d2680717e1a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/jocxigmgaddvjii', download_url_1080p = 'https://hubcloud.ist/drive/hn2z1g6zvgqjnng', file_size_720p = '2.8GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = 'a80960fa-ab4c-4578-b063-4d2680717e1a';
+
+-- UPDATE SEASON: The Apartment Job S1 (ID: 4b30eed0-d092-466b-bd28-2d40e03c2a87)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/2rihnihdrvim1h1', file_size_720p = NULL, file_size_1080p = '28.9GB', updated_at = NOW() WHERE id = '4b30eed0-d092-466b-bd28-2d40e03c2a87';
+
+-- UPDATE SEASON: Raktanchal S3 (ID: cad76c6d-cd6d-46fb-b0b9-a86dba27428a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/mbpdwvxxblwl9yb', download_url_1080p = 'https://hubcloud.ist/drive/wsh12wuostnqigw', file_size_720p = '2GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'cad76c6d-cd6d-46fb-b0b9-a86dba27428a';
+
+-- UPDATE SEASON: Reacher S4 (ID: e8cf8417-e0c3-47d9-b135-8882e920e5c2)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/0ohnugwkxrfuoon', download_url_1080p = 'https://hubcloud.ist/drive/kbkkv0w1fklkbk1', file_size_720p = '2.4GB', file_size_1080p = '5.1GB', updated_at = NOW() WHERE id = 'e8cf8417-e0c3-47d9-b135-8882e920e5c2';
+
+-- UPDATE SEASON: Outer Banks S3 (ID: 6228e746-ac64-4305-9d29-2287bcf5ddaf)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '6228e746-ac64-4305-9d29-2287bcf5ddaf';
+
+-- UPDATE SEASON: Lost in Space S1 (ID: 2a3d9ca1-abab-4e6d-96c3-4113391e6017)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/bqlq0dacaangkyh', file_size_720p = NULL, file_size_1080p = '23.9GB', updated_at = NOW() WHERE id = '2a3d9ca1-abab-4e6d-96c3-4113391e6017';
+
+-- UPDATE SEASON: Outer Banks S5 (ID: 6e7aa06c-abad-4ead-9a35-55e2898fa321)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '6e7aa06c-abad-4ead-9a35-55e2898fa321';
+
+-- UPDATE SEASON: Mousetrap S1 (ID: 3404b0a7-3f31-4e11-a209-58c000ff74db)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/okenwspdpxokhxz', download_url_1080p = 'https://hubcloud.ist/drive/zlptqvlqc75lt76', file_size_720p = '3.8GB', file_size_1080p = '9.2GB', updated_at = NOW() WHERE id = '3404b0a7-3f31-4e11-a209-58c000ff74db';
+
+-- UPDATE SEASON: Outer Banks S4 (ID: 8a74038c-dab1-4391-b2ad-35c02565f318)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '8a74038c-dab1-4391-b2ad-35c02565f318';
+
+-- UPDATE SEASON: Lost in Space S2 (ID: 7591e674-386a-4367-a093-38a8a9f1bd17)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qqzq8icmzicc5cc', file_size_720p = NULL, file_size_1080p = '19.4GB', updated_at = NOW() WHERE id = '7591e674-386a-4367-a093-38a8a9f1bd17';
+
+-- UPDATE SEASON: Outer Banks S1 (ID: bad66f33-97bc-416b-9c8e-c0f5de38bdda)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'bad66f33-97bc-416b-9c8e-c0f5de38bdda';
+
+-- UPDATE SEASON: S Line S1 (ID: e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswofrr', download_url_1080p = 'https://hubcloud.ist/drive/uv1durc1eadcwk1', file_size_720p = '1.9GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5';
+
+-- UPDATE SEASON: Outer Banks S2 (ID: f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a';
+
+-- UPDATE SEASON: Lost in Space S3 (ID: a53c7155-57eb-44ae-a182-7b6ac6ca932f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/t0olycc0swtfuvt', file_size_720p = NULL, file_size_1080p = '16.2GB', updated_at = NOW() WHERE id = 'a53c7155-57eb-44ae-a182-7b6ac6ca932f';
+
+-- UPDATE SEASON: Cash Queens S1 (ID: ad44cef7-d825-4683-935a-79a484dce7ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3weuo3sb3wnsf26', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = 'ad44cef7-d825-4683-935a-79a484dce7ec';
+
+-- UPDATE SEASON: The Legend of Vox Machina S2 (ID: 31932239-dbd9-4b0d-84b8-fdd93f4d719a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/6ddcyebudr6yo6o', file_size_720p = NULL, file_size_1080p = '23.6GB', updated_at = NOW() WHERE id = '31932239-dbd9-4b0d-84b8-fdd93f4d719a';
+
+-- UPDATE SEASON: The Traitors S2 (ID: 06e72a2d-3c67-41a8-9dcc-6eb821635aee)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/lvfgdffgftdoa0e', file_size_720p = NULL, file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '06e72a2d-3c67-41a8-9dcc-6eb821635aee';
+
+-- UPDATE SEASON: The House of the Spirits S1 (ID: 33d2ce5c-4442-4209-8e61-5e47c3a72f3a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/ti6fktk55pzwtff', download_url_1080p = 'https://hubcloud.ist/drive/obmt4lbozitl4mz', file_size_720p = '2.7GB', file_size_1080p = '6.5GB', updated_at = NOW() WHERE id = '33d2ce5c-4442-4209-8e61-5e47c3a72f3a';
+
+-- UPDATE SEASON: The Legend of Vox Machina S1 (ID: dd54ff96-c6a6-4887-971c-00b226149b08)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/p3p1yv1ymyc5aa1', file_size_720p = NULL, file_size_1080p = '22.4GB', updated_at = NOW() WHERE id = 'dd54ff96-c6a6-4887-971c-00b226149b08';
+
+-- UPDATE SEASON: Bloodhounds S2 (ID: dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ukrzofgorzkimzt', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61';
+
+-- UPDATE SEASON: The Legend of Vox Machina S3 (ID: efb9c4dd-8b6e-42a9-aec1-77b3685c3ea9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qwalwnrl2tujaru', file_size_720p = NULL, file_size_1080p = '23.2GB', updated_at = NOW() WHERE id = 'efb9c4dd-8b6e-42a9-aec1-77b3685c3ea9';
+
+-- UPDATE SEASON: Made in India: A Titan Story S1 (ID: 7352aedb-6c65-47c7-9dff-ab299b3e4354)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/tecup4pqncqquqn', file_size_720p = NULL, file_size_1080p = '19.9GB', updated_at = NOW() WHERE id = '7352aedb-6c65-47c7-9dff-ab299b3e4354';
+
+-- UPDATE SEASON: MobLand S1 (ID: 3f07cea4-14bd-49b3-b60f-7d636f8451e9)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/sytiarh7id06igr', download_url_1080p = 'https://hubcloud.ist/drive/ihduifx548lddif', file_size_720p = '3.2GB', file_size_1080p = '7.5GB', updated_at = NOW() WHERE id = '3f07cea4-14bd-49b3-b60f-7d636f8451e9';
+
+-- UPDATE SEASON: Ab Hoga Hisaab S2 (ID: a7b4649e-73e6-47f0-a1c1-27ae81a67d9e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/mfhnywryfwf5lkh', file_size_720p = NULL, file_size_1080p = '12.3GB', updated_at = NOW() WHERE id = 'a7b4649e-73e6-47f0-a1c1-27ae81a67d9e';
