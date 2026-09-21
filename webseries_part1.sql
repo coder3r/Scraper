@@ -2069,3 +2069,81 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: The Traitors S2 (ID: 06e72a2d-3c67-41a8-9dcc-6eb821635aee)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/lvfgdffgftdoa0e', file_size_720p = NULL, file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '06e72a2d-3c67-41a8-9dcc-6eb821635aee';
+
+-- UPDATE SEASON: The Mentalist S4 (ID: 1eeda36d-1270-47ad-be43-4897d353155d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '1eeda36d-1270-47ad-be43-4897d353155d';
+
+-- UPDATE SEASON: FROM S2 (ID: 2f16e3db-32ba-424a-8424-72a97c450146)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/raqxvymtxycpj8i', download_url_1080p = 'https://hubcloud.ist/drive/w3qrbwwusurzupu', file_size_720p = '1.6GB', file_size_1080p = '3.8GB', updated_at = NOW() WHERE id = '2f16e3db-32ba-424a-8424-72a97c450146';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: FROM S3 (ID: fb12ac46-5810-4abd-9c80-a84604d933df)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/azx4sspczo4pycy', download_url_1080p = 'https://hubcloud.ist/drive/ljixziuxwffxbmq', file_size_720p = '1.9GB', file_size_1080p = '6.1GB', updated_at = NOW() WHERE id = 'fb12ac46-5810-4abd-9c80-a84604d933df';
+
+-- UPDATE SEASON: The Mentalist S2 (ID: 7e92e976-3038-4348-b745-92bd19745c7e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/zicyategeacmvnm', file_size_720p = NULL, file_size_1080p = '71.2GB', updated_at = NOW() WHERE id = '7e92e976-3038-4348-b745-92bd19745c7e';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S2 (ID: 2726c11c-c7d3-45bc-a61c-5b0b14d16dc7)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '2726c11c-c7d3-45bc-a61c-5b0b14d16dc7';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S3 (ID: 9201c77c-8f4b-4b10-8161-3c5a8395303e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '9201c77c-8f4b-4b10-8161-3c5a8395303e';
+
+-- UPDATE SEASON: The Mentalist S3 (ID: 9b9680a6-2ea0-428d-9009-0c098c4e75a4)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/lkrlk0s4a4zkn2t', file_size_720p = NULL, file_size_1080p = '73.2GB', updated_at = NOW() WHERE id = '9b9680a6-2ea0-428d-9009-0c098c4e75a4';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S1 (ID: a27e83ab-6196-4b8d-a8e0-8830a38baed8)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/jup31uuiqyouy00', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = 'a27e83ab-6196-4b8d-a8e0-8830a38baed8';
+
+-- UPDATE SEASON: The Mentalist S6 (ID: d4cf1d17-51c3-4a3e-ae54-b29708607b99)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'd4cf1d17-51c3-4a3e-ae54-b29708607b99';
+
+-- UPDATE SEASON: The Mentalist S7 (ID: f1186f3a-ddf1-4a36-a0b5-239a7b1e02be)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'f1186f3a-ddf1-4a36-a0b5-239a7b1e02be';
+
+-- UPDATE SEASON: The Mentalist S1 (ID: fed0912d-e0fc-4f6e-a1c4-ca0e308b7604)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/m10p77azaa8u1ki', file_size_720p = NULL, file_size_1080p = '71.9GB', updated_at = NOW() WHERE id = 'fed0912d-e0fc-4f6e-a1c4-ca0e308b7604';
+
+-- UPDATE SEASON: Citadel S1 (ID: 46e811ab-1978-4877-baa7-18672e65de31)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bylty14ch1eegbw', download_url_1080p = 'https://hubcloud.ist/drive/boemnmyvbg3vesg', file_size_720p = '1.7GB', file_size_1080p = '3.6GB', updated_at = NOW() WHERE id = '46e811ab-1978-4877-baa7-18672e65de31';
+
+-- UPDATE SEASON: I Will Find You S2 (ID: 25902eba-776f-4bca-ac1c-f38a0c80a7a3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '25902eba-776f-4bca-ac1c-f38a0c80a7a3';
+
+-- UPDATE SEASON: Neagley S1 (ID: 3c6380b5-a404-4154-a26f-d8626e04aca5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dlodxhrowzllbfa', download_url_1080p = 'https://hubcloud.ist/drive/mw2lyjx7jjxll97', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '3c6380b5-a404-4154-a26f-d8626e04aca5';
+
+-- UPDATE SEASON: I Will Find You S1 (ID: 8f24c083-60cc-4c53-bcc0-193e5f7f0228)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '8f24c083-60cc-4c53-bcc0-193e5f7f0228';
+
+-- UPDATE SEASON: Citadel S2 (ID: 87a459be-6f78-4ca8-a8bc-3ef53affc7a4)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qtwzqyy3oy2hqoo', file_size_720p = NULL, file_size_1080p = '17GB', updated_at = NOW() WHERE id = '87a459be-6f78-4ca8-a8bc-3ef53affc7a4';
+
+-- UPDATE SEASON: Sapne vs Everyone S2 (ID: 3ec4a25a-88be-4af3-aa9c-f9b86336a400)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/mk7ohv4k42apv27', download_url_1080p = 'https://hubcloud.ist/drive/uhxuzqpyclt0zlk', file_size_720p = '1.9GB', file_size_1080p = '4.5GB', updated_at = NOW() WHERE id = '3ec4a25a-88be-4af3-aa9c-f9b86336a400';
+
+-- UPDATE SEASON: Sapne vs Everyone S1 (ID: faa402aa-9b64-47fc-8f5f-37e190fbb1fe)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/lu7fcmdmafgcgal', download_url_1080p = 'https://hubcloud.ist/drive/k56villpibyhxzn', file_size_720p = '2GB', file_size_1080p = '4.9GB', updated_at = NOW() WHERE id = 'faa402aa-9b64-47fc-8f5f-37e190fbb1fe';
+
+-- UPDATE SEASON: The Mentalist S5 (ID: 0d2e9433-c407-4853-8953-4b297fd10b88)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '0d2e9433-c407-4853-8953-4b297fd10b88';
+
+-- UPDATE SEASON: Made in India: A Titan Story S1 (ID: 7352aedb-6c65-47c7-9dff-ab299b3e4354)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/tecup4pqncqquqn', file_size_720p = NULL, file_size_1080p = '19.9GB', updated_at = NOW() WHERE id = '7352aedb-6c65-47c7-9dff-ab299b3e4354';
+
+-- UPDATE SEASON: The Map of Longing S1 (ID: 1106ef9c-9939-46ea-8eb6-a7a70d459082)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/slyd1pxymfx8pxa', download_url_1080p = 'https://hubcloud.ist/drive/h3l32z4u54drrrr', file_size_720p = '1.9GB', file_size_1080p = '14.4GB', updated_at = NOW() WHERE id = '1106ef9c-9939-46ea-8eb6-a7a70d459082';
+
+-- UPDATE SEASON: The Pitt S2 (ID: efb59ac2-c51d-42dd-ab94-6e85df946eb9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/oicsc1cji385y3y', file_size_720p = NULL, file_size_1080p = '44.9GB', updated_at = NOW() WHERE id = 'efb59ac2-c51d-42dd-ab94-6e85df946eb9';
