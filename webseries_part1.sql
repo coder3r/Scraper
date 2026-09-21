@@ -1598,3 +1598,81 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Chumbak S1 (ID: fe7e3ada-19f3-46eb-bd9b-da63ed02dc28)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/xf1zxommgfyoafy', download_url_1080p = 'https://hubcloud.ist/drive/b3fnmo39to99amt', file_size_720p = '1.2GB', file_size_1080p = '2.9GB', updated_at = NOW() WHERE id = 'fe7e3ada-19f3-46eb-bd9b-da63ed02dc28';
+
+-- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S2 (ID: 44072962-3810-4c34-b47f-6b4faa769407)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/r5rrhr5whrr6ewy', file_size_720p = NULL, file_size_1080p = '15.3GB', updated_at = NOW() WHERE id = '44072962-3810-4c34-b47f-6b4faa769407';
+
+-- UPDATE SEASON: Attack on Titan S1 (ID: 05bcc482-43a3-4e80-a513-e962cafad68d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/e1gegslfsechhej', file_size_720p = NULL, file_size_1080p = '9.1GB', updated_at = NOW() WHERE id = '05bcc482-43a3-4e80-a513-e962cafad68d';
+
+-- UPDATE SEASON: The House of the Spirits S1 (ID: 33d2ce5c-4442-4209-8e61-5e47c3a72f3a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/ti6fktk55pzwtff', download_url_1080p = 'https://hubcloud.ist/drive/obmt4lbozitl4mz', file_size_720p = '2.7GB', file_size_1080p = '6.5GB', updated_at = NOW() WHERE id = '33d2ce5c-4442-4209-8e61-5e47c3a72f3a';
+
+-- UPDATE SEASON: Amar Vishwas S1 (ID: 51833e2f-5c2b-4bd7-87d4-b56b241c286d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3qp1dq60zqvrv0r', file_size_720p = NULL, file_size_1080p = '14.8GB', updated_at = NOW() WHERE id = '51833e2f-5c2b-4bd7-87d4-b56b241c286d';
+
+-- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S1 (ID: 528ca82f-c9bf-4431-9033-3841b811b3de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/56dqd00nkq6wktm', file_size_720p = NULL, file_size_1080p = '23.1GB', updated_at = NOW() WHERE id = '528ca82f-c9bf-4431-9033-3841b811b3de';
+
+-- UPDATE SEASON: MobLand S1 (ID: 3f07cea4-14bd-49b3-b60f-7d636f8451e9)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/sytiarh7id06igr', download_url_1080p = 'https://hubcloud.ist/drive/ihduifx548lddif', file_size_720p = '3.2GB', file_size_1080p = '7.5GB', updated_at = NOW() WHERE id = '3f07cea4-14bd-49b3-b60f-7d636f8451e9';
+
+-- UPDATE SEASON: Super Subbu S1 (ID: 4aa67bac-5a4b-436b-af22-4a47f04f19de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/b9xt6645vxv4801', file_size_720p = NULL, file_size_1080p = '15.7GB', updated_at = NOW() WHERE id = '4aa67bac-5a4b-436b-af22-4a47f04f19de';
+
+-- UPDATE SEASON: I Will Find You S2 (ID: 25902eba-776f-4bca-ac1c-f38a0c80a7a3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '25902eba-776f-4bca-ac1c-f38a0c80a7a3';
+
+-- UPDATE SEASON: I Will Find You S1 (ID: 8f24c083-60cc-4c53-bcc0-193e5f7f0228)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '8f24c083-60cc-4c53-bcc0-193e5f7f0228';
+
+-- UPDATE SEASON: Vadhandhi S2 (ID: 8cddc4a8-2441-435d-9943-0f3bacca473e)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bprr22a3mntjrd5', download_url_1080p = 'https://hubcloud.ist/drive/jvpjcwdtcjp1jyw', file_size_720p = '2.3GB', file_size_1080p = '5.4GB', updated_at = NOW() WHERE id = '8cddc4a8-2441-435d-9943-0f3bacca473e';
+
+-- UPDATE SEASON: Bloodhounds S2 (ID: dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ukrzofgorzkimzt', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61';
+
+-- UPDATE SEASON: Good Omens S2 (ID: 4325de31-a3de-431d-a116-693bb25458cc)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/2one2oel72zqf5f', download_url_1080p = 'https://hubcloud.ist/drive/h16ah1qa9qt0bca', file_size_720p = '2GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = '4325de31-a3de-431d-a116-693bb25458cc';
+
+-- UPDATE SEASON: The Lincoln Lawyer S4 (ID: 4ac3c59d-8b43-4d6d-9093-5df90b45b82c)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/9a9zyqfymxq46jn', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = '4ac3c59d-8b43-4d6d-9093-5df90b45b82c';
+
+-- UPDATE SEASON: Vadhandhi S1 (ID: 8f367e65-e587-4638-bfec-82f1b4706f7c)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/w9kbiocoqkkq11b', download_url_1080p = 'https://hubcloud.ist/drive/iqmrowjubcur8pu', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '8f367e65-e587-4638-bfec-82f1b4706f7c';
+
+-- UPDATE SEASON: Human Vapor S1 (ID: 07a8a776-3386-4cee-9b47-268969f67305)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/0dypunvxcb4ec5y', download_url_1080p = 'https://hubcloud.ist/drive/z57efh22zfufijt', file_size_720p = '2.5GB', file_size_1080p = '5.7GB', updated_at = NOW() WHERE id = '07a8a776-3386-4cee-9b47-268969f67305';
+
+-- UPDATE SEASON: Good Omens S1 (ID: 70d3775c-a71a-4e2b-9ecd-758ca186631c)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/4y4ksjjs4kz9u9q', download_url_1080p = 'https://hubcloud.ist/drive/dg10dgpgquurmug', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '70d3775c-a71a-4e2b-9ecd-758ca186631c';
+
+-- UPDATE SEASON: Batman: Caped Crusader S1 (ID: 5b91a8e2-92a6-4c0b-9bb4-87038779aec2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/uuouu4a22a22y31', file_size_720p = NULL, file_size_1080p = '18.9GB', updated_at = NOW() WHERE id = '5b91a8e2-92a6-4c0b-9bb4-87038779aec2';
+
+-- UPDATE SEASON: MobLand S1 (ID: 3f07cea4-14bd-49b3-b60f-7d636f8451e9)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/sytiarh7id06igr', download_url_1080p = 'https://hubcloud.ist/drive/ihduifx548lddif', file_size_720p = '3.2GB', file_size_1080p = '7.5GB', updated_at = NOW() WHERE id = '3f07cea4-14bd-49b3-b60f-7d636f8451e9';
+
+-- UPDATE SEASON: Good Omens S3 (ID: eb64c780-d12f-4450-8ee4-35193d35d41b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/24chmhue1y6v9ux', download_url_1080p = 'https://hubcloud.ist/drive/6gavwkkhwa6kwan', file_size_720p = '680MB', file_size_1080p = '1.5GB', updated_at = NOW() WHERE id = 'eb64c780-d12f-4450-8ee4-35193d35d41b';
+
+-- UPDATE SEASON: Batman: Caped Crusader S2 (ID: 9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/dbebgu3bbvay1ug', file_size_720p = NULL, file_size_1080p = '18.4GB', updated_at = NOW() WHERE id = '9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12';
+
+-- UPDATE SEASON: Ransom Canyon S1 (ID: 4290061f-0471-4e8b-836f-94b9bcee1fec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/pw68mkxuj1cp116', file_size_720p = NULL, file_size_1080p = '28GB', updated_at = NOW() WHERE id = '4290061f-0471-4e8b-836f-94b9bcee1fec';
+
+-- UPDATE SEASON: Save the Tigers S3 (ID: 2de2b86a-16e4-4a50-aba5-071650a7b5aa)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/0sf5w5w8r696vjm', file_size_720p = NULL, file_size_1080p = '6.2GB', updated_at = NOW() WHERE id = '2de2b86a-16e4-4a50-aba5-071650a7b5aa';
+
+-- UPDATE SEASON: Poker Face S2 (ID: 65cb1002-9c9e-41ff-985f-5969bdb956b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/cgi6tm4gpfekeif', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = '65cb1002-9c9e-41ff-985f-5969bdb956b6';
+
+-- UPDATE SEASON: Ransom Canyon S2 (ID: e6fc8660-3898-4117-9674-284b62e1aaf2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/p1dr4mqsy7es4jj', file_size_720p = NULL, file_size_1080p = '19.3GB', updated_at = NOW() WHERE id = 'e6fc8660-3898-4117-9674-284b62e1aaf2';
+
+-- UPDATE SEASON: Fauda S5 (ID: 891ff6a2-6a83-4ef4-96ae-db90d0abd850)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/2x7bgz118ng712n', file_size_720p = NULL, file_size_1080p = '22.8GB', updated_at = NOW() WHERE id = '891ff6a2-6a83-4ef4-96ae-db90d0abd850';
+
+-- UPDATE SEASON: Taxi Driver S1 (ID: 208c787c-bbfa-4166-a1fe-76724c5d7e26)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/hdnnpapjv4jkppr', download_url_1080p = 'https://hubcloud.ist/drive/zcetdjlwh1jwjsh', file_size_720p = '1.2GB', file_size_1080p = '2.9GB', updated_at = NOW() WHERE id = '208c787c-bbfa-4166-a1fe-76724c5d7e26';
