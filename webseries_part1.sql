@@ -1100,3 +1100,81 @@ UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dlodxhrowzllb
 
 -- UPDATE EPISODE: Wheel Of Fortune India S1E3 (ID: 0331a589-3500-4800-945b-87fb07650db6)
 UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '0331a589-3500-4800-945b-87fb07650db6';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E5 (ID: 2601aff8-5103-49ea-a790-9e150c196190)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '2601aff8-5103-49ea-a790-9e150c196190';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E8 (ID: 2c321233-7031-49cc-b8fe-bb7ce746fc18)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '2c321233-7031-49cc-b8fe-bb7ce746fc18';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E4 (ID: 30d12420-ae16-45c5-8976-30b5cd8217c5)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30d12420-ae16-45c5-8976-30b5cd8217c5';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E2 (ID: 7495a721-f00f-4448-95d3-5d1cd8904453)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '7495a721-f00f-4448-95d3-5d1cd8904453';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E7 (ID: 962f23b3-92a9-48a7-a791-e1ffc2891d31)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '962f23b3-92a9-48a7-a791-e1ffc2891d31';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E1 (ID: 99575dbd-c5a9-4296-9e22-752352b9fad5)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '99575dbd-c5a9-4296-9e22-752352b9fad5';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E6 (ID: e1e6fcf5-51ae-48ec-b0ce-50086a6b9c72)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = 'e1e6fcf5-51ae-48ec-b0ce-50086a6b9c72';
+
+-- UPDATE SEASON: Reacher S2 (ID: 27adc1fd-ef3b-4e08-be09-c1debd51574d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/rviiufzfa22m4e1', download_url_1080p = NULL, file_size_720p = '2.1GB', file_size_1080p = NULL, updated_at = NOW() WHERE id = '27adc1fd-ef3b-4e08-be09-c1debd51574d';
+
+-- UPDATE SEASON: MobLand S1 (ID: 3f07cea4-14bd-49b3-b60f-7d636f8451e9)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/sytiarh7id06igr', download_url_1080p = 'https://hubcloud.ist/drive/ihduifx548lddif', file_size_720p = '3.2GB', file_size_1080p = '7.5GB', updated_at = NOW() WHERE id = '3f07cea4-14bd-49b3-b60f-7d636f8451e9';
+
+-- UPDATE SEASON: The Lincoln Lawyer S4 (ID: 4ac3c59d-8b43-4d6d-9093-5df90b45b82c)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/9a9zyqfymxq46jn', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = '4ac3c59d-8b43-4d6d-9093-5df90b45b82c';
+
+-- UPDATE SEASON: Reacher S1 (ID: 9d7cf0e7-2dbb-4de4-b8cf-471ffd4edfef)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/jth5jww2y2hjaet', download_url_1080p = 'https://hubcloud.ist/drive/kxpsrkxshzpstq6', file_size_720p = '3.2GB', file_size_1080p = '7.3GB', updated_at = NOW() WHERE id = '9d7cf0e7-2dbb-4de4-b8cf-471ffd4edfef';
+
+-- UPDATE SEASON: Spring Fever S1 (ID: a9a800d3-c328-43c6-a748-8d531ecbf6c1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xazyqlllsd5y11m', file_size_720p = NULL, file_size_1080p = '31.7GB', updated_at = NOW() WHERE id = 'a9a800d3-c328-43c6-a748-8d531ecbf6c1';
+
+-- UPDATE SEASON: Fauda S5 (ID: 891ff6a2-6a83-4ef4-96ae-db90d0abd850)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/2x7bgz118ng712n', file_size_720p = NULL, file_size_1080p = '22.8GB', updated_at = NOW() WHERE id = '891ff6a2-6a83-4ef4-96ae-db90d0abd850';
+
+-- UPDATE SEASON: Cash Queens S1 (ID: ad44cef7-d825-4683-935a-79a484dce7ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3weuo3sb3wnsf26', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = 'ad44cef7-d825-4683-935a-79a484dce7ec';
+
+-- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
+
+-- UPDATE SEASON: The Witness S1 (ID: e35c44d6-dff7-4728-91fd-f0adec5c4054)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jpyyhsookkleyvp', file_size_720p = NULL, file_size_1080p = '8.7GB', updated_at = NOW() WHERE id = 'e35c44d6-dff7-4728-91fd-f0adec5c4054';
+
+-- UPDATE SEASON: Little Disasters S2 (ID: 34bd1f4e-c9cc-49c9-bdcb-d3fd99a48698)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qvkamdmgwb2ldjm', file_size_720p = NULL, file_size_1080p = '16GB', updated_at = NOW() WHERE id = '34bd1f4e-c9cc-49c9-bdcb-d3fd99a48698';
+
+-- UPDATE SEASON: Reacher S4 (ID: e8cf8417-e0c3-47d9-b135-8882e920e5c2)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/0ohnugwkxrfuoon', download_url_1080p = 'https://hubcloud.ist/drive/kbkkv0w1fklkbk1', file_size_720p = '2.4GB', file_size_1080p = '5.1GB', updated_at = NOW() WHERE id = 'e8cf8417-e0c3-47d9-b135-8882e920e5c2';
+
+-- UPDATE SEASON: Maamla Legal Hai S1 (ID: 19ddff35-41f9-4088-ba3b-18ebe9977d1f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '19ddff35-41f9-4088-ba3b-18ebe9977d1f';
+
+-- UPDATE SEASON: My Life with the Walter Boys S3 (ID: 13b4d80c-61c0-4101-a39f-304aad47d741)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/gnijgjxxa5nxrga', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '13b4d80c-61c0-4101-a39f-304aad47d741';
+
+-- UPDATE SEASON: Little Disasters S1 (ID: 40858c3d-9255-46da-aa4b-d8185c4af02d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qvkamdmgwb2ldjm', file_size_720p = NULL, file_size_1080p = '16GB', updated_at = NOW() WHERE id = '40858c3d-9255-46da-aa4b-d8185c4af02d';
+
+-- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: Maamla Legal Hai S2 (ID: 6e6cd048-ceae-452e-8b18-f26911ab9591)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '6e6cd048-ceae-452e-8b18-f26911ab9591';
+
+-- UPDATE SEASON: My Life with the Walter Boys S2 (ID: 463b523a-8f13-4009-9234-cdb2687a7cc9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/1djxdpxfxikkdfk', file_size_720p = NULL, file_size_1080p = '19GB', updated_at = NOW() WHERE id = '463b523a-8f13-4009-9234-cdb2687a7cc9';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: My Life with the Walter Boys S1 (ID: bf416468-5e43-4b89-8ba1-853e2645de83)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/i9kaudr8116a6cc', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'bf416468-5e43-4b89-8ba1-853e2645de83';
