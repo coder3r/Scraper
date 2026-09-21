@@ -1013,3 +1013,90 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Nice to Not Meet You S1 (ID: dd1b64ce-2ed0-4ca1-b55a-179b62661a6e)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zwenagjawoqkvpd', file_size_720p = NULL, file_size_1080p = '59.6GB', updated_at = NOW() WHERE id = 'dd1b64ce-2ed0-4ca1-b55a-179b62661a6e';
+
+-- UPDATE SEASON: Outer Banks S1 (ID: bad66f33-97bc-416b-9c8e-c0f5de38bdda)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'bad66f33-97bc-416b-9c8e-c0f5de38bdda';
+
+-- UPDATE SEASON: Outer Banks S2 (ID: f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a';
+
+-- UPDATE SEASON: Lost in Space S2 (ID: 7591e674-386a-4367-a093-38a8a9f1bd17)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qqzq8icmzicc5cc', file_size_720p = NULL, file_size_1080p = '19.4GB', updated_at = NOW() WHERE id = '7591e674-386a-4367-a093-38a8a9f1bd17';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S2 (ID: 2726c11c-c7d3-45bc-a61c-5b0b14d16dc7)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '2726c11c-c7d3-45bc-a61c-5b0b14d16dc7';
+
+-- UPDATE SEASON: Vadhandhi S2 (ID: 8cddc4a8-2441-435d-9943-0f3bacca473e)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bprr22a3mntjrd5', download_url_1080p = 'https://hubcloud.ist/drive/jvpjcwdtcjp1jyw', file_size_720p = '2.3GB', file_size_1080p = '5.4GB', updated_at = NOW() WHERE id = '8cddc4a8-2441-435d-9943-0f3bacca473e';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S3 (ID: 9201c77c-8f4b-4b10-8161-3c5a8395303e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '9201c77c-8f4b-4b10-8161-3c5a8395303e';
+
+-- UPDATE SEASON: Lost in Space S3 (ID: a53c7155-57eb-44ae-a182-7b6ac6ca932f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/t0olycc0swtfuvt', file_size_720p = NULL, file_size_1080p = '16.2GB', updated_at = NOW() WHERE id = 'a53c7155-57eb-44ae-a182-7b6ac6ca932f';
+
+-- UPDATE SEASON: Vadhandhi S1 (ID: 8f367e65-e587-4638-bfec-82f1b4706f7c)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/w9kbiocoqkkq11b', download_url_1080p = 'https://hubcloud.ist/drive/iqmrowjubcur8pu', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '8f367e65-e587-4638-bfec-82f1b4706f7c';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S1 (ID: a27e83ab-6196-4b8d-a8e0-8830a38baed8)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/jup31uuiqyouy00', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = 'a27e83ab-6196-4b8d-a8e0-8830a38baed8';
+
+-- UPDATE SEASON: Super Subbu S1 (ID: 4aa67bac-5a4b-436b-af22-4a47f04f19de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/b9xt6645vxv4801', file_size_720p = NULL, file_size_1080p = '15.7GB', updated_at = NOW() WHERE id = '4aa67bac-5a4b-436b-af22-4a47f04f19de';
+
+-- UPDATE SEASON: Mousetrap S1 (ID: 3404b0a7-3f31-4e11-a209-58c000ff74db)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/okenwspdpxokhxz', download_url_1080p = 'https://hubcloud.ist/drive/zlptqvlqc75lt76', file_size_720p = '3.8GB', file_size_1080p = '9.2GB', updated_at = NOW() WHERE id = '3404b0a7-3f31-4e11-a209-58c000ff74db';
+
+-- UPDATE SEASON: Mayor of Kingstown S2 (ID: 05721b17-7e61-4aff-b018-3df397905884)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/c1xcj29w1vfi1jj', file_size_720p = NULL, file_size_1080p = '29.6GB', updated_at = NOW() WHERE id = '05721b17-7e61-4aff-b018-3df397905884';
+
+-- UPDATE EPISODE: Mr. Robot S2E1 (ID: 30b53fee-4dd2-49cf-93a4-447a608cfb5e)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30b53fee-4dd2-49cf-93a4-447a608cfb5e';
+
+-- UPDATE EPISODE: Mr. Robot S2E2 (ID: 5b3cbb9c-8666-4801-9e7a-d29417f08f35)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '5b3cbb9c-8666-4801-9e7a-d29417f08f35';
+
+-- UPDATE EPISODE: Mr. Robot S4E1 (ID: 31e671ff-fceb-4e3c-920d-75fb23daa3cd)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '31e671ff-fceb-4e3c-920d-75fb23daa3cd';
+
+-- UPDATE SEASON: Mayor of Kingstown S4 (ID: 2b067b74-a336-4af0-93b3-45121e204f1b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xxbbobvxooxx6kk', file_size_720p = NULL, file_size_1080p = '12.1GB', updated_at = NOW() WHERE id = '2b067b74-a336-4af0-93b3-45121e204f1b';
+
+-- UPDATE SEASON: Bridgerton S2 (ID: 3eae844b-121c-40e0-a433-9d01e4d266bc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xe5jrnrkuxrvhmn', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = '3eae844b-121c-40e0-a433-9d01e4d266bc';
+
+-- UPDATE SEASON: Mayor of Kingstown S3 (ID: 7f1ea876-1c18-4b70-9c8f-02a831f9879f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/rqq1aq6qwmqsmcy', file_size_720p = NULL, file_size_1080p = '32.2GB', updated_at = NOW() WHERE id = '7f1ea876-1c18-4b70-9c8f-02a831f9879f';
+
+-- UPDATE SEASON: Little House on the Prairie S1 (ID: 0edce5dc-10ac-4a26-a3fd-297619e1c119)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/n1lubbdublv15om', download_url_1080p = 'https://hubcloud.ist/drive/1dcu1qkodf8srmc', file_size_720p = '2.7GB', file_size_1080p = '26.2GB', updated_at = NOW() WHERE id = '0edce5dc-10ac-4a26-a3fd-297619e1c119';
+
+-- UPDATE SEASON: Fallout S2 (ID: 74eb542c-df01-4532-98e5-60b34470e829)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/d1sxnddxxlaxrkx', download_url_1080p = 'https://hubcloud.cx/drive/a32nanbab3hh9ye', file_size_720p = '2.6GB', file_size_1080p = '6GB', updated_at = NOW() WHERE id = '74eb542c-df01-4532-98e5-60b34470e829';
+
+-- UPDATE SEASON: Bridgerton S4 (ID: 7b2cfaaf-2385-4645-a6cc-235370e2e95b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/ynbovxoo73yyo3v', download_url_1080p = 'https://hubcloud.cx/drive/wodmppo0purpbwd', file_size_720p = '3GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '7b2cfaaf-2385-4645-a6cc-235370e2e95b';
+
+-- UPDATE SEASON: Inspector Avinash S2 (ID: 215d709a-79af-4a5c-a15c-4b4fa5653ed8)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1us1u2ccvcdnduu', download_url_1080p = 'https://hubcloud.ist/drive/d1vnunn6ny2sbuv', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '215d709a-79af-4a5c-a15c-4b4fa5653ed8';
+
+-- UPDATE SEASON: 24: India S2 (ID: bcf057fc-ccb5-4bc2-b9c5-d82369d15f36)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/wa8enajh8h9zknh', download_url_1080p = 'https://hubcloud.ist/drive/39leqe9boxsly3c', file_size_720p = '1.5GB', file_size_1080p = '3.4GB', updated_at = NOW() WHERE id = 'bcf057fc-ccb5-4bc2-b9c5-d82369d15f36';
+
+-- UPDATE SEASON: Bridgerton S1 (ID: ed222138-0099-431c-b1f0-3bcab704cf70)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/84j1pdnj4jtttdy', file_size_720p = NULL, file_size_1080p = '21.1GB', updated_at = NOW() WHERE id = 'ed222138-0099-431c-b1f0-3bcab704cf70';
+
+-- UPDATE SEASON: Avatar the Last Airbender S2 (ID: 0bc6f1ef-2b90-4a7d-b68c-e942e9500409)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q7vuzlgv7t8z1ew', download_url_1080p = 'https://hubcloud.ist/drive/podfsprhdfphdnw', file_size_720p = '3GB', file_size_1080p = '7.1GB', updated_at = NOW() WHERE id = '0bc6f1ef-2b90-4a7d-b68c-e942e9500409';
+
+-- UPDATE SEASON: Inspector Avinash S1 (ID: 22354c33-0f59-417d-aab3-fadad9d20293)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/el4209dofdxw9jg', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '22354c33-0f59-417d-aab3-fadad9d20293';
+
+-- UPDATE SEASON: Bridgerton S3 (ID: f0f1b5e8-84ef-47e9-8b3a-7a243100b814)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zux9ddhxahor2xm', file_size_720p = NULL, file_size_1080p = '22.6GB', updated_at = NOW() WHERE id = 'f0f1b5e8-84ef-47e9-8b3a-7a243100b814';
+
+-- UPDATE SEASON: Neagley S1 (ID: 3c6380b5-a404-4154-a26f-d8626e04aca5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dlodxhrowzllbfa', download_url_1080p = 'https://hubcloud.ist/drive/mw2lyjx7jjxll97', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '3c6380b5-a404-4154-a26f-d8626e04aca5';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E3 (ID: 0331a589-3500-4800-945b-87fb07650db6)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '0331a589-3500-4800-945b-87fb07650db6';
