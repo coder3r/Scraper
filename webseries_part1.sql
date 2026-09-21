@@ -1178,3 +1178,90 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: My Life with the Walter Boys S1 (ID: bf416468-5e43-4b89-8ba1-853e2645de83)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/i9kaudr8116a6cc', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'bf416468-5e43-4b89-8ba1-853e2645de83';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: "XO S3 (ID: 219ae61c-7bbd-437b-a607-e992dcb55097)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ybgcjgyfj71qg5f', file_size_720p = NULL, file_size_1080p = '11GB', updated_at = NOW() WHERE id = '219ae61c-7bbd-437b-a607-e992dcb55097';
+
+-- UPDATE SEASON: I Will Find You S2 (ID: 25902eba-776f-4bca-ac1c-f38a0c80a7a3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '25902eba-776f-4bca-ac1c-f38a0c80a7a3';
+
+-- UPDATE SEASON: Attack on Titan S1 (ID: 05bcc482-43a3-4e80-a513-e962cafad68d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/e1gegslfsechhej', file_size_720p = NULL, file_size_1080p = '9.1GB', updated_at = NOW() WHERE id = '05bcc482-43a3-4e80-a513-e962cafad68d';
+
+-- UPDATE SEASON: Mad Concrete Dreams S1 (ID: 4f424828-9acb-41bc-96f1-678169593c0d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/2gfxwgigwtcqnc1', download_url_1080p = 'https://hubcloud.ist/drive/lu5thuc17oiiewr', file_size_720p = '5.1GB', file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '4f424828-9acb-41bc-96f1-678169593c0d';
+
+-- UPDATE SEASON: I Will Find You S1 (ID: 8f24c083-60cc-4c53-bcc0-193e5f7f0228)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '8f24c083-60cc-4c53-bcc0-193e5f7f0228';
+
+-- UPDATE SEASON: Poker Face S2 (ID: 65cb1002-9c9e-41ff-985f-5969bdb956b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/cgi6tm4gpfekeif', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = '65cb1002-9c9e-41ff-985f-5969bdb956b6';
+
+-- UPDATE SEASON: Batman: Caped Crusader S1 (ID: 5b91a8e2-92a6-4c0b-9bb4-87038779aec2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/uuouu4a22a22y31', file_size_720p = NULL, file_size_1080p = '18.9GB', updated_at = NOW() WHERE id = '5b91a8e2-92a6-4c0b-9bb4-87038779aec2';
+
+-- UPDATE SEASON: Bridgerton S2 (ID: 3eae844b-121c-40e0-a433-9d01e4d266bc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xe5jrnrkuxrvhmn', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = '3eae844b-121c-40e0-a433-9d01e4d266bc';
+
+-- UPDATE SEASON: Silo S3 (ID: 7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/7jqsjjs7sj10j7q', file_size_720p = NULL, file_size_1080p = '40.8GB', updated_at = NOW() WHERE id = '7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9';
+
+-- UPDATE SEASON: Avatar the Last Airbender S2 (ID: 0bc6f1ef-2b90-4a7d-b68c-e942e9500409)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q7vuzlgv7t8z1ew', download_url_1080p = 'https://hubcloud.ist/drive/podfsprhdfphdnw', file_size_720p = '3GB', file_size_1080p = '7.1GB', updated_at = NOW() WHERE id = '0bc6f1ef-2b90-4a7d-b68c-e942e9500409';
+
+-- UPDATE SEASON: Batman: Caped Crusader S2 (ID: 9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/dbebgu3bbvay1ug', file_size_720p = NULL, file_size_1080p = '18.4GB', updated_at = NOW() WHERE id = '9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12';
+
+-- UPDATE SEASON: Bridgerton S4 (ID: 7b2cfaaf-2385-4645-a6cc-235370e2e95b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/ynbovxoo73yyo3v', download_url_1080p = 'https://hubcloud.cx/drive/wodmppo0purpbwd', file_size_720p = '3GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '7b2cfaaf-2385-4645-a6cc-235370e2e95b';
+
+-- UPDATE SEASON: Little Disasters S2 (ID: 34bd1f4e-c9cc-49c9-bdcb-d3fd99a48698)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qvkamdmgwb2ldjm', file_size_720p = NULL, file_size_1080p = '16GB', updated_at = NOW() WHERE id = '34bd1f4e-c9cc-49c9-bdcb-d3fd99a48698';
+
+-- UPDATE SEASON: The Lincoln Lawyer S4 (ID: 4ac3c59d-8b43-4d6d-9093-5df90b45b82c)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/9a9zyqfymxq46jn', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = '4ac3c59d-8b43-4d6d-9093-5df90b45b82c';
+
+-- UPDATE SEASON: Bridgerton S1 (ID: ed222138-0099-431c-b1f0-3bcab704cf70)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/84j1pdnj4jtttdy', file_size_720p = NULL, file_size_1080p = '21.1GB', updated_at = NOW() WHERE id = 'ed222138-0099-431c-b1f0-3bcab704cf70';
+
+-- UPDATE SEASON: Mayor of Kingstown S2 (ID: 05721b17-7e61-4aff-b018-3df397905884)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/c1xcj29w1vfi1jj', file_size_720p = NULL, file_size_1080p = '29.6GB', updated_at = NOW() WHERE id = '05721b17-7e61-4aff-b018-3df397905884';
+
+-- UPDATE SEASON: Little Disasters S1 (ID: 40858c3d-9255-46da-aa4b-d8185c4af02d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qvkamdmgwb2ldjm', file_size_720p = NULL, file_size_1080p = '16GB', updated_at = NOW() WHERE id = '40858c3d-9255-46da-aa4b-d8185c4af02d';
+
+-- UPDATE SEASON: Bridgerton S3 (ID: f0f1b5e8-84ef-47e9-8b3a-7a243100b814)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zux9ddhxahor2xm', file_size_720p = NULL, file_size_1080p = '22.6GB', updated_at = NOW() WHERE id = 'f0f1b5e8-84ef-47e9-8b3a-7a243100b814';
+
+-- UPDATE SEASON: Mayor of Kingstown S4 (ID: 2b067b74-a336-4af0-93b3-45121e204f1b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xxbbobvxooxx6kk', file_size_720p = NULL, file_size_1080p = '12.1GB', updated_at = NOW() WHERE id = '2b067b74-a336-4af0-93b3-45121e204f1b';
+
+-- UPDATE SEASON: Mayor of Kingstown S3 (ID: 7f1ea876-1c18-4b70-9c8f-02a831f9879f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/rqq1aq6qwmqsmcy', file_size_720p = NULL, file_size_1080p = '32.2GB', updated_at = NOW() WHERE id = '7f1ea876-1c18-4b70-9c8f-02a831f9879f';
+
+-- UPDATE SEASON: Maamla Legal Hai S1 (ID: 19ddff35-41f9-4088-ba3b-18ebe9977d1f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '19ddff35-41f9-4088-ba3b-18ebe9977d1f';
+
+-- UPDATE SEASON: Reacher S2 (ID: 27adc1fd-ef3b-4e08-be09-c1debd51574d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/rviiufzfa22m4e1', download_url_1080p = NULL, file_size_720p = '2.1GB', file_size_1080p = NULL, updated_at = NOW() WHERE id = '27adc1fd-ef3b-4e08-be09-c1debd51574d';
+
+-- UPDATE SEASON: 24: India S2 (ID: bcf057fc-ccb5-4bc2-b9c5-d82369d15f36)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/wa8enajh8h9zknh', download_url_1080p = 'https://hubcloud.ist/drive/39leqe9boxsly3c', file_size_720p = '1.5GB', file_size_1080p = '3.4GB', updated_at = NOW() WHERE id = 'bcf057fc-ccb5-4bc2-b9c5-d82369d15f36';
+
+-- UPDATE SEASON: Maamla Legal Hai S2 (ID: 6e6cd048-ceae-452e-8b18-f26911ab9591)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '6e6cd048-ceae-452e-8b18-f26911ab9591';
+
+-- UPDATE SEASON: Reacher S1 (ID: 9d7cf0e7-2dbb-4de4-b8cf-471ffd4edfef)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/jth5jww2y2hjaet', download_url_1080p = 'https://hubcloud.ist/drive/kxpsrkxshzpstq6', file_size_720p = '3.2GB', file_size_1080p = '7.3GB', updated_at = NOW() WHERE id = '9d7cf0e7-2dbb-4de4-b8cf-471ffd4edfef';
+
+-- UPDATE SEASON: Raktanchal S2 (ID: 35c6b3a5-6e31-46ec-ab5d-897f539c2612)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/z1hzppfypxj1hjt', file_size_720p = NULL, file_size_1080p = '17.9GB', updated_at = NOW() WHERE id = '35c6b3a5-6e31-46ec-ab5d-897f539c2612';
+
+-- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
