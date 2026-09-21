@@ -1676,3 +1676,72 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Taxi Driver S1 (ID: 208c787c-bbfa-4166-a1fe-76724c5d7e26)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/hdnnpapjv4jkppr', download_url_1080p = 'https://hubcloud.ist/drive/zcetdjlwh1jwjsh', file_size_720p = '1.2GB', file_size_1080p = '2.9GB', updated_at = NOW() WHERE id = '208c787c-bbfa-4166-a1fe-76724c5d7e26';
+
+-- UPDATE SEASON: Spring Fever S1 (ID: a9a800d3-c328-43c6-a748-8d531ecbf6c1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xazyqlllsd5y11m', file_size_720p = NULL, file_size_1080p = '31.7GB', updated_at = NOW() WHERE id = 'a9a800d3-c328-43c6-a748-8d531ecbf6c1';
+
+-- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
+
+-- UPDATE SEASON: Notes from the Last Row S1 (ID: bfb65dec-60b1-45f1-96ec-cba7904654f2)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/s9kss1ubej14jks', download_url_1080p = 'https://hubcloud.ist/drive/juo0u0ovi32fyay', file_size_720p = '2.5GB', file_size_1080p = '5.9GB', updated_at = NOW() WHERE id = 'bfb65dec-60b1-45f1-96ec-cba7904654f2';
+
+-- UPDATE SEASON: Sapne vs Everyone S2 (ID: 3ec4a25a-88be-4af3-aa9c-f9b86336a400)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/mk7ohv4k42apv27', download_url_1080p = 'https://hubcloud.ist/drive/uhxuzqpyclt0zlk', file_size_720p = '1.9GB', file_size_1080p = '4.5GB', updated_at = NOW() WHERE id = '3ec4a25a-88be-4af3-aa9c-f9b86336a400';
+
+-- UPDATE SEASON: Silo S3 (ID: 7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/7jqsjjs7sj10j7q', file_size_720p = NULL, file_size_1080p = '40.8GB', updated_at = NOW() WHERE id = '7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9';
+
+-- UPDATE SEASON: Monster: The Lizzie Borden Story S1 (ID: f6f49d18-da8e-4f82-b61b-9f74eb0d3d28)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cy7tart1sznf1rc', download_url_1080p = 'https://hubcloud.ist/drive/sptq6s0su0qppfs', file_size_720p = '2.7GB', file_size_1080p = '6.4GB', updated_at = NOW() WHERE id = 'f6f49d18-da8e-4f82-b61b-9f74eb0d3d28';
+
+-- UPDATE SEASON: Sapne vs Everyone S1 (ID: faa402aa-9b64-47fc-8f5f-37e190fbb1fe)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/lu7fcmdmafgcgal', download_url_1080p = 'https://hubcloud.ist/drive/k56villpibyhxzn', file_size_720p = '2GB', file_size_1080p = '4.9GB', updated_at = NOW() WHERE id = 'faa402aa-9b64-47fc-8f5f-37e190fbb1fe';
+
+-- UPDATE SEASON: Ab Hoga Hisaab S2 (ID: a7b4649e-73e6-47f0-a1c1-27ae81a67d9e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/mfhnywryfwf5lkh', file_size_720p = NULL, file_size_1080p = '12.3GB', updated_at = NOW() WHERE id = 'a7b4649e-73e6-47f0-a1c1-27ae81a67d9e';
+
+-- UPDATE SEASON: Undekhi S4 (ID: 311986a4-e847-422c-96e7-68988c508510)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = '311986a4-e847-422c-96e7-68988c508510';
+
+-- UPDATE SEASON: Nice to Not Meet You S1 (ID: dd1b64ce-2ed0-4ca1-b55a-179b62661a6e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zwenagjawoqkvpd', file_size_720p = NULL, file_size_1080p = '59.6GB', updated_at = NOW() WHERE id = 'dd1b64ce-2ed0-4ca1-b55a-179b62661a6e';
+
+-- UPDATE SEASON: Ab Hoga Hisaab S1 (ID: bf557fa1-8914-4a18-84ad-a6a536f744b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/azburmx7bn2gg31', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = 'bf557fa1-8914-4a18-84ad-a6a536f744b6';
+
+-- UPDATE SEASON: Bridgerton S2 (ID: 3eae844b-121c-40e0-a433-9d01e4d266bc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xe5jrnrkuxrvhmn', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = '3eae844b-121c-40e0-a433-9d01e4d266bc';
+
+-- UPDATE SEASON: Undekhi S3 (ID: 5613fcfb-2836-4d5e-a910-87fa3f52a9a6)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = '5613fcfb-2836-4d5e-a910-87fa3f52a9a6';
+
+-- UPDATE SEASON: Inspector Avinash S2 (ID: 215d709a-79af-4a5c-a15c-4b4fa5653ed8)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1us1u2ccvcdnduu', download_url_1080p = 'https://hubcloud.ist/drive/d1vnunn6ny2sbuv', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '215d709a-79af-4a5c-a15c-4b4fa5653ed8';
+
+-- UPDATE SEASON: 24: India S2 (ID: bcf057fc-ccb5-4bc2-b9c5-d82369d15f36)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/wa8enajh8h9zknh', download_url_1080p = 'https://hubcloud.ist/drive/39leqe9boxsly3c', file_size_720p = '1.5GB', file_size_1080p = '3.4GB', updated_at = NOW() WHERE id = 'bcf057fc-ccb5-4bc2-b9c5-d82369d15f36';
+
+-- UPDATE SEASON: Bridgerton S4 (ID: 7b2cfaaf-2385-4645-a6cc-235370e2e95b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/ynbovxoo73yyo3v', download_url_1080p = 'https://hubcloud.cx/drive/wodmppo0purpbwd', file_size_720p = '3GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '7b2cfaaf-2385-4645-a6cc-235370e2e95b';
+
+-- UPDATE SEASON: Undekhi S1 (ID: b68fe1e3-d7c8-493a-b00b-bb6fc12b963b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = 'b68fe1e3-d7c8-493a-b00b-bb6fc12b963b';
+
+-- UPDATE SEASON: Inspector Avinash S1 (ID: 22354c33-0f59-417d-aab3-fadad9d20293)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/el4209dofdxw9jg', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '22354c33-0f59-417d-aab3-fadad9d20293';
+
+-- UPDATE SEASON: Bridgerton S1 (ID: ed222138-0099-431c-b1f0-3bcab704cf70)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/84j1pdnj4jtttdy', file_size_720p = NULL, file_size_1080p = '21.1GB', updated_at = NOW() WHERE id = 'ed222138-0099-431c-b1f0-3bcab704cf70';
+
+-- UPDATE SEASON: Undekhi S2 (ID: ea82510e-94ba-401f-a498-2e6f04d7fb02)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = 'ea82510e-94ba-401f-a498-2e6f04d7fb02';
+
+-- UPDATE SEASON: S Line S1 (ID: e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswofrr', download_url_1080p = 'https://hubcloud.ist/drive/uv1durc1eadcwk1', file_size_720p = '1.9GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5';
+
+-- UPDATE SEASON: Bridgerton S3 (ID: f0f1b5e8-84ef-47e9-8b3a-7a243100b814)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zux9ddhxahor2xm', file_size_720p = NULL, file_size_1080p = '22.6GB', updated_at = NOW() WHERE id = 'f0f1b5e8-84ef-47e9-8b3a-7a243100b814';
+
+-- UPDATE SEASON: Fallout S2 (ID: 74eb542c-df01-4532-98e5-60b34470e829)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.cx/drive/d1sxnddxxlaxrkx', download_url_1080p = 'https://hubcloud.cx/drive/a32nanbab3hh9ye', file_size_720p = '2.6GB', file_size_1080p = '6GB', updated_at = NOW() WHERE id = '74eb542c-df01-4532-98e5-60b34470e829';
