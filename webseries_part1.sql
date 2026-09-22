@@ -2093,3 +2093,84 @@ UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_si
 
 -- UPDATE SEASON: Raktanchal S3 (ID: cad76c6d-cd6d-46fb-b0b9-a86dba27428a)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/mbpdwvxxblwl9yb', download_url_1080p = 'https://hubcloud.ist/drive/wsh12wuostnqigw', file_size_720p = '2GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'cad76c6d-cd6d-46fb-b0b9-a86dba27428a';
+
+-- UPDATE SEASON: Nice to Not Meet You S1 (ID: dd1b64ce-2ed0-4ca1-b55a-179b62661a6e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zwenagjawoqkvpd', file_size_720p = NULL, file_size_1080p = '59.6GB', updated_at = NOW() WHERE id = 'dd1b64ce-2ed0-4ca1-b55a-179b62661a6e';
+
+-- UPDATE SEASON: Beast Games S1 (ID: 5aab1ea7-576c-4085-a535-67f96655865d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/x1jtjdjlouuxpd0', file_size_720p = NULL, file_size_1080p = '34GB', updated_at = NOW() WHERE id = '5aab1ea7-576c-4085-a535-67f96655865d';
+
+-- UPDATE SEASON: My Brilliant Career S1 (ID: e40b330e-114b-4f00-9d7a-7e6c4f364c64)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qh6oyn62eyrbaea', file_size_720p = NULL, file_size_1080p = '21.3GB', updated_at = NOW() WHERE id = 'e40b330e-114b-4f00-9d7a-7e6c4f364c64';
+
+-- UPDATE SEASON: Beast Games S2 (ID: 6cc57d57-d120-4cde-a7a6-8af67875df2b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/nhweazkebhwby5r', file_size_720p = NULL, file_size_1080p = '35.8GB', updated_at = NOW() WHERE id = '6cc57d57-d120-4cde-a7a6-8af67875df2b';
+
+-- UPDATE SEASON: Undekhi S4 (ID: 311986a4-e847-422c-96e7-68988c508510)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = '311986a4-e847-422c-96e7-68988c508510';
+
+-- UPDATE SEASON: 24: India S2 (ID: bcf057fc-ccb5-4bc2-b9c5-d82369d15f36)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/wa8enajh8h9zknh', download_url_1080p = 'https://hubcloud.ist/drive/39leqe9boxsly3c', file_size_720p = '1.5GB', file_size_1080p = '3.4GB', updated_at = NOW() WHERE id = 'bcf057fc-ccb5-4bc2-b9c5-d82369d15f36';
+
+-- UPDATE SEASON: Undekhi S3 (ID: 5613fcfb-2836-4d5e-a910-87fa3f52a9a6)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = '5613fcfb-2836-4d5e-a910-87fa3f52a9a6';
+
+-- UPDATE SEASON: Inspector Avinash S2 (ID: 215d709a-79af-4a5c-a15c-4b4fa5653ed8)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1us1u2ccvcdnduu', download_url_1080p = 'https://hubcloud.ist/drive/d1vnunn6ny2sbuv', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '215d709a-79af-4a5c-a15c-4b4fa5653ed8';
+
+-- UPDATE SEASON: Undekhi S1 (ID: b68fe1e3-d7c8-493a-b00b-bb6fc12b963b)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = 'b68fe1e3-d7c8-493a-b00b-bb6fc12b963b';
+
+-- UPDATE SEASON: Inspector Avinash S1 (ID: 22354c33-0f59-417d-aab3-fadad9d20293)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/el4209dofdxw9jg', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '22354c33-0f59-417d-aab3-fadad9d20293';
+
+-- UPDATE SEASON: The Pitt S2 (ID: efb59ac2-c51d-42dd-ab94-6e85df946eb9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/oicsc1cji385y3y', file_size_720p = NULL, file_size_1080p = '44.9GB', updated_at = NOW() WHERE id = 'efb59ac2-c51d-42dd-ab94-6e85df946eb9';
+
+-- UPDATE SEASON: The Boys S5 (ID: fdd3fc56-9711-4069-bf08-0b988fc51cb3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/2ecceu1m2euqd1c', file_size_720p = NULL, file_size_1080p = '37.2GB', updated_at = NOW() WHERE id = 'fdd3fc56-9711-4069-bf08-0b988fc51cb3';
+
+-- UPDATE SEASON: Maamla Legal Hai S1 (ID: 19ddff35-41f9-4088-ba3b-18ebe9977d1f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '19ddff35-41f9-4088-ba3b-18ebe9977d1f';
+
+-- UPDATE SEASON: Undekhi S2 (ID: ea82510e-94ba-401f-a498-2e6f04d7fb02)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/q3wdqx2hd250m1r', download_url_1080p = 'https://hubcloud.ist/drive/9y1xuebqgtig7iu', file_size_720p = '2.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = 'ea82510e-94ba-401f-a498-2e6f04d7fb02';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E3 (ID: 0331a589-3500-4800-945b-87fb07650db6)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '0331a589-3500-4800-945b-87fb07650db6';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E5 (ID: 2601aff8-5103-49ea-a790-9e150c196190)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '2601aff8-5103-49ea-a790-9e150c196190';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E8 (ID: 2c321233-7031-49cc-b8fe-bb7ce746fc18)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '2c321233-7031-49cc-b8fe-bb7ce746fc18';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E4 (ID: 30d12420-ae16-45c5-8976-30b5cd8217c5)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30d12420-ae16-45c5-8976-30b5cd8217c5';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E2 (ID: 7495a721-f00f-4448-95d3-5d1cd8904453)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '7495a721-f00f-4448-95d3-5d1cd8904453';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E7 (ID: 962f23b3-92a9-48a7-a791-e1ffc2891d31)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '962f23b3-92a9-48a7-a791-e1ffc2891d31';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E1 (ID: 99575dbd-c5a9-4296-9e22-752352b9fad5)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '99575dbd-c5a9-4296-9e22-752352b9fad5';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E6 (ID: e1e6fcf5-51ae-48ec-b0ce-50086a6b9c72)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = 'e1e6fcf5-51ae-48ec-b0ce-50086a6b9c72';
+
+-- UPDATE SEASON: Maamla Legal Hai S2 (ID: 6e6cd048-ceae-452e-8b18-f26911ab9591)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '6e6cd048-ceae-452e-8b18-f26911ab9591';
+
+-- UPDATE SEASON: I Will Find You S2 (ID: 25902eba-776f-4bca-ac1c-f38a0c80a7a3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '25902eba-776f-4bca-ac1c-f38a0c80a7a3';
+
+-- UPDATE SEASON: The House of the Spirits S1 (ID: 33d2ce5c-4442-4209-8e61-5e47c3a72f3a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/ti6fktk55pzwtff', download_url_1080p = 'https://hubcloud.ist/drive/obmt4lbozitl4mz', file_size_720p = '2.7GB', file_size_1080p = '6.5GB', updated_at = NOW() WHERE id = '33d2ce5c-4442-4209-8e61-5e47c3a72f3a';
+
+-- UPDATE SEASON: Dutton Ranch S1 (ID: 3c51b88c-3dc7-46a9-98fd-260b1aa7c41a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/xrbx9tqq9km7mlv', download_url_1080p = 'https://hubcloud.ist/drive/cplyq6wcwzvlult', file_size_720p = '3.1GB', file_size_1080p = '7GB', updated_at = NOW() WHERE id = '3c51b88c-3dc7-46a9-98fd-260b1aa7c41a';
+
+-- UPDATE SEASON: I Will Find You S1 (ID: 8f24c083-60cc-4c53-bcc0-193e5f7f0228)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jm9gt5gj8tpjrxo', file_size_720p = NULL, file_size_1080p = '16.9GB', updated_at = NOW() WHERE id = '8f24c083-60cc-4c53-bcc0-193e5f7f0228';
