@@ -1517,3 +1517,81 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: Dynamite Kiss S1 (ID: d6322dc8-91da-4bc0-ab80-6b1e0832fb6f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/vnm7upsvhsm7t1m', file_size_720p = NULL, file_size_1080p = '33.7GB', updated_at = NOW() WHERE id = 'd6322dc8-91da-4bc0-ab80-6b1e0832fb6f';
+
+-- UPDATE SEASON: Amar Vishwas S1 (ID: 51833e2f-5c2b-4bd7-87d4-b56b241c286d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3qp1dq60zqvrv0r', file_size_720p = NULL, file_size_1080p = '14.8GB', updated_at = NOW() WHERE id = '51833e2f-5c2b-4bd7-87d4-b56b241c286d';
+
+-- UPDATE SEASON: The Mentalist S5 (ID: 0d2e9433-c407-4853-8953-4b297fd10b88)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '0d2e9433-c407-4853-8953-4b297fd10b88';
+
+-- UPDATE SEASON: Absolute Value of Romance S1 (ID: 5cd7392e-e24e-4b22-bf0d-5ccf78fd5d63)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/rccmwe1wccrrcwl', file_size_720p = NULL, file_size_1080p = '26.8GB', updated_at = NOW() WHERE id = '5cd7392e-e24e-4b22-bf0d-5ccf78fd5d63';
+
+-- UPDATE SEASON: Isakapatnam S1 (ID: d09d5a1c-7687-4fe9-94d3-af0c80f4f3c3)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dk6sj369s6s9j9p', download_url_1080p = 'https://hubcloud.ist/drive/f2pvvxsa7fvs2k2', file_size_720p = '1.6GB', file_size_1080p = '3.8GB', updated_at = NOW() WHERE id = 'd09d5a1c-7687-4fe9-94d3-af0c80f4f3c3';
+
+-- UPDATE EPISODE: Mr. Robot S2E1 (ID: 30b53fee-4dd2-49cf-93a4-447a608cfb5e)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30b53fee-4dd2-49cf-93a4-447a608cfb5e';
+
+-- UPDATE EPISODE: Mr. Robot S2E2 (ID: 5b3cbb9c-8666-4801-9e7a-d29417f08f35)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '5b3cbb9c-8666-4801-9e7a-d29417f08f35';
+
+-- UPDATE SEASON: The Mentalist S4 (ID: 1eeda36d-1270-47ad-be43-4897d353155d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = '1eeda36d-1270-47ad-be43-4897d353155d';
+
+-- UPDATE EPISODE: Mr. Robot S4E1 (ID: 31e671ff-fceb-4e3c-920d-75fb23daa3cd)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '31e671ff-fceb-4e3c-920d-75fb23daa3cd';
+
+-- UPDATE SEASON: Super Subbu S1 (ID: 4aa67bac-5a4b-436b-af22-4a47f04f19de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/b9xt6645vxv4801', file_size_720p = NULL, file_size_1080p = '15.7GB', updated_at = NOW() WHERE id = '4aa67bac-5a4b-436b-af22-4a47f04f19de';
+
+-- UPDATE SEASON: Batman: Caped Crusader S1 (ID: 5b91a8e2-92a6-4c0b-9bb4-87038779aec2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/uuouu4a22a22y31', file_size_720p = NULL, file_size_1080p = '18.9GB', updated_at = NOW() WHERE id = '5b91a8e2-92a6-4c0b-9bb4-87038779aec2';
+
+-- UPDATE SEASON: Cash Queens S1 (ID: ad44cef7-d825-4683-935a-79a484dce7ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3weuo3sb3wnsf26', file_size_720p = NULL, file_size_1080p = '25.6GB', updated_at = NOW() WHERE id = 'ad44cef7-d825-4683-935a-79a484dce7ec';
+
+-- UPDATE SEASON: The Mentalist S2 (ID: 7e92e976-3038-4348-b745-92bd19745c7e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/zicyategeacmvnm', file_size_720p = NULL, file_size_1080p = '71.2GB', updated_at = NOW() WHERE id = '7e92e976-3038-4348-b745-92bd19745c7e';
+
+-- UPDATE SEASON: Batman: Caped Crusader S2 (ID: 9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/dbebgu3bbvay1ug', file_size_720p = NULL, file_size_1080p = '18.4GB', updated_at = NOW() WHERE id = '9213fdf1-65dd-4ae6-8a3f-9f08f2d87f12';
+
+-- UPDATE SEASON: Silo S3 (ID: 7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/7jqsjjs7sj10j7q', file_size_720p = NULL, file_size_1080p = '40.8GB', updated_at = NOW() WHERE id = '7b9c4c1e-37d2-4e0d-aa80-c5809e76ded9';
+
+-- UPDATE SEASON: Surely Tomorrow S1 (ID: 0499419e-93ec-42f8-9e3f-00286460e97a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/a5x4lvaz4zg5l4s', file_size_720p = NULL, file_size_1080p = '40.9GB', updated_at = NOW() WHERE id = '0499419e-93ec-42f8-9e3f-00286460e97a';
+
+-- UPDATE SEASON: The Mentalist S3 (ID: 9b9680a6-2ea0-428d-9009-0c098c4e75a4)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/lkrlk0s4a4zkn2t', file_size_720p = NULL, file_size_1080p = '73.2GB', updated_at = NOW() WHERE id = '9b9680a6-2ea0-428d-9009-0c098c4e75a4';
+
+-- UPDATE SEASON: Mad Concrete Dreams S1 (ID: 4f424828-9acb-41bc-96f1-678169593c0d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/2gfxwgigwtcqnc1', download_url_1080p = 'https://hubcloud.ist/drive/lu5thuc17oiiewr', file_size_720p = '5.1GB', file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '4f424828-9acb-41bc-96f1-678169593c0d';
+
+-- UPDATE SEASON: Bloodhounds S2 (ID: dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ukrzofgorzkimzt', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61';
+
+-- UPDATE SEASON: The Mentalist S6 (ID: d4cf1d17-51c3-4a3e-ae54-b29708607b99)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'd4cf1d17-51c3-4a3e-ae54-b29708607b99';
+
+-- UPDATE SEASON: The Mentalist S7 (ID: f1186f3a-ddf1-4a36-a0b5-239a7b1e02be)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/e29ylaskksyqqms', file_size_720p = NULL, file_size_1080p = '72.3GB', updated_at = NOW() WHERE id = 'f1186f3a-ddf1-4a36-a0b5-239a7b1e02be';
+
+-- UPDATE SEASON: The Mentalist S1 (ID: fed0912d-e0fc-4f6e-a1c4-ca0e308b7604)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/m10p77azaa8u1ki', file_size_720p = NULL, file_size_1080p = '71.9GB', updated_at = NOW() WHERE id = 'fed0912d-e0fc-4f6e-a1c4-ca0e308b7604';
+
+-- UPDATE EPISODE: Wheel Of Fortune India S1E3 (ID: 0331a589-3500-4800-945b-87fb07650db6)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '0331a589-3500-4800-945b-87fb07650db6';
