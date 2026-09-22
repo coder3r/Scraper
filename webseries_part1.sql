@@ -1013,3 +1013,87 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
+
+-- UPDATE SEASON: Raktanchal S1 (ID: bc83b1dc-8470-4b42-be38-b72346f65a4f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/j6x6cqjqfjzzgx1', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = 'bc83b1dc-8470-4b42-be38-b72346f65a4f';
+
+-- UPDATE SEASON: Four More Shots Please! S2 (ID: b2760ae9-7c0d-49e7-a14d-19b5f92455b3)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'b2760ae9-7c0d-49e7-a14d-19b5f92455b3';
+
+-- UPDATE SEASON: Mad Concrete Dreams S1 (ID: 4f424828-9acb-41bc-96f1-678169593c0d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/2gfxwgigwtcqnc1', download_url_1080p = 'https://hubcloud.ist/drive/lu5thuc17oiiewr', file_size_720p = '5.1GB', file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '4f424828-9acb-41bc-96f1-678169593c0d';
+
+-- UPDATE SEASON: Four More Shots Please! S1 (ID: fc5d0421-0245-44e0-a02e-4fe4710e71cc)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = 'fc5d0421-0245-44e0-a02e-4fe4710e71cc';
+
+-- UPDATE SEASON: Raktanchal S3 (ID: cad76c6d-cd6d-46fb-b0b9-a86dba27428a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/mbpdwvxxblwl9yb', download_url_1080p = 'https://hubcloud.ist/drive/wsh12wuostnqigw', file_size_720p = '2GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'cad76c6d-cd6d-46fb-b0b9-a86dba27428a';
+
+-- UPDATE SEASON: Who's Your Gynac S1 (ID: 2a2345d5-7100-48c0-be3b-ad029c449df1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/1133nggx15lxrq6', file_size_720p = NULL, file_size_1080p = '5.3GB', updated_at = NOW() WHERE id = '2a2345d5-7100-48c0-be3b-ad029c449df1';
+
+-- UPDATE SEASON: Daredevil: Born Again S2 (ID: b2b541e9-086f-4ce6-96ca-639e48306907)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ig1erdoep1ii5f2', file_size_720p = NULL, file_size_1080p = '15.5GB', updated_at = NOW() WHERE id = 'b2b541e9-086f-4ce6-96ca-639e48306907';
+
+-- UPDATE SEASON: Who's Your Gynac S2 (ID: 48f82a56-5417-4251-b504-4d491c4912a1)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ml2pqipilsf44es', file_size_720p = NULL, file_size_1080p = '6.1GB', updated_at = NOW() WHERE id = '48f82a56-5417-4251-b504-4d491c4912a1';
+
+-- UPDATE SEASON: Save the Tigers S3 (ID: 2de2b86a-16e4-4a50-aba5-071650a7b5aa)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/0sf5w5w8r696vjm', file_size_720p = NULL, file_size_1080p = '6.2GB', updated_at = NOW() WHERE id = '2de2b86a-16e4-4a50-aba5-071650a7b5aa';
+
+-- UPDATE SEASON: Daredevil: Born Again S1 (ID: d4190015-e1de-4b42-b908-f9e219fca396)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/hcbtrkxtdrrasod', file_size_720p = NULL, file_size_1080p = '17.2GB', updated_at = NOW() WHERE id = 'd4190015-e1de-4b42-b908-f9e219fca396';
+
+-- UPDATE SEASON: Outer Banks S3 (ID: 6228e746-ac64-4305-9d29-2287bcf5ddaf)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '6228e746-ac64-4305-9d29-2287bcf5ddaf';
+
+-- UPDATE SEASON: Nice to Not Meet You S1 (ID: dd1b64ce-2ed0-4ca1-b55a-179b62661a6e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/zwenagjawoqkvpd', file_size_720p = NULL, file_size_1080p = '59.6GB', updated_at = NOW() WHERE id = 'dd1b64ce-2ed0-4ca1-b55a-179b62661a6e';
+
+-- UPDATE SEASON: Outer Banks S5 (ID: 6e7aa06c-abad-4ead-9a35-55e2898fa321)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '6e7aa06c-abad-4ead-9a35-55e2898fa321';
+
+-- UPDATE SEASON: The Pyramid Scheme S1 (ID: ecdd37cc-c240-49a2-9b81-5b083b474296)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cntl1llkni5ig1k', download_url_1080p = 'https://hubcloud.ist/drive/4gt4q4q5y7jcxfv', file_size_720p = '1.7GB', file_size_1080p = '4.1GB', updated_at = NOW() WHERE id = 'ecdd37cc-c240-49a2-9b81-5b083b474296';
+
+-- UPDATE SEASON: Inspector Avinash S2 (ID: 215d709a-79af-4a5c-a15c-4b4fa5653ed8)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1us1u2ccvcdnduu', download_url_1080p = 'https://hubcloud.ist/drive/d1vnunn6ny2sbuv', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '215d709a-79af-4a5c-a15c-4b4fa5653ed8';
+
+-- UPDATE SEASON: Outer Banks S4 (ID: 8a74038c-dab1-4391-b2ad-35c02565f318)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = '8a74038c-dab1-4391-b2ad-35c02565f318';
+
+-- UPDATE SEASON: Inspector Avinash S1 (ID: 22354c33-0f59-417d-aab3-fadad9d20293)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/el4209dofdxw9jg', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '22354c33-0f59-417d-aab3-fadad9d20293';
+
+-- UPDATE SEASON: Outer Banks S1 (ID: bad66f33-97bc-416b-9c8e-c0f5de38bdda)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'bad66f33-97bc-416b-9c8e-c0f5de38bdda';
+
+-- UPDATE SEASON: Brown S1 (ID: c6e2e8ea-c63f-42ef-b5b4-92b70dbf7275)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/uj9subw5qh9c2au', download_url_1080p = 'https://hubcloud.ist/drive/mqmeq1foxxqqkvn', file_size_720p = '1.9GB', file_size_1080p = '4.6GB', updated_at = NOW() WHERE id = 'c6e2e8ea-c63f-42ef-b5b4-92b70dbf7275';
+
+-- UPDATE SEASON: Outer Banks S2 (ID: f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ookg1zzhajohusk', file_size_720p = NULL, file_size_1080p = '22.3GB', updated_at = NOW() WHERE id = 'f2650a02-0fe7-4ce5-8dbb-c5a3c51cfb8a';
+
+-- UPDATE SEASON: Save the Tigers S3 (ID: 2de2b86a-16e4-4a50-aba5-071650a7b5aa)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/0sf5w5w8r696vjm', file_size_720p = NULL, file_size_1080p = '6.2GB', updated_at = NOW() WHERE id = '2de2b86a-16e4-4a50-aba5-071650a7b5aa';
+
+-- UPDATE SEASON: Absolute Value of Romance S1 (ID: 5cd7392e-e24e-4b22-bf0d-5ccf78fd5d63)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/rccmwe1wccrrcwl', file_size_720p = NULL, file_size_1080p = '26.8GB', updated_at = NOW() WHERE id = '5cd7392e-e24e-4b22-bf0d-5ccf78fd5d63';
+
+-- UPDATE EPISODE: Mr. Robot S2E1 (ID: 30b53fee-4dd2-49cf-93a4-447a608cfb5e)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30b53fee-4dd2-49cf-93a4-447a608cfb5e';
+
+-- UPDATE EPISODE: Mr. Robot S2E2 (ID: 5b3cbb9c-8666-4801-9e7a-d29417f08f35)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '5b3cbb9c-8666-4801-9e7a-d29417f08f35';
+
+-- UPDATE EPISODE: Mr. Robot S4E1 (ID: 31e671ff-fceb-4e3c-920d-75fb23daa3cd)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '31e671ff-fceb-4e3c-920d-75fb23daa3cd';
+
+-- UPDATE SEASON: Vadhandhi S2 (ID: 8cddc4a8-2441-435d-9943-0f3bacca473e)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bprr22a3mntjrd5', download_url_1080p = 'https://hubcloud.ist/drive/jvpjcwdtcjp1jyw', file_size_720p = '2.3GB', file_size_1080p = '5.4GB', updated_at = NOW() WHERE id = '8cddc4a8-2441-435d-9943-0f3bacca473e';
+
+-- UPDATE SEASON: Mayor of Kingstown S2 (ID: 05721b17-7e61-4aff-b018-3df397905884)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/c1xcj29w1vfi1jj', file_size_720p = NULL, file_size_1080p = '29.6GB', updated_at = NOW() WHERE id = '05721b17-7e61-4aff-b018-3df397905884';
+
+-- UPDATE SEASON: The Pitt S2 (ID: efb59ac2-c51d-42dd-ab94-6e85df946eb9)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/oicsc1cji385y3y', file_size_720p = NULL, file_size_1080p = '44.9GB', updated_at = NOW() WHERE id = 'efb59ac2-c51d-42dd-ab94-6e85df946eb9';
