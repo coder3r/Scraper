@@ -1097,3 +1097,90 @@ UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcl
 
 -- UPDATE SEASON: The Pitt S2 (ID: efb59ac2-c51d-42dd-ab94-6e85df946eb9)
 UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/oicsc1cji385y3y', file_size_720p = NULL, file_size_1080p = '44.9GB', updated_at = NOW() WHERE id = 'efb59ac2-c51d-42dd-ab94-6e85df946eb9';
+
+-- UPDATE SEASON: Mayor of Kingstown S4 (ID: 2b067b74-a336-4af0-93b3-45121e204f1b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/xxbbobvxooxx6kk', file_size_720p = NULL, file_size_1080p = '12.1GB', updated_at = NOW() WHERE id = '2b067b74-a336-4af0-93b3-45121e204f1b';
+
+-- UPDATE SEASON: Daredevil: Born Again S2 (ID: b2b541e9-086f-4ce6-96ca-639e48306907)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ig1erdoep1ii5f2', file_size_720p = NULL, file_size_1080p = '15.5GB', updated_at = NOW() WHERE id = 'b2b541e9-086f-4ce6-96ca-639e48306907';
+
+-- UPDATE SEASON: Vadhandhi S1 (ID: 8f367e65-e587-4638-bfec-82f1b4706f7c)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/w9kbiocoqkkq11b', download_url_1080p = 'https://hubcloud.ist/drive/iqmrowjubcur8pu', file_size_720p = '2.7GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = '8f367e65-e587-4638-bfec-82f1b4706f7c';
+
+-- UPDATE SEASON: Mayor of Kingstown S3 (ID: 7f1ea876-1c18-4b70-9c8f-02a831f9879f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/rqq1aq6qwmqsmcy', file_size_720p = NULL, file_size_1080p = '32.2GB', updated_at = NOW() WHERE id = '7f1ea876-1c18-4b70-9c8f-02a831f9879f';
+
+-- UPDATE SEASON: Daredevil: Born Again S1 (ID: d4190015-e1de-4b42-b908-f9e219fca396)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/hcbtrkxtdrrasod', file_size_720p = NULL, file_size_1080p = '17.2GB', updated_at = NOW() WHERE id = 'd4190015-e1de-4b42-b908-f9e219fca396';
+
+-- UPDATE SEASON: Beast Games S1 (ID: 5aab1ea7-576c-4085-a535-67f96655865d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/x1jtjdjlouuxpd0', file_size_720p = NULL, file_size_1080p = '34GB', updated_at = NOW() WHERE id = '5aab1ea7-576c-4085-a535-67f96655865d';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S2 (ID: 2726c11c-c7d3-45bc-a61c-5b0b14d16dc7)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '2726c11c-c7d3-45bc-a61c-5b0b14d16dc7';
+
+-- UPDATE SEASON: Ab Hoga Hisaab S2 (ID: a7b4649e-73e6-47f0-a1c1-27ae81a67d9e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/mfhnywryfwf5lkh', file_size_720p = NULL, file_size_1080p = '12.3GB', updated_at = NOW() WHERE id = 'a7b4649e-73e6-47f0-a1c1-27ae81a67d9e';
+
+-- UPDATE SEASON: Lawmen: Bass Reeves S1 (ID: f6192111-9921-4bc4-97a6-611e6b26b8b1)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/wbvcwkvbssqg1x1', download_url_1080p = 'https://hubcloud.ist/drive/joepzzpwpouv96o', file_size_720p = '2.5GB', file_size_1080p = '5.7GB', updated_at = NOW() WHERE id = 'f6192111-9921-4bc4-97a6-611e6b26b8b1';
+
+-- UPDATE SEASON: Beast Games S2 (ID: 6cc57d57-d120-4cde-a7a6-8af67875df2b)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/nhweazkebhwby5r', file_size_720p = NULL, file_size_1080p = '35.8GB', updated_at = NOW() WHERE id = '6cc57d57-d120-4cde-a7a6-8af67875df2b';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S3 (ID: 9201c77c-8f4b-4b10-8161-3c5a8395303e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '9201c77c-8f4b-4b10-8161-3c5a8395303e';
+
+-- UPDATE SEASON: Ab Hoga Hisaab S1 (ID: bf557fa1-8914-4a18-84ad-a6a536f744b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/azburmx7bn2gg31', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = 'bf557fa1-8914-4a18-84ad-a6a536f744b6';
+
+-- UPDATE SEASON: Amar Vishwas S1 (ID: 51833e2f-5c2b-4bd7-87d4-b56b241c286d)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/3qp1dq60zqvrv0r', file_size_720p = NULL, file_size_1080p = '14.8GB', updated_at = NOW() WHERE id = '51833e2f-5c2b-4bd7-87d4-b56b241c286d';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S1 (ID: a27e83ab-6196-4b8d-a8e0-8830a38baed8)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/jup31uuiqyouy00', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = 'a27e83ab-6196-4b8d-a8e0-8830a38baed8';
+
+-- UPDATE SEASON: The Revolutionaries S1 (ID: a80960fa-ab4c-4578-b063-4d2680717e1a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/jocxigmgaddvjii', download_url_1080p = 'https://hubcloud.ist/drive/hn2z1g6zvgqjnng', file_size_720p = '2.8GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = 'a80960fa-ab4c-4578-b063-4d2680717e1a';
+
+-- UPDATE SEASON: Notes from the Last Row S1 (ID: bfb65dec-60b1-45f1-96ec-cba7904654f2)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/s9kss1ubej14jks', download_url_1080p = 'https://hubcloud.ist/drive/juo0u0ovi32fyay', file_size_720p = '2.5GB', file_size_1080p = '5.9GB', updated_at = NOW() WHERE id = 'bfb65dec-60b1-45f1-96ec-cba7904654f2';
+
+-- UPDATE SEASON: Dynamite Kiss S1 (ID: d6322dc8-91da-4bc0-ab80-6b1e0832fb6f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/vnm7upsvhsm7t1m', file_size_720p = NULL, file_size_1080p = '33.7GB', updated_at = NOW() WHERE id = 'd6322dc8-91da-4bc0-ab80-6b1e0832fb6f';
+
+-- UPDATE SEASON: Poker Face S2 (ID: 65cb1002-9c9e-41ff-985f-5969bdb956b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/cgi6tm4gpfekeif', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = '65cb1002-9c9e-41ff-985f-5969bdb956b6';
+
+-- UPDATE SEASON: Monster: The Lizzie Borden Story S1 (ID: f6f49d18-da8e-4f82-b61b-9f74eb0d3d28)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cy7tart1sznf1rc', download_url_1080p = 'https://hubcloud.ist/drive/sptq6s0su0qppfs', file_size_720p = '2.7GB', file_size_1080p = '6.4GB', updated_at = NOW() WHERE id = 'f6f49d18-da8e-4f82-b61b-9f74eb0d3d28';
+
+-- UPDATE SEASON: S Line S1 (ID: e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswofrr', download_url_1080p = 'https://hubcloud.ist/drive/uv1durc1eadcwk1', file_size_720p = '1.9GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5';
+
+-- UPDATE SEASON: Bloodhounds S2 (ID: dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ukrzofgorzkimzt', file_size_720p = NULL, file_size_1080p = '19.8GB', updated_at = NOW() WHERE id = 'dc44bd5e-5c00-47cf-bbd9-3c6cb1e10c61';
+
+-- UPDATE SEASON: Citadel S1 (ID: 46e811ab-1978-4877-baa7-18672e65de31)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/bylty14ch1eegbw', download_url_1080p = 'https://hubcloud.ist/drive/boemnmyvbg3vesg', file_size_720p = '1.7GB', file_size_1080p = '3.6GB', updated_at = NOW() WHERE id = '46e811ab-1978-4877-baa7-18672e65de31';
+
+-- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S2 (ID: 44072962-3810-4c34-b47f-6b4faa769407)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/r5rrhr5whrr6ewy', file_size_720p = NULL, file_size_1080p = '15.3GB', updated_at = NOW() WHERE id = '44072962-3810-4c34-b47f-6b4faa769407';
+
+-- UPDATE SEASON: MobLand S1 (ID: 3f07cea4-14bd-49b3-b60f-7d636f8451e9)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/sytiarh7id06igr', download_url_1080p = 'https://hubcloud.ist/drive/ihduifx548lddif', file_size_720p = '3.2GB', file_size_1080p = '7.5GB', updated_at = NOW() WHERE id = '3f07cea4-14bd-49b3-b60f-7d636f8451e9';
+
+-- UPDATE SEASON: Citadel S2 (ID: 87a459be-6f78-4ca8-a8bc-3ef53affc7a4)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qtwzqyy3oy2hqoo', file_size_720p = NULL, file_size_1080p = '17GB', updated_at = NOW() WHERE id = '87a459be-6f78-4ca8-a8bc-3ef53affc7a4';
+
+-- UPDATE SEASON: Heartbeats: Pyaar aur Armaan S1 (ID: 528ca82f-c9bf-4431-9033-3841b811b3de)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/56dqd00nkq6wktm', file_size_720p = NULL, file_size_1080p = '23.1GB', updated_at = NOW() WHERE id = '528ca82f-c9bf-4431-9033-3841b811b3de';
+
+-- UPDATE SEASON: My Brilliant Career S1 (ID: e40b330e-114b-4f00-9d7a-7e6c4f364c64)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/qh6oyn62eyrbaea', file_size_720p = NULL, file_size_1080p = '21.3GB', updated_at = NOW() WHERE id = 'e40b330e-114b-4f00-9d7a-7e6c4f364c64';
+
+-- UPDATE SEASON: Mad Concrete Dreams S1 (ID: 4f424828-9acb-41bc-96f1-678169593c0d)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/2gfxwgigwtcqnc1', download_url_1080p = 'https://hubcloud.ist/drive/lu5thuc17oiiewr', file_size_720p = '5.1GB', file_size_1080p = '43.1GB', updated_at = NOW() WHERE id = '4f424828-9acb-41bc-96f1-678169593c0d';
+
+-- UPDATE SEASON: The Witness S1 (ID: e35c44d6-dff7-4728-91fd-f0adec5c4054)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/jpyyhsookkleyvp', file_size_720p = NULL, file_size_1080p = '8.7GB', updated_at = NOW() WHERE id = 'e35c44d6-dff7-4728-91fd-f0adec5c4054';
