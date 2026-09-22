@@ -947,3 +947,69 @@ UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/cy7tart1sznf1
 
 -- UPDATE SEASON: Thukra Ke Mera Pyaar S2 (ID: 23c21f94-cbf0-4805-9781-274aea30f2a5)
 UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/eigzkemaohcfmdo', download_url_1080p = NULL, file_size_720p = '6.9GB', file_size_1080p = NULL, updated_at = NOW() WHERE id = '23c21f94-cbf0-4805-9781-274aea30f2a5';
+
+-- UPDATE SEASON: The Revolutionaries S1 (ID: a80960fa-ab4c-4578-b063-4d2680717e1a)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/jocxigmgaddvjii', download_url_1080p = 'https://hubcloud.ist/drive/hn2z1g6zvgqjnng', file_size_720p = '2.8GB', file_size_1080p = '6.3GB', updated_at = NOW() WHERE id = 'a80960fa-ab4c-4578-b063-4d2680717e1a';
+
+-- UPDATE SEASON: Isakapatnam S1 (ID: d09d5a1c-7687-4fe9-94d3-af0c80f4f3c3)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/dk6sj369s6s9j9p', download_url_1080p = 'https://hubcloud.ist/drive/f2pvvxsa7fvs2k2', file_size_720p = '1.6GB', file_size_1080p = '3.8GB', updated_at = NOW() WHERE id = 'd09d5a1c-7687-4fe9-94d3-af0c80f4f3c3';
+
+-- UPDATE SEASON: Brown S1 (ID: c6e2e8ea-c63f-42ef-b5b4-92b70dbf7275)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/uj9subw5qh9c2au', download_url_1080p = 'https://hubcloud.ist/drive/mqmeq1foxxqqkvn', file_size_720p = '1.9GB', file_size_1080p = '4.6GB', updated_at = NOW() WHERE id = 'c6e2e8ea-c63f-42ef-b5b4-92b70dbf7275';
+
+-- UPDATE SEASON: Summer '36 S1 (ID: 10559fa0-a318-4398-852a-3d7bb553c0f2)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/ftxocy9mxky18zt', file_size_720p = NULL, file_size_1080p = '14.8GB', updated_at = NOW() WHERE id = '10559fa0-a318-4398-852a-3d7bb553c0f2';
+
+-- UPDATE SEASON: The Map of Longing S1 (ID: 1106ef9c-9939-46ea-8eb6-a7a70d459082)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/slyd1pxymfx8pxa', download_url_1080p = 'https://hubcloud.ist/drive/h3l32z4u54drrrr', file_size_720p = '1.9GB', file_size_1080p = '14.4GB', updated_at = NOW() WHERE id = '1106ef9c-9939-46ea-8eb6-a7a70d459082';
+
+-- UPDATE SEASON: Perfect Family S1 (ID: ea9f4b5e-89aa-488f-b74d-6be9b1049113)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/lzlq8qg8lje6tao', download_url_1080p = 'https://hubcloud.ist/drive/otuleuoexxulgiu', file_size_720p = '2.1GB', file_size_1080p = '4.9GB', updated_at = NOW() WHERE id = 'ea9f4b5e-89aa-488f-b74d-6be9b1049113';
+
+-- UPDATE EPISODE: Mr. Robot S2E1 (ID: 30b53fee-4dd2-49cf-93a4-447a608cfb5e)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '30b53fee-4dd2-49cf-93a4-447a608cfb5e';
+
+-- UPDATE EPISODE: Mr. Robot S2E2 (ID: 5b3cbb9c-8666-4801-9e7a-d29417f08f35)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '5b3cbb9c-8666-4801-9e7a-d29417f08f35';
+
+-- UPDATE EPISODE: Mr. Robot S4E1 (ID: 31e671ff-fceb-4e3c-920d-75fb23daa3cd)
+UPDATE episodes SET download_url_720p = NULL, download_url_1080p = NULL, file_size_720p = NULL, file_size_1080p = NULL, updated_at = NOW() WHERE id = '31e671ff-fceb-4e3c-920d-75fb23daa3cd';
+
+-- UPDATE SEASON: Inspector Avinash S2 (ID: 215d709a-79af-4a5c-a15c-4b4fa5653ed8)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1us1u2ccvcdnduu', download_url_1080p = 'https://hubcloud.ist/drive/d1vnunn6ny2sbuv', file_size_720p = '2.3GB', file_size_1080p = '5.5GB', updated_at = NOW() WHERE id = '215d709a-79af-4a5c-a15c-4b4fa5653ed8';
+
+-- UPDATE SEASON: Inspector Avinash S1 (ID: 22354c33-0f59-417d-aab3-fadad9d20293)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/el4209dofdxw9jg', file_size_720p = NULL, file_size_1080p = '20.2GB', updated_at = NOW() WHERE id = '22354c33-0f59-417d-aab3-fadad9d20293';
+
+-- UPDATE SEASON: Maamla Legal Hai S1 (ID: 19ddff35-41f9-4088-ba3b-18ebe9977d1f)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '19ddff35-41f9-4088-ba3b-18ebe9977d1f';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S2 (ID: 2726c11c-c7d3-45bc-a61c-5b0b14d16dc7)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '2726c11c-c7d3-45bc-a61c-5b0b14d16dc7';
+
+-- UPDATE SEASON: Poker Face S2 (ID: 65cb1002-9c9e-41ff-985f-5969bdb956b6)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/cgi6tm4gpfekeif', file_size_720p = NULL, file_size_1080p = '13.9GB', updated_at = NOW() WHERE id = '65cb1002-9c9e-41ff-985f-5969bdb956b6';
+
+-- UPDATE SEASON: Man on Fire S1 (ID: 92eeddad-8585-4c8e-ba97-303d7bcfce35)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/6srcvarlzlwszjt', download_url_1080p = 'https://hubcloud.ist/drive/jjfxjx1qszbsmja', file_size_720p = '2GB', file_size_1080p = '4.6GB', updated_at = NOW() WHERE id = '92eeddad-8585-4c8e-ba97-303d7bcfce35';
+
+-- UPDATE SEASON: Maamla Legal Hai S2 (ID: 6e6cd048-ceae-452e-8b18-f26911ab9591)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/5pqfrb8yyckaffq', file_size_720p = NULL, file_size_1080p = '11.1GB', updated_at = NOW() WHERE id = '6e6cd048-ceae-452e-8b18-f26911ab9591';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S3 (ID: 9201c77c-8f4b-4b10-8161-3c5a8395303e)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/8it5bl1itsl6gll', file_size_720p = NULL, file_size_1080p = '30.4GB', updated_at = NOW() WHERE id = '9201c77c-8f4b-4b10-8161-3c5a8395303e';
+
+-- UPDATE SEASON: Four More Shots Please! S3 (ID: 5e00ab1b-66a8-421b-a042-8806c479daef)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '5e00ab1b-66a8-421b-a042-8806c479daef';
+
+-- UPDATE SEASON: S Line S1 (ID: e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5)
+UPDATE seasons SET download_url_720p = 'https://hubcloud.ist/drive/1ujwqltxiswofrr', download_url_1080p = 'https://hubcloud.ist/drive/uv1durc1eadcwk1', file_size_720p = '1.9GB', file_size_1080p = '4.7GB', updated_at = NOW() WHERE id = 'e0761f3d-9ab9-434f-8b7f-7dbb4cd5bea5';
+
+-- UPDATE SEASON: Raktanchal S2 (ID: 35c6b3a5-6e31-46ec-ab5d-897f539c2612)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.ist/drive/z1hzppfypxj1hjt', file_size_720p = NULL, file_size_1080p = '17.9GB', updated_at = NOW() WHERE id = '35c6b3a5-6e31-46ec-ab5d-897f539c2612';
+
+-- UPDATE SEASON: The Summer I Turned Pretty S1 (ID: a27e83ab-6196-4b8d-a8e0-8830a38baed8)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/jup31uuiqyouy00', file_size_720p = NULL, file_size_1080p = '21.9GB', updated_at = NOW() WHERE id = 'a27e83ab-6196-4b8d-a8e0-8830a38baed8';
+
+-- UPDATE SEASON: Four More Shots Please! S4 (ID: 9f52fce0-2eb3-454e-863f-5fe8d99f32ec)
+UPDATE seasons SET download_url_720p = NULL, download_url_1080p = 'https://hubcloud.cx/drive/ljl7f2yqyomo1q7', file_size_720p = NULL, file_size_1080p = '32.6GB', updated_at = NOW() WHERE id = '9f52fce0-2eb3-454e-863f-5fe8d99f32ec';
